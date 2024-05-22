@@ -21,7 +21,7 @@
          $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
     :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}"
   >
-    <livewire:layout.preloader />
+    {{-- <livewire:layout.preloader /> --}}
     <div class="flex h-screen overflow-hidden">
         <livewire:layout.sidebar />
 

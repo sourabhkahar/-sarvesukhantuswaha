@@ -7,9 +7,12 @@ use App\Livewire\Forms\TaxonomyForm;
 
 new class extends Component { 
       use WithPagination;
+      
       public TaxonomyForm $form; 
       public $perPage = 10 ; 
       public $search = '' ; 
+      public $sortColumn = 'title';
+      public $sortDirection = 'Asc';
 
       public function save()
       {
@@ -17,10 +20,18 @@ new class extends Component {
          $this->form->store();
       }
       
+      public function doSort($columnName){
+         if($this->sortColumn == $columnName){
+            $this->sortDirection = ($this->sortDirection == 'Asc')?'Desc':'Asc' ;
+         }
+         $this->sortColumn = $columnName;
+
+      }
+
       public function with(): array
       {
          return [
-            'Taxonomies' => Taxonomy::search($this->search)->paginate($this->perPage),
+            'Taxonomies' => Taxonomy::search($this->search)->orderBy($this->sortColumn,$this->sortDirection)->paginate($this->perPage),
          ];
       }
 }; ?>
@@ -76,7 +87,7 @@ new class extends Component {
              <table class="table w-full table-auto datatable-table" id="dataTableTwo">
                 <thead>
                    <tr>
-                      <th data-sortable="true" >
+                      <th data-sortable="true" wire:click="doSort('title')">
                          <a href="#" class="datatable-sorter">
                             <div class="flex items-center justify-between gap-1.5">
                                <p>Name</p>
@@ -95,7 +106,7 @@ new class extends Component {
                             </div>
                          </a>
                       </th>
-                      <th data-sortable="true" >
+                      <th data-sortable="true"  wire:click="doSort('created_at')">
                          <a href="#" class="datatable-sorter">
                             <div class="flex items-center justify-between gap-1.5">
                                <p>Position</p>
@@ -114,7 +125,7 @@ new class extends Component {
                             </div>
                          </a>
                       </th>
-                      <th data-sortable="true" >
+                      <th data-sortable="true" wire:click="doSort('updated_at')">
                          <a href="#" class="datatable-sorter">
                             <div class="flex items-center justify-between gap-1.5">
                                <p>Office</p>
@@ -147,7 +158,7 @@ new class extends Component {
              </table>
           </div>
           <div class="datatable-bottom">
-             {{$Taxonomies->links('vendor.pagination.tailwind')}}
+             {{$Taxonomies->links('vendor.livewire.tailwind')}}
           </div>
        </div>
     </div>

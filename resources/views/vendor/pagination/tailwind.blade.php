@@ -1,3 +1,5 @@
+
+<div>
 @if ($paginator->hasPages())
    <div class="datatable-info">
         {!! __('Showing') !!}
@@ -60,6 +62,7 @@
 
             {{-- Next Page Link --}}
             @if ($paginator->hasMorePages())
+            {{$paginator->nextPageUrl()}}
                 <li class="datatable-pagination-list-item"><a  href="{{ $paginator->nextPageUrl() }}" class="datatable-pagination-list-item-link" wire:navigate>›</a></li>
             @else
                 <li class="datatable-pagination-list-item datatable-hidden datatable-disabled"><a class="datatable-pagination-list-item-link">›</a></li> 
@@ -67,3 +70,4 @@
         </ul>
     </nav>
 @endif
+</div>

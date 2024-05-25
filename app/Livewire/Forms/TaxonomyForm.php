@@ -1,17 +1,9 @@
 <?php
 
 namespace App\Livewire\Forms;
-
-use Illuminate\Auth\Events\Lockout;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\RateLimiter;
-use Illuminate\Support\Str;
-use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 use App\Models\Taxonomy;
-use RamonRietdijk\LivewireTables\Livewire\LivewireTable;
-
 class TaxonomyForm extends Form
 {
     #[Validate('required|string')]
@@ -28,5 +20,17 @@ class TaxonomyForm extends Form
         $taxonomy->title = $this->title;
         $taxonomy->save();
         $this->title = '';
+    }
+
+    public function edit($id): void
+    {
+        $taxonomy = Taxonomy::find($id);
+        $taxonomy->title = $this->title;
+        $taxonomy->save();
+        $this->title = '';
+    }
+
+    public function resetForm(){
+        $this->reset();
     }
 }

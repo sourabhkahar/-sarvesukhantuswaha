@@ -28,7 +28,7 @@ class CreatePagesTable extends Migration
             $table->string('metadescription',225)->nullable();
             $table->string('metakeyword',225)->nullable();
             $table->string('metaimage',225)->nullable();
-            $table->boolean('status');
+            $table->enum('status',['Y','N'])->default('Y');
             $table->timestamps();
         });
     }

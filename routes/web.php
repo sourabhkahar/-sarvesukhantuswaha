@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Livewire\Counter;
 
 Route::view('/', 'welcome');
 Route::group(['prefix' => 'admin','middleware' => 'auth'], function() {
@@ -12,8 +11,15 @@ Route::group(['prefix' => 'admin','middleware' => 'auth'], function() {
 
     Route::view('pages', 'pages')
         ->name('pages');
-    Route::view('taxonomy', 'taxonomy')
-        ->name('taxonomy');
+
+
+    Route::get('taxonomy', function(){
+        return view('taxonomy');
+    })->name('taxonomy');
+
+    Route::get('addblock/{id}', function(){
+        return view('taxonomy');
+    })->name('addhtmlblock');
 });
 require __DIR__.'/auth.php';
 

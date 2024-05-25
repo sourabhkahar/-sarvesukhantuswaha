@@ -1,25 +1,29 @@
 <?php
 
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
-Route::group(['prefix' => 'admin','middleware' => 'auth'], function() {
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::view('dashboard', 'dashboard')
         ->name('dashboard');
+
     Route::view('profile', 'profile')
         ->name('profile');
 
     Route::view('pages', 'pages')
         ->name('pages');
 
-
-    Route::get('taxonomy', function(){
+    Route::get('taxonomy', function () {
         return view('taxonomy');
     })->name('taxonomy');
 
-    Route::get('addblock/{id}', function(){
-        return view('taxonomy');
+    Route::get('addblock/{pid}', function ($pid) {
+        return view('htmlblock', ['pid' => $pid]);
     })->name('addhtmlblock');
-});
-require __DIR__.'/auth.php';
 
+    Route::get('addsubblock/{pid}', function ($pid) {
+        return view('htmlsubblock', ['pid' => $pid]);
+    })->name('addhtmlsubblock');
+});
+require __DIR__ . '/auth.php';

@@ -18,6 +18,8 @@ class CreateTextPageGallleriesTable extends Migration
             $table->integer('pagecode');
             $table->string('image');
             $table->string('imageurl');
+            $table->string('categorycode');
+            $table->string('taxonomycode');
             $table->string('ordno')->nullable();
             $table->timestamps();
         });

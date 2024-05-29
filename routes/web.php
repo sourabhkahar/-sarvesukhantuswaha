@@ -25,5 +25,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('addsubblock/{pid}', function ($pid) {
         return view('htmlsubblock', ['pid' => $pid]);
     })->name('addhtmlsubblock');
+
+    Route::get('pageentry/{pid}/{tid}', function ($pid, $tid) {
+        return view('pageentry', ['pid' => $pid, 'tid' => $tid]);
+    })->name('pagentry');
 });
 require __DIR__ . '/auth.php';

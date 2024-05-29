@@ -460,9 +460,9 @@ new class extends Component {
             >
               <li>
                 <a
-                  href="profile.html"
+                  href="{{route('profile')}}"
                   class="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base"
-                >
+                  wire:navigate>
                   <svg
                     class="fill-current"
                     width="22"

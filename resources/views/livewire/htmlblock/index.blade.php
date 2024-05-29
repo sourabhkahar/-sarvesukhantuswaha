@@ -10,7 +10,7 @@ new class extends Component {
       public htmlBlockForm $form; 
       public $perPage = 5; 
       public $search = '' ; 
-      public $sortColumn = 'blockname';
+      public $sortColumn = 'ordno';
       public $sortDirection = 'Asc';
       public $editId = null;
       public $headerColumn  = [
@@ -42,7 +42,7 @@ new class extends Component {
       public function with(): array{
          return [
             'HtmlBlocksOption' => Config::get('constant.html-blocks'),
-            'HtmlBlocks' => HtmlBlock::search($this->search)->orderBy($this->sortColumn,$this->sortDirection)->paginate($this->perPage),
+            'HtmlBlocks' => HtmlBlock::search($this->search)->where('taxonmycode',1)->orderBy($this->sortColumn,$this->sortDirection)->paginate($this->perPage),
          ];
       }
 

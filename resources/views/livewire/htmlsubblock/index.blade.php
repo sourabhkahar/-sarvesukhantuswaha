@@ -11,7 +11,7 @@ new class extends Component {
       public HtmlSubBlockForm $form; 
       public $perPage = 5; 
       public $search = '' ; 
-      public $sortColumn = 'blockname';
+      public $sortColumn = 'ordno';
       public $sortDirection = 'Asc';
       public $editId = null;
       public $headerColumn  = [

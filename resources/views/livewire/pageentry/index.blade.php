@@ -29,17 +29,18 @@ new class extends Component {
         $imagesData = [];
         //Set Input Field Data
         $icount = 1;
+        // dd($this->formData);
         forEach($this->formData as $formKey => $formval){
-            if (strpos($formKey, 'image') !== false && $formval){
+            if (strpos($formKey, 'image') !== false && ($formval && !is_string( $formval ))){
                 $date=date_create();
                 $imagesData[] = [
-                                            'pagecode' => $this->pid,
-                                            'categorycode'=>0,
-                                            'taxonomycode'=>$this->tid,
-                                            'imageobj'=>$formval,
-                                            'image'=>date_timestamp_get($date).'-'.$formval->getClientOriginalName(),
-                                            'ordno'=>$icount
-                                        ];
+                                    'pagecode' => $this->pid,
+                                    'categorycode'=>0,
+                                    'taxonomycode'=>$this->tid,
+                                    'imageobj'=>$formval,
+                                    'image'=>date_timestamp_get($date).'-'.$formval->getClientOriginalName(),
+                                    'ordno'=>$icount
+                                ];
                 $icount++;
             } else {
                 $formData[] = [
@@ -54,13 +55,13 @@ new class extends Component {
             foreach ($imagesData as $image_key => $image_value) {
                 //Deleteing Images
                 $Record = TextPageGalllery::Where('pagecode',$this->pid)->where('ordno',$image_value['ordno'])->first();
-                    if($Record){
-                    Storage::delete('site-uploads/'.$Record->image);
+                if($Record){
+                    Storage::delete('public/site-uploads/'.$Record->image);
                     TextPageGalllery::Where('pagecode',$this->pid)->where('ordno',$image_value['ordno'])->delete();
-                    }
+                }
                 
                 //Uploading Images
-                $image_value['imageobj']->storeAs(path: 'site-uploads',name:$image_value['image']);
+                $image_value['imageobj']->storeAs(path: 'public/site-uploads',name:$image_value['image']);
                 unset($imagesData[$image_key]['imageobj']);
             }
             
@@ -70,24 +71,27 @@ new class extends Component {
        
         //inserting Form Data
         TextPagedetail::insert($formData);
-        // $this->reset();
         session()->flash('message', 'Form submitted successfully!');
     }
 
     public function mount($pid,$tid){
         $this->pid = $pid;
         $this->tid = $tid;
-        $this->PageEntryBlocks = HtmlBlock::where('pagecode',$this->pid)->where('taxonmycode',$this->tid)->
+        $this->PageEntryBlocks = HtmlBlock::where('pagecode',$pid)->where('taxonmycode',$this->tid)->
                                      where('status','Y')->orderBy('ordno')->
                                      get();
         $textPageDetails = TextPagedetail::where('pagecode',$pid)->get();
-
-        $detailData = [];
+        //Get Images
+        $imagesData = TextPageGalllery::Where('pagecode',$pid)->orderBy('ordno')->get();
+        foreach ($imagesData as $imageKey => $imageVal) {
+            $count = $imageKey + 1;
+            $detailData['image'.$count] = ['image'=>$imageVal->image];
+        }
         //Get form data
         foreach ($textPageDetails as $textPageDetailsKey => $textPageDetailsVal) {
             $detailData[$textPageDetailsVal->field] = $textPageDetailsVal->value;
         }
-        
+
         //Assign form data
         foreach ($this->PageEntryBlocks as $key => $value) {
             if(sizeof($detailData) > 0 && isset($detailData[$value->htmlblock])){
@@ -96,7 +100,16 @@ new class extends Component {
                 $this->formData[$value->htmlblock] = ''; 
             }
         }
+    }
 
+    #[On('delete-page-entry-image')] 
+    public function updatePostList($ordno)
+    {
+        $Record = TextPageGalllery::Where('pagecode',$this->pid)->where('ordno',$ordno)->first();
+        if($Record){
+            Storage::delete('public/site-uploads/'.$Record->image);
+            $Record->delete();
+        }
     }
 
    
@@ -108,8 +121,8 @@ new class extends Component {
         @foreach($pageentryblock as $itemKey => $itemVal)
         @if (strpos($itemVal->htmlblock, 'image') !== false)
         <x-dynamic-component :component="strtolower($itemVal->htmlblock)" class="mt-4"
-            wire:model.live="formData.{{$itemVal->htmlblock}}" caption="{{$itemVal->blockname}}"
-            name="{{$itemVal->htmlblock}}" />
+            wire:model.live="formData.{{$itemVal->htmlblock}}.image" caption="{{$itemVal->blockname}}"
+            name="{{$itemVal->htmlblock}}" value="{{$this->formData[$itemVal->htmlblock]['image']}}" ordno="{{$this->formData[$itemVal->htmlblock]['ordno']??''}}" />
         @else
         <x-dynamic-component :component="strtolower($itemVal->htmlblock)" class="mt-4"
             wire:model.live="formData.{{$itemVal->htmlblock}}" caption="{{$itemVal->blockname}}"

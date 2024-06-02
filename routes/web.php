@@ -1,9 +1,16 @@
 <?php
 
-use GuzzleHttp\Psr7\Request;
+use App\Livewire\User\About;
+use App\Livewire\User\Contact;
+use App\Livewire\User\Gallery;
+use App\Livewire\User\Home;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'welcome');
+
+Route::get('/', Home::class)->name('home');
+Route::get('about', About::class)->name('about');
+Route::get('contact-us', Contact::class)->name('contact-us');
+Route::get('gallery', Gallery::class)->name('gallery');
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::view('dashboard', 'dashboard')
         ->name('dashboard');
@@ -26,8 +33,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         return view('htmlsubblock', ['pid' => $pid]);
     })->name('addhtmlsubblock');
 
-    Route::get('pageentry/{pid}/{tid}', function ($pid, $tid) {
-        return view('pageentry', ['pid' => $pid, 'tid' => $tid]);
-    })->name('pagentry');
+    Route::get('pageentry/{pid}/{tid}/{cid?}/{act?}', function ($pid, $tid, $cid = 0, $act = 'edit') {
+        return view('pageentry', ['pid' => $pid, 'tid' => $tid, 'cid' => $cid, 'act' => $act]);
+    })->name('pageentry');
+
+    Route::get('subpageentry/{cid}/{tid}', function ($cid, $tid) {
+        return view('subpageentry', ['cid' => $cid, 'tid' => $tid]);
+    })->name('sub-pageentry');
 });
 require __DIR__ . '/auth.php';

@@ -29,7 +29,10 @@ class AddFieldsInphotomasters extends Migration
     public function down()
     {
         Schema::table('photomasters', function (Blueprint $table) {
-            //
+            $table->dropColumn('Title');
+            $table->dropColumn('Link');
+            $table->dropColumn('LinkType');
+            $table->dropColumn('ButtonText');
         });
     }
 }

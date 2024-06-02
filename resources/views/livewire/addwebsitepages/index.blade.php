@@ -43,7 +43,7 @@ new class extends Component {
       public function with(): array{
          return [
             'Taxonomies' => Taxonomy::all(),
-            'pages' => Page::search($this->search)->orderBy($this->sortColumn,$this->sortDirection)->paginate($this->perPage),
+            'pages' => Page::Where('status','Y')->search($this->search)->orderBy($this->sortColumn,$this->sortDirection)->paginate($this->perPage),
          ];
       }
 

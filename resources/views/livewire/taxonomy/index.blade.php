@@ -11,7 +11,7 @@ new class extends Component {
       public TaxonomyForm $form; 
       public $perPage = 5; 
       public $search = '' ; 
-      public $sortColumn = 'title';
+      public $sortColumn = 'created_at';
       public $sortDirection = 'Asc';
       public $editId = null;
       public $headerColumn  = [

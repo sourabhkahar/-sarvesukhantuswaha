@@ -28,7 +28,7 @@ new class extends Component {
             $this->form->store();
          } else {
             $this->form->edit($this->editId);
-            $this->mode == 'add';
+            $this->mode = 'add';
             $this->editId = null;
          }
       }

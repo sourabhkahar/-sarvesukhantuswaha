@@ -1,0 +1,166 @@
+@media screen and (max-width: 991px) {
+	.banner-section .swiper-slide {
+		height: 380px;
+	}
+
+	.what-box {
+		gap: 50px 20px;
+	}
+
+	.stories-box {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 30px;
+	}
+
+	.what-box .box h4 {
+		font-size: 22px;
+	}
+
+	.started-section .what-box,
+	.contact {
+		grid-template-columns: repeat(1, 1fr);
+	}
+
+	.banner-section.inner-banner {
+		height: 300px;
+	}
+
+	.what-box,
+	.care-box {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media screen and (max-width: 767px) {
+	body p {
+		font-size: 14px;
+	}
+
+	.main-menu {
+		position: fixed;
+		background-color: #fff;
+		height: 100vh;
+		width: 100%;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		padding: 15px;
+		z-index: 99;
+		display: none;
+	}
+
+	.main-menu.open-menus {
+		display: block;
+	}
+
+	.btn-menu,
+	.btn-close {
+		width: 35px;
+		height: 35px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border: none;
+		background-color: #ffea3d;
+		color: #2b2e34;
+		margin-left: auto;
+	}
+
+	.main-menu ul {
+		gap: 0;
+		flex-direction: column;
+		margin-top: 15px;
+		border-top: 1px solid #ddd;
+	}
+
+	.main-menu ul li a {
+		padding: 15px 0;
+		display: flex;
+		border-bottom: 1px solid #ddd;
+		transition: all 0.5s ease 0s;
+	}
+
+	.main-menu ul li a:hover, .main-menu ul li a.active {
+		padding: 15px;
+		background-color: #ffea3d;
+		color: #2b2e34;
+	}
+
+	.section-gapping {
+		padding-top: 60px;
+		padding-bottom: 60px;
+	}
+
+	.main-title {
+		font-size: 30px;
+	}
+
+	.what-box {
+		margin-top: 50px;
+	}
+
+	.stories-box .box h3,
+	.care-box .box h3 {
+		font-size: 20px;
+	}
+
+	.donate-box h3 {
+		font-size: 22px;
+	}
+
+	.footer {
+		gap: 10px;
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;
+	}
+
+	.banner-section.inner-banner {
+		height: 250px;
+	}
+
+	.banner-content h2 {
+		font-size: 30px;
+	}
+
+	.sub-title h3 {
+		font-size: 22px;
+	}
+
+	.join-section h3 {
+		font-size: 26px;
+	}
+
+	.top-menu-header {
+		display: flex;
+		align-items: center;
+	}
+}
+
+@media screen and (max-width: 600px) {
+
+	.what-box,
+	.stories-box,
+	.care-box {
+		grid-template-columns: repeat(1, 1fr);
+	}
+
+	.field-box,
+	.col-4,
+	.contact .col-2 {
+		grid-template-columns: repeat(1, 1fr);
+		gap: 0;
+	}
+
+	.custom-radio .field-box,
+	.custom-radio .col-4 {
+		margin-bottom: 15px;
+	}
+
+	.custom-radio .field-box .field,
+	.custom-radio .col-4 .field {
+		margin-bottom: 0;
+	}
+}

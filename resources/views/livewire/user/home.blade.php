@@ -42,33 +42,50 @@
             <div class="what-box">
                 <div class="box">
                     <h3>01</h3>
-                    <h4>We Find & Fund</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod incididunt ut labore et dolore magna aliqua ut enim ad minim veniam, quis nostrud.</p>
+                    <h4>Financial Security</h4>
+                    <p> We provide a substantial monthly stipend to ensure families can meet their basic needs and plan for the future.</p>
                 </div>
                 <div class="box">
                     <h3>02</h3>
-                    <h4>We Build Networks</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod incididunt ut labore et dolore magna aliqua ut enim ad minim veniam, quis nostrud.</p>
+                    <h4>Medical Aid</h4>
+                    <p>Our membership card acts as a lifeline, offering financial support for medical emergencies and minimizing the burden of healthcare costs.</p>
                 </div>
                 <div class="box">
                     <h3>03</h3>
-                    <h4>We Strengthen</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod incididunt ut labore et dolore magna aliqua ut enim ad minim veniam, quis nostrud.</p>
+                    <h4>Minimizing Expenses</h4>
+                    <p>We offer various programs to help families reduce their monthly expenditure on groceries, loans, and electronics.</p>
                 </div>
                 <div class="box">
                     <h3>04</h3>
-                    <h4>We Educate</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod incididunt ut labore et dolore magna aliqua ut enim ad minim veniam, quis nostrud.</p>
+                    <h4>Free Electricity</h4>
+                    <p> We provide solar or wind panels to significantly reduce or eliminate electricity bills for our members.</p>
                 </div>
                 <div class="box">
                     <h3>05</h3>
-                    <h4>We Provide Care</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod incididunt ut labore et dolore magna aliqua ut enim ad minim veniam, quis nostrud.</p>
+                    <h4>Secure Family</h4>
+                    <p>  We provide a high-tech security system to enhance safety for our members and their families.</p>
                 </div>
                 <div class="box">
                     <h3>06</h3>
-                    <h4>We Consult</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod incididunt ut labore et dolore magna aliqua ut enim ad minim veniam, quis nostrud.</p>
+                    <h4>Employment</h4>
+                    <p> Our platform connects employers and job seekers within our member network. We also offer skill development programs to enhance
+                        employability.</p>
+                </div>
+                <div class="box">
+                    <h3>07</h3>
+                    <h4>Educational Support</h4>
+                    <p> Our platform connects employers and job seekers within our member network. We also offer skill development programs to enhance
+                        employability.</p>
+                </div>
+                <div class="box">
+                    <h3>08</h3>
+                    <h4>Double Your Income</h4>
+                    <p> We empower families to become financially independent through skill development programs and income-generating opportunities.</p>
+                </div>
+                <div class="box">
+                    <h3>09</h3>
+                    <h4>Fight for You</h4>
+                    <p>We advocate for our members’ rights and provide legal assistance when needed.</p>
                 </div>
             </div>
 
@@ -155,7 +172,7 @@
 
     <section class="donate-section section-gapping yellow-bg" data-aos="fade-up" data-aos-duration="3000">
         <div class="container">
-            <h2 class="main-title">DONATE</h2>
+            <h2 class="main-title">Support Us</h2>
 
             <div class="text-center donate-box">
                 <h3>Support Us and Change the Course of a Child's Life Today!</h3>

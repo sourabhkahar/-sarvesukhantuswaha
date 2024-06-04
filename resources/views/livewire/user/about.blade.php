@@ -46,26 +46,60 @@
 
     <section class="work-section section-gapping yellow-bg" data-aos="fade-up" data-aos-duration="2000">
         <div class="container">
-            <h2 class="main-title">HOW WE WORK</h2>
-            <p>We take a holistic approach to supporting our member families. Here’s a glimpse into how we work:</p>
+            <h2 class="main-title">WHAT WE DO</h2>
+            <div class="what-box">
+                <div class="box">
+                    <h3>01</h3>
+                    <h4>Financial Security</h4>
+                    <p> We provide a substantial monthly stipend to ensure families can meet their basic needs and plan for the future.</p>
+                </div>
+                <div class="box">
+                    <h3>02</h3>
+                    <h4>Medical Aid</h4>
+                    <p>Our membership card acts as a lifeline, offering financial support for medical emergencies and minimizing the burden of healthcare costs.</p>
+                </div>
+                <div class="box">
+                    <h3>03</h3>
+                    <h4>Minimizing Expenses</h4>
+                    <p>We offer various programs to help families reduce their monthly expenditure on groceries, loans, and electronics.</p>
+                </div>
+                <div class="box">
+                    <h3>04</h3>
+                    <h4>Free Electricity</h4>
+                    <p> We provide solar or wind panels to significantly reduce or eliminate electricity bills for our members.</p>
+                </div>
+                <div class="box">
+                    <h3>05</h3>
+                    <h4>Secure Family</h4>
+                    <p>  We provide a high-tech security system to enhance safety for our members and their families.</p>
+                </div>
+                <div class="box">
+                    <h3>06</h3>
+                    <h4>Employment</h4>
+                    <p> Our platform connects employers and job seekers within our member network. We also offer skill development programs to enhance
+                        employability.</p>
+                </div>
+                <div class="box">
+                    <h3>07</h3>
+                    <h4>Educational Support</h4>
+                    <p> Our platform connects employers and job seekers within our member network. We also offer skill development programs to enhance
+                        employability.</p>
+                </div>
+                <div class="box">
+                    <h3>08</h3>
+                    <h4>Double Your Income</h4>
+                    <p> We empower families to become financially independent through skill development programs and income-generating opportunities.</p>
+                </div>
+                <div class="box">
+                    <h3>09</h3>
+                    <h4>Fight for You</h4>
+                    <p>We advocate for our members’ rights and provide legal assistance when needed.</p>
+                </div>
+            </div>
 
-            <ul>
-                <li><strong>Financial Security:</strong> We provide a substantial monthly stipend to ensure families can meet their basic needs and plan for the future.</li>
-                <li>
-                    <strong>Medical Aid:</strong> Our membership card acts as a lifeline, offering financial support for medical emergencies and minimizing the burden of healthcare costs.
-                </li>
-                <li><strong>Educational Support:</strong> We cover the educational expenses of children, ensuring their education continues uninterrupted.</li>
-                <li><strong>Minimizing Expenses:</strong> We offer various programs to help families reduce their monthly expenditure on groceries, loans, and electronics.</li>
-                <li><strong>Free Electricity:</strong> We provide solar or wind panels to significantly reduce or eliminate electricity bills for our members.</li>
-                <li><strong>Double Your Income:</strong> We empower families to become financially independent through skill development programs and income-generating opportunities.</li>
-                <li><strong>Secure Family:</strong> We provide a high-tech security system to enhance safety for our members and their families.</li>
-                <li>
-                    <strong>Employment:</strong> Our platform connects employers and job seekers within our member network. We also offer skill development programs to enhance
-                    employability.
-                </li>
-            </ul>
-
-            <p><strong>Fight for You:</strong> We advocate for our members’ rights and provide legal assistance when needed.</p>
+            <div class="text-center">
+                <a href="" class="btn">Read More</a>
+            </div>
         </div>
     </section>
 

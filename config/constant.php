@@ -92,6 +92,17 @@ return [
         'Diabetes',
         'Blood Pressure',
         'Other'
+    ],
+    'relations' =>[
+        'Father',
+        'Mother',
+        'Sister',
+        'Brother',
+        'GrandFather',
+        'GrandMother',
+        'Son',
+        'Daughter',
+        'Other'
     ]
 
 

@@ -17,7 +17,8 @@
                     <h2>Form</h2>
 
                     <form action="" wire:submit='saveForm'>
-                        <div class="col-2">
+                        {{-- <div class="col-2"> --}}
+                        <div class="field-box">
                             <div class="field">
                                 <label for="">First Name <span class="required">*</span></label>
                                 <input type="text" class="input-field" id="" wire:model="firstname" />
@@ -28,7 +29,13 @@
                                 <input type="text" class="input-field" id="" wire:model="lastname" />
                                 <x-field-error :messages="$errors->get('lastname')" class="mt-2 required" />
                             </div>
+                            <div class="field">
+                                <label for="">Middle Name<span class="required">*</span></label>
+                                <input type="text" class="input-field" id="" wire:model="middlename" />
+                                <x-field-error :messages="$errors->get('middlename')" class="mt-2 required" />
+                            </div>
                         </div>
+                        {{-- </div> --}}
                         <div class="col-2">
                             <div class="field">
                                 <label for="">Phone Number <span class="required">*</span></label>
@@ -89,24 +96,61 @@
                         </div>
                         @if(count($familyDetails) > 0)
                         <h2>Family Details</h2>
+                        <pre>
+                            {{print_r($familyDetails)}}
+                        </pre>
                         @endif
                         @foreach ($familyDetails as $keyFam => $family)
                         <div>
-                            <div class="remove-family-section" title="remove section">
+                            @if($keyFam > 0)
+                            <div class="remove-family-section" title="remove section" wire:click="removeFamilyDetails({{$keyFam}})">
                                     <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                      <path d="M16 8L8 16M8.00001 8L16 16" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </div>
+                            @endif
 
+                            <div class="field-box">
+                                <div class="field">
+                                    <label for="">Name<span class="required">*</span></label>
+                                    <input type="text" class="input-field"
+                                        wire:model.live="familyDetails.{{$keyFam}}.name" />
+                                        @foreach ($errors->get("familyDetails.$keyFam.name") as  $message)
+                                                <x-field-error :messages="$message" class="mt-2 required" />
+                                        @endforeach
+                                </div>
+                                <div class="field">
+                                    <div class="grp-radio">
+                                        <span>
+                                            <input type="radio" class="" id="" name="familyDetails.{{$keyFam}}.ishouseonwer"
+                                                wire:model.live="familyDetails.{{$keyFam}}.ishouseonwer"
+                                                value="House Owner" /><span>House Owner</span>
+                                        </span>
+                                        <span>
+                                            <input type="radio" class="" id="" name="familyDetails.{{$keyFam}}.ishouseonwer"
+                                                wire:model.live="familyDetails.{{$keyFam}}.ishouseonwer"
+                                                value="Rented House" /><span>Rented House</span>
+                                        </span>
+                                    </div>
+                                    @foreach ($errors->get("familyDetails.$keyFam.ishouseonwer") as  $message)
+                                                <x-field-error :messages="$message" class="mt-2 required" />
+                                    @endforeach
+                                </div>
+                            </div>
                             <div class="field-box">
                                 {{-- {{print_r($errors->get("familyDetails.$keyFam.relation"))}} --}}
                                 <div class="field">
                                     <label for="">Relation<span class="required">*</span></label>
-                                    <input type="text" class="input-field"
-                                        wire:model.live="familyDetails.{{$keyFam}}.relation" />
-                                        @foreach ($errors->get("familyDetails.$keyFam.relation") as  $message)
-                                                <x-field-error :messages="$message" class="mt-2 required" />
+                                    <select type="text" class="input-field" id="" wire:model.live="familyDetails.{{$keyFam}}.relation">
+                                        <option value="">Select Relation</option>
+                                        @foreach (Config::get('constant.relations') as $key => $relation)
+                                        <option value="{{$relation}}" wire:key='{{$key}}'>
+                                            {{$relation}}</option>
                                         @endforeach
+                                    </select>
+                                    @foreach ($errors->get("familyDetails.$keyFam.relation") as  $message)
+                                            <x-field-error :messages="$message" class="mt-2 required" />
+                                    @endforeach
                                 </div>
                                 <div class="field ">
                                     <div class="grp-radio">
@@ -188,7 +232,7 @@
                                 </div>
                                 @endIf
                                 <div class="field ">
-                                    <label for="">No. of vehicles<span class="required">*</span></label>
+                                    <label for="">No. of vehicles</label>
                                     <input type="text" class="input-field"
                                         wire:model.live="familyDetails.{{$keyFam}}.noofvehicles" />
                                 </div>
@@ -203,23 +247,6 @@
                                     </div>
                                 @endfor
                             @endif
-                            <div class="field">
-                                <div class="grp-radio">
-                                    <span>
-                                        <input type="radio" class="" id="" name="familyDetails.{{$keyFam}}.ishouseonwer"
-                                            wire:model.live="familyDetails.{{$keyFam}}.ishouseonwer"
-                                            value="House Owner" /><span>House Owner</span>
-                                    </span>
-                                    <span>
-                                        <input type="radio" class="" id="" name="familyDetails.{{$keyFam}}.ishouseonwer"
-                                            wire:model.live="familyDetails.{{$keyFam}}.ishouseonwer"
-                                            value="Rented House" /><span>Rented House</span>
-                                    </span>
-                                </div>
-                                @foreach ($errors->get("familyDetails.$keyFam.ishouseonwer") as  $message)
-                                            <x-field-error :messages="$message" class="mt-2 required" />
-                                @endforeach
-                            </div>
                             <hr style="margin: 4px">
                         </div>
                         @endforeach
@@ -351,7 +378,7 @@
         </div>
     </section>
 
-    <div id="toast" class="">
+    <div id="toast" class="{{session('message')?'show':''}}">
         <div id="desc">{{ session('message') }}</div>
     </div>
    

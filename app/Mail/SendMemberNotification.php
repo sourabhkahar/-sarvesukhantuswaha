@@ -17,9 +17,11 @@ class SendMemberNotification extends Mailable implements ShouldQueue
      * Create a new message instance.
      */
     public $userDetails = [];
+    public $familDetails = [];
     public function __construct($userDetails)
     {
         $this->userDetails = $userDetails;
+        // $this->familDetails = $familDetails;
     }
 
     /**

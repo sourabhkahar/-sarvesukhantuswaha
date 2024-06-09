@@ -96,9 +96,6 @@
                         </div>
                         @if(count($familyDetails) > 0)
                         <h2>Family Details</h2>
-                        <pre>
-                            {{print_r($familyDetails)}}
-                        </pre>
                         @endif
                         @foreach ($familyDetails as $keyFam => $family)
                         <div>

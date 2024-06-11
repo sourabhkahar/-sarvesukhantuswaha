@@ -17,6 +17,9 @@ Route::group(['prefix' => 'admin'], function() {
     
         Volt::route('reset-password/{token}', 'pages.auth.reset-password')
             ->name('password.reset');
+        
+        Volt::route('/', 'pages.auth.login')
+            ->name('login');
     });
     
     Route::middleware('auth')->group(function () {

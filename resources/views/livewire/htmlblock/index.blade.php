@@ -8,7 +8,7 @@ use App\Livewire\Forms\htmlBlockForm;
 new class extends Component {
       use WithPagination;
       public htmlBlockForm $form; 
-      public $perPage = 5; 
+      public $perPage = 10; 
       public $search = '' ; 
       public $sortColumn = 'ordno';
       public $sortDirection = 'Asc';

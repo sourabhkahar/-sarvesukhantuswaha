@@ -11,13 +11,16 @@ return [
         "shortdescription3" => "ShortDescription3",
         "shortdescription4" => "ShortDescription4",
         "shortdescription5" => "ShortDescription5",
+        "description1" => "Description1",
+        "description2" => "Description2",
+        "description3" => "Description3",
         "image1" => "Image1",
         "image2" => "Image2",
+        "link1" => "Link1",
+        "link2" => "Link2",
         "headerimage" => "Header Image",
         "headertext" => "Header text",
         "shortdescription" => "Short Description",
-        "description" => "Description",
-        "link" => "Link",
         "metatags" => "Meta tags",
         "status"    =>  "status",
     ],
@@ -103,7 +106,8 @@ return [
         'Son',
         'Daughter',
         'Other'
-    ]
+    ],
+    'perpage'=>10
 
 
 ];

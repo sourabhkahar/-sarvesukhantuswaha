@@ -9,7 +9,7 @@ use App\Livewire\Forms\PagesForm;
 new class extends Component {
       use WithPagination;
       public PagesForm $form; 
-      public $perPage = 5; 
+      public $perPage = 10; 
       public $search = '' ; 
       public $sortColumn = 'title';
       public $sortDirection = 'Asc';
@@ -43,7 +43,11 @@ new class extends Component {
       public function with(): array{
          return [
             'Taxonomies' => Taxonomy::all(),
-            'pages' => Page::Where('status','Y')->search($this->search)->orderBy($this->sortColumn,$this->sortDirection)->paginate($this->perPage),
+            'pages' => Page::Where('status','Y')
+                              ->where('id','<','1000')
+                              ->search($this->search)
+                              ->orderBy($this->sortColumn,$this->sortDirection)
+                              ->paginate($this->perPage),
          ];
       }
 

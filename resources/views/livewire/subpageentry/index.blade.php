@@ -11,7 +11,7 @@ new class extends Component {
     public $pid,$tid,$cid; 
     public $taxonomy;
     public PagesForm $form; 
-    public $perPage = 5; 
+    public $perPage = 10; 
     public $search = '' ; 
     public $sortColumn = 'title';
     public $sortDirection = 'Asc';

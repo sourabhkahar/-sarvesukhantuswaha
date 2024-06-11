@@ -9,7 +9,7 @@ use App\Models\Taxonomy;
 new class extends Component {
       use WithPagination;
       public HtmlSubBlockForm $form; 
-      public $perPage = 5; 
+      public $perPage = 10; 
       public $search = '' ; 
       public $sortColumn = 'ordno';
       public $sortDirection = 'Asc';
@@ -17,6 +17,7 @@ new class extends Component {
       public $headerColumn  = [
                                  'blockname'=>'Name',
                                  'htmlBlock'=>'Html Block',
+                                 'taxonmycode'=>'Taxonomy Code',
                                  'status'=>'Status',
                                  'actions'=>'Actions'
                               ];
@@ -43,7 +44,11 @@ new class extends Component {
       public function with(): array{
          return [
             'HtmlBlocksOption' => Config::get('constant.html-blocks'),
-            'HtmlBlocks' => HtmlBlock::search($this->search)->where('categorycode',$this->form->pageId)->orderBy($this->sortColumn,$this->sortDirection)->paginate($this->perPage),
+            'HtmlBlocks' => HtmlBlock::search($this->search)
+                           ->where('categorycode',$this->form->pageId)
+                           ->orderBy('taxonmycode','Desc')
+                           ->orderBy($this->sortColumn,$this->sortDirection)
+                           ->paginate($this->perPage),
             'Taxonomies' => Taxonomy::all(),
          ];
       }
@@ -230,6 +235,7 @@ new class extends Component {
                      <tr data-index="0">
                         <td>{{$HtmlBlock->blockname}}</td>
                         <td>{{$HtmlBlock->htmlblock}}</td>
+                        <td>{{$HtmlBlock->taxonmycode}}</td>
                         <td>
                            <div x-data="{ switcherToggle: @js($HtmlBlock->status == 'Y' ? false : true)  }">
                               <label for="toggle3" class="flex items-center cursor-pointer select-none">

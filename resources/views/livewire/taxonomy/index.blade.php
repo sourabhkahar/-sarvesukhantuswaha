@@ -9,7 +9,7 @@ new class extends Component {
       use WithPagination;
       
       public TaxonomyForm $form; 
-      public $perPage = 5; 
+      public $perPage = 10; 
       public $search = '' ; 
       public $sortColumn = 'created_at';
       public $sortDirection = 'Asc';

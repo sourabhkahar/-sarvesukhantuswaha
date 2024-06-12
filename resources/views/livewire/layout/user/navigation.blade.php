@@ -11,7 +11,7 @@ new class extends Component {
     <div class="container">
         <div class="header">
             <div class="logo">
-                <a href="index.html">
+                <a href="{{Route('home')}}">
                     <img src="{{asset('/images/logo.png')}}" alt="" />
                 </a>
             </div>

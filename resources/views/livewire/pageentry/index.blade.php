@@ -15,6 +15,7 @@ new class extends Component {
     public $formData = [];
     public $PageEntryBlocks = [];
     public $pageTitle = '';
+    public $cancelUrl = '';
     use WithFileUploads;
 
     public function with(): array{
@@ -210,6 +211,13 @@ new class extends Component {
             $this->pageTitle = Page::where('id',$this->pid)->first()->Title;
         }
         $this->showFormDetails();
+        $this->cancelUrl = $this->getCancelRoute();
+    }
+
+    public function getCancelRoute(){
+        $subPageEntryUrl = route('sub-pageentry',['cid'=>$this->cid,'tid'=>$this->tid]);
+        $pageEntryUrl = route('pageentry',['pid'=>$this->pid,'tid'=>$this->tid]);
+        return $this->tid > 1?$subPageEntryUrl:$pageEntryUrl;
     }
 }
 ?>
@@ -238,7 +246,7 @@ new class extends Component {
             name="{{$itemVal->htmlblock}}" />
         @endif
         @endforeach
-        <div class="mt-6">
+        <div class="flex mt-6">
             <button class="flex justify-center p-3 font-medium rounded bg-primary text-gray hover:bg-opacity-90"
                 wire:loading.attr="disabled">
                 <svg class="hidden w-5 h-5 mr-3 -ml-1 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -251,6 +259,10 @@ new class extends Component {
                 </svg>
                 Submit
             </button>
+            <a class="flex justify-center p-3 ml-2 font-medium bg-red-500 rounded text-gray hover:bg-opacity-90"
+                 href="{{$this->cancelUrl}}" type="button" wire:navigate>
+                Cancel
+        </a>
         </div>
     </form>
     @if (session()->has('message'))

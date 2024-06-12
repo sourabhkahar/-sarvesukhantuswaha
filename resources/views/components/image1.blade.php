@@ -34,4 +34,5 @@
     </span>
     @endif
   </div>
+  {{-- max. size(200 X 300) --}}
 </div>

@@ -11,7 +11,7 @@ new class extends Component {
       public PagesForm $form; 
       public $perPage = 10; 
       public $search = '' ; 
-      public $sortColumn = 'title';
+      public $sortColumn = 'id';
       public $sortDirection = 'Asc';
       public $editId = null;
       public $headerColumn  = [

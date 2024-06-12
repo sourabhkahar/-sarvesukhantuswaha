@@ -42,7 +42,10 @@ new class extends Component {
       public function with(): array{
          return [
             'HtmlBlocksOption' => Config::get('constant.html-blocks'),
-            'HtmlBlocks' => HtmlBlock::search($this->search)->where('taxonmycode',1)->orderBy($this->sortColumn,$this->sortDirection)->paginate($this->perPage),
+            'HtmlBlocks' => HtmlBlock::search($this->search)
+                                       ->where(['taxonmycode'=>1,'pagecode'=>$this->form->pageId])
+                                       ->orderBy($this->sortColumn,$this->sortDirection)
+                                       ->paginate($this->perPage),
          ];
       }
 
@@ -75,22 +78,22 @@ new class extends Component {
 }; ?>
 
 <div>
-   
+
    <div wire:loading>
       <div class="flex items-center justify-center w-full h-full">
-          <div class="flex items-center justify-center space-x-1 text-sm text-gray-700">
+         <div class="flex items-center justify-center space-x-1 text-sm text-gray-700">
 
-              <svg fill='none' class="w-6 h-6 animate-spin" viewBox="0 0 32 32" xmlns='http://www.w3.org/2000/svg'>
-                  <path clip-rule='evenodd'
-                      d='M15.165 8.53a.5.5 0 01-.404.58A7 7 0 1023 16a.5.5 0 011 0 8 8 0 11-9.416-7.874.5.5 0 01.58.404z'
-                      fill='currentColor' fill-rule='evenodd' />
-              </svg>
+            <svg fill='none' class="w-6 h-6 animate-spin" viewBox="0 0 32 32" xmlns='http://www.w3.org/2000/svg'>
+               <path clip-rule='evenodd'
+                  d='M15.165 8.53a.5.5 0 01-.404.58A7 7 0 1023 16a.5.5 0 011 0 8 8 0 11-9.416-7.874.5.5 0 01.58.404z'
+                  fill='currentColor' fill-rule='evenodd' />
+            </svg>
 
 
-              <div>Loading ...</div>
-          </div>
+            <div>Loading ...</div>
+         </div>
       </div>
-  </div>
+   </div>
 
    <div
       class="w-1/2 mx-auto text-center bg-white border rounded-sm border-stroke shadow-default dark:border-strokedark dark:bg-boxdark">

@@ -23,7 +23,6 @@ return [
         "link2" => "Link2",
         "headerimage" => "Header Image",
         "headertext" => "Header text",
-        "shortdescription" => "Short Description",
         "metatags" => "Meta tags",
         "status"    =>  "status",
     ],

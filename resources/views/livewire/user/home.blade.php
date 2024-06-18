@@ -1,4 +1,3 @@
-
 <div class="">
     <section class="banner-section" data-aos="fade-up" data-aos-duration="1000">
         <div class="swiper bannerSlider">
@@ -11,7 +10,8 @@
                         <div class="container">
                             <h2>I'm Not Alone</h2>
                             <p>
-                                Join us in our mission to make a difference in the world. Explore our site to learn more about our initiatives and how you can get involved. Together, we
+                                Join us in our mission to make a difference in the world. Explore our site to learn more
+                                about our initiatives and how you can get involved. Together, we
                                 can create a brighter future. YOUTH ARE SAFE, STRONG & VALUED
                             </p>
                         </div>
@@ -26,7 +26,8 @@
                         <div class="container">
                             <h2>I'm Not Alone</h2>
                             <p>
-                                Join us in our mission to make a difference in the world. Explore our site to learn more about our initiatives and how you can get involved. Together, we
+                                Join us in our mission to make a difference in the world. Explore our site to learn more
+                                about our initiatives and how you can get involved. Together, we
                                 can create a brighter future. YOUTH ARE SAFE, STRONG & VALUED
                             </p>
                         </div>
@@ -43,44 +44,51 @@
                 <div class="box">
                     <h3>01</h3>
                     <h4>Financial Security</h4>
-                    <p> We provide a substantial monthly stipend to ensure families can meet their basic needs and plan for the future.</p>
+                    <p> We provide a substantial monthly stipend to ensure families can meet their basic needs and plan
+                        for the future.</p>
                 </div>
                 <div class="box">
                     <h3>02</h3>
                     <h4>Medical Aid</h4>
-                    <p>Our membership card acts as a lifeline, offering financial support for medical emergencies and minimizing the burden of healthcare costs.</p>
+                    <p>Our membership card acts as a lifeline, offering financial support for medical emergencies and
+                        minimizing the burden of healthcare costs.</p>
                 </div>
                 <div class="box">
                     <h3>03</h3>
                     <h4>Minimizing Expenses</h4>
-                    <p>We offer various programs to help families reduce their monthly expenditure on groceries, loans, and electronics.</p>
+                    <p>We offer various programs to help families reduce their monthly expenditure on groceries, loans,
+                        and electronics.</p>
                 </div>
                 <div class="box">
                     <h3>04</h3>
                     <h4>Free Electricity</h4>
-                    <p> We provide solar or wind panels to significantly reduce or eliminate electricity bills for our members.</p>
+                    <p> We provide solar or wind panels to significantly reduce or eliminate electricity bills for our
+                        members.</p>
                 </div>
                 <div class="box">
                     <h3>05</h3>
                     <h4>Secure Family</h4>
-                    <p>  We provide a high-tech security system to enhance safety for our members and their families.</p>
+                    <p> We provide a high-tech security system to enhance safety for our members and their families.</p>
                 </div>
                 <div class="box">
                     <h3>06</h3>
                     <h4>Employment</h4>
-                    <p> Our platform connects employers and job seekers within our member network. We also offer skill development programs to enhance
+                    <p> Our platform connects employers and job seekers within our member network. We also offer skill
+                        development programs to enhance
                         employability.</p>
                 </div>
                 <div class="box">
                     <h3>07</h3>
                     <h4>Educational Support</h4>
-                    <p> Our platform connects employers and job seekers within our member network. We also offer skill development programs to enhance
+                    <p> Our platform connects employers and job seekers within our member network. We also offer skill
+                        development programs to enhance
                         employability.</p>
                 </div>
                 <div class="box">
                     <h3>08</h3>
                     <h4>Double Your Income</h4>
-                    <p> We empower families to become financially independent through skill development programs and income-generating opportunities.</p>
+                    <p> We empower families to become financially independent through skill development programs and
+                        income-generating opportunities.</p>
                 </div>
                 <div class="box">
                     <h3>09</h3>
@@ -88,8 +96,15 @@
                     <p>We advocate for our members’ rights and provide legal assistance when needed.</p>
                 </div>
             </div>
+            <div class="modal ">
+                <div class="modal-wrap ">
+                    <img src="https://assets.codepen.io/1462889/sl3.jpg" alt="">
+                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
+                        classical Latin literature from 45 BC, making it over 2000 years old.</p>
+                </div>
+            </div>
 
-            <div class="text-center">
+            <div class="text-center" wire:click='openModal'>
                 <a href="" class="btn">Read More</a>
             </div>
         </div>
@@ -103,7 +118,8 @@
                 <div class="box">
                     <h3>Jane's Been A Migrant Worker Since She Was Just 12</h3>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam, quis nostrud
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua ut enim ad minim veniam, quis nostrud
                         exercitation ullamco nisi reprehenderit in voluptate.
                     </p>
                     <a href="" class="btn">read more</a>
@@ -111,7 +127,8 @@
                 <div class="box">
                     <h3>Jane's Been A Migrant Worker Since She Was Just 12</h3>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam, quis nostrud
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua ut enim ad minim veniam, quis nostrud
                         exercitation ullamco nisi reprehenderit in voluptate.
                     </p>
                     <a href="" class="btn">read more</a>
@@ -146,7 +163,7 @@
                         </a>
                     </div>
                     <div class="swiper-slide">
-                        <a href=""> 
+                        <a href="">
                             <img src="{{asset('/images/logo1.webp')}}" alt="" />
                         </a>
                     </div>
@@ -176,43 +193,127 @@
 
             <div class="text-center donate-box">
                 <h3>Support Us and Change the Course of a Child's Life Today!</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper
+                    mattis, pulvinar dapibus leo.</p>
             </div>
         </div>
     </section>
     <script>
-        window.addEventListener("load", (event) => {
-
-            var swiper1 = new Swiper(".bannerSlider", {
-                loop: true,
-                spaceBetween: 10,
-                centeredSlides: true,
-                autoplay: {
-                    delay: 2500,
-                    disableOnInteraction: false,
-                },
-            });
-    
-            var swiper2 = new Swiper(".partnerSlider", {
-                loop: true,
-                slidesPerView: 2,
-                spaceBetween: 10,
-                centeredSlides: true,
-                autoplay: {
-                    delay: 2500,
-                    disableOnInteraction: false,
-                },
-                breakpoints: {
-                    768: {
-                        slidesPerView: 4,
-                        spaceBetween: 40,
-                    },
-                    1024: {
-                        slidesPerView: 5,
-                        spaceBetween: 50,
-                    },
-                },
-            });
-        })
+        document.addEventListener('livewire:init', () => {
+              Livewire.on('refresh', (event) => {
+                    var swiper1 = new Swiper(".bannerSlider", {
+                        loop: true,
+                        spaceBetween: 10,
+                        centeredSlides: true,
+                        autoplay: {
+                            delay: 2500,
+                            disableOnInteraction: false,
+                        },
+                    });
+            
+                    var swiper2 = new Swiper(".partnerSlider", {
+                        loop: true,
+                        slidesPerView: 2,
+                        spaceBetween: 10,
+                        centeredSlides: true,
+                        autoplay: {
+                            delay: 2500,
+                            disableOnInteraction: false,
+                        },
+                        breakpoints: {
+                            768: {
+                                slidesPerView: 4,
+                                spaceBetween: 40,
+                            },
+                            1024: {
+                                slidesPerView: 5,
+                                spaceBetween: 50,
+                            },
+                        },
+                    });
+              })
+          })
     </script>
+    <style>
+        .modal {
+            position: fixed;
+            display: block;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            -ms-flex-pack: center;
+            justify-content: center;
+            margin: 0 auto;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 100;
+            overflow-x: hidden;
+            background-color: rgba(31, 32, 41, .75);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 250ms 700ms ease;
+        }
+
+        .modal-btn:checked~.modal {
+            pointer-events: auto;
+            opacity: 1;
+            transition: all 300ms ease-in-out;
+        }
+
+        .modal-wrap {
+            position: relative;
+            display: block;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            overflow: hidden;
+            padding-bottom: 20px;
+            background-color: #fff;
+            -ms-flex-item-align: center;
+            align-self: center;
+            box-shadow: 0 12px 25px 0 rgba(199, 175, 189, .25);
+            opacity: 0;
+            transform: scale(0.6);
+            transition: opacity 250ms 250ms ease, transform 300ms 250ms ease;
+        }
+
+        .modal-wrap img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .modal-wrap p {
+            padding: 20px 30px 0 30px;
+        }
+
+        .modal-btn:checked~.modal .modal-wrap {
+            opacity: 1;
+            transform: scale(1);
+            transition: opacity 250ms 500ms ease, transform 350ms 500ms ease;
+        }
+
+        @media screen and (max-width: 500px) {
+            .modal-wrap {
+                width: calc(100% - 40px);
+                padding-bottom: 15px;
+            }
+
+            .modal-wrap p {
+                padding: 15px 20px 0 20px;
+            }
+        }
+
+        .showModal{
+            opacity: 1;
+            transform: scale(1);
+            transition: opacity 250ms 500ms ease, transform 350ms 500ms ease;
+        }
+    </style>
 </div>

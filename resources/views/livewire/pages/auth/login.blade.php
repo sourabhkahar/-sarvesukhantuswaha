@@ -5,9 +5,9 @@ use Illuminate\Support\Facades\Session;
 use Livewire\Attributes\Layout;
 use Livewire\Volt\Component;
 
-new #[Layout('layouts.guest')] class extends Component
+new #[Layout('components.layouts.app')] class extends Component
 {
-    public LoginForm $form;
+    public LoginForm $form; //https://codepen.io/elujambio/pen/YLMVed
 
     /**
      * Handle an incoming authentication request.
@@ -26,9 +26,9 @@ new #[Layout('layouts.guest')] class extends Component
 
 <div>
     <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
-
+    
     <form wire:submit="login">
+        <x-auth-session-status class="mb-4" :status="session('status')" />
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Email')" />
@@ -49,21 +49,21 @@ new #[Layout('layouts.guest')] class extends Component
         </div>
 
         <!-- Remember Me -->
-        <div class="block mt-4">
+        {{-- <div class="block mt-4">
             <label for="remember" class="inline-flex items-center">
                 <input wire:model="form.remember" id="remember" type="checkbox" class="text-indigo-600 border-gray-300 rounded shadow-sm dark:bg-gray-900 dark:border-gray-700 focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
                 <span class="text-sm text-gray-600 ms-2 dark:text-gray-400">{{ __('Remember me') }}</span>
             </label>
-        </div>
+        </div> --}}
 
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
+        <div class="login-submit-button">
+            {{-- @if (Route::has('password.request'))
                 <a class="text-sm text-gray-600 underline rounded-md dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}" wire:navigate>
                     {{ __('Forgot your password?') }}
                 </a>
-            @endif
+            @endif --}}
 
-            <x-primary-button class="ms-3">
+            <x-primary-button class="ms-3 cursor-poitner">
                 {{ __('Log in') }}
             </x-primary-button>
         </div>

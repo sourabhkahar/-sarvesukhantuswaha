@@ -208,7 +208,7 @@ new class extends Component {
         if( $this->cid > 0){
             $this->pageTitle = Taxonomy::where('id',$this->tid)->first()->title;
         } else {
-            $this->pageTitle = Page::where('id',$this->pid)->first()->Title;
+            $this->pageTitle = Page::where('id',$this->pid)->first()->title;
         }
         $this->showFormDetails();
         $this->cancelUrl = $this->getCancelRoute();

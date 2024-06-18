@@ -11,7 +11,7 @@ new class extends Component {
     <div class="container">
         <div class="header">
             <div class="logo">
-                <a href="{{Route('home')}}">
+                <a href="{{Route('home')}}" wire:navigate>
                     <img src="{{asset('/images/logo.png')}}" alt="" />
                 </a>
             </div>
@@ -40,10 +40,10 @@ new class extends Component {
                     </button>
                 </div>
                 <ul>
-                    <li><a href="{{route('home')}}" class="active" wire:navigate>Home</a></li>
-                    <li><a href="{{route('about')}}" wire:navigate>About Us</a></li>
-                    <li><a href="{{route('gallery')}}" wire:navigate>Gallery</a></li>
-                    <li><a href="{{route('contact-us')}}" wire:navigate>Contact Us</a></li>
+                    <li><a href="{{route('home')}}" class="{{Route::currentRouteName() == 'home'?'active':'' }}" wire:navigate>Home   </a></li>
+                    <li><a href="{{route('about')}}" class="{{Route::currentRouteName() == 'about'?'active':'' }}" wire:navigate>About Us</a></li>
+                    <li><a href="{{route('gallery')}}" class="{{Route::currentRouteName() == 'gallery'?'active':'' }}" wire:navigate>Gallery</a></li>
+                    <li><a href="{{route('contact-us')}}" class="{{Route::currentRouteName() == 'contact-us'?'active':'' }}" wire:navigate>Contact Us</a></li>
                 </ul>
             </div>
         </div>

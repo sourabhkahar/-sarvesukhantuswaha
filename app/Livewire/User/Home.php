@@ -8,14 +8,18 @@ use Livewire\Attributes\Layout;
 class Home extends Component
 {
     #[Layout('layouts.guest')] 
-    public $modelOpenNo = false;
+    public $modelOpenNo = 0;
     public function render()
     {
         $this->dispatch('refresh');
         return view('livewire.user.home');
     }
 
-    public function openModal(){
-        $this->modelOpenNo = true;
+    public function openModal($ModelNo){
+        $this->modelOpenNo = $ModelNo;
+    }
+
+    public function closeModal(){
+        $this->modelOpenNo = 0;
     }
 }

@@ -13,7 +13,7 @@ use Livewire\Form;
 class LoginForm extends Form
 {
     #[Validate('required|string|email')]
-    public string $email = 'sourabhkahar8140@gmail.com';
+    public string $email = '';
 
     #[Validate('required|string')]
     public string $password = '';

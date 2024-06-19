@@ -3,11 +3,11 @@
 use Livewire\WithPagination;
 use Livewire\Volt\Component;
 use App\Models\HtmlBlock;
-use App\Livewire\Forms\htmlBlockForm;
+use App\Livewire\Forms\HtmlBlockForm;
 
 new class extends Component {
       use WithPagination;
-      public htmlBlockForm $form; 
+      public HtmlBlockForm $form; 
       public $perPage = 10; 
       public $search = '' ; 
       public $sortColumn = 'ordno';

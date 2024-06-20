@@ -109,6 +109,24 @@ return [
         'Daughter',
         'Other'
     ],
+    'bloodgroup' =>[
+        'A+',
+        'B+',
+        'Ab+',
+        'O+',
+        'A-',
+        'B-',
+        'Ab-',
+        'O-'
+    ],
+    'educations' =>[
+        'No formal education',
+        'Primary education',
+        'Secondary education or high school',
+        'Graduation',
+        'Master\'s degree',
+        'Doctorate or higher',
+    ],
     'perpage'=>10
 
 

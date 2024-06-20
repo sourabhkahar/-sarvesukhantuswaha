@@ -34,7 +34,7 @@ class Contact extends Component
     public $city;
     #[Validate('required')]
     public $state;
-    #[Validate('required')]
+    #[Validate('required|digits:6')]
     public $zip;
     #[Validate('required|mimes:jpeg,jpg,png,gif|required|max:2000')]
     public $photo;
@@ -46,13 +46,16 @@ class Contact extends Component
         'familyDetails.*.martialstatus' => 'required',
         'familyDetails.*.ishouseonwer' => 'required',
         'familyDetails.*.name' => 'required',
+        'familyDetails.*.noofvehicles' => 'numeric',
     ], message: [
         'required' => 'The :attribute is missing.',
+        'numeric' => ':attribute should be a numberic.',
     ], attribute: [
         'familyDetails.*.relation' => 'Relation',
         'familyDetails.*.martialstatus' => 'Martial Status',
         'familyDetails.*.ishouseonwer' => 'House Owner',
         'familyDetails.*.name' => 'Name',
+        'familyDetails.*.noofvehicles' => 'Vehicle Number',
     ])]
 
     public $familyDetailsArr = [

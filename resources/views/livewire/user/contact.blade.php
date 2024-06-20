@@ -44,7 +44,7 @@
 
                             </div>
                             <div class="field">
-                                <label for="">Email</label>
+                                <label for="">Email<span class="required">*</span></label>
                                 <input type="email" class="input-field" id="" wire:model="email" />
                                 <x-field-error :messages="$errors->get('email')" class="mt-2 required" />
                             </div>
@@ -168,16 +168,30 @@
                                 </div>
                                 <div class="field">
                                     <label for="">Blood Group</label>
-                                    <input type="text" class="input-field"
-                                        wire:model.live="familyDetails.{{$keyFam}}.bloodgroup" />
+                                    {{-- <input type="text" class="input-field"
+                                        wire:model.live="familyDetails.{{$keyFam}}.bloodgroup" /> --}}
+
+                                        <select  class="input-field" id="" wire:model.live="familyDetails.{{$keyFam}}.bloodgroup">
+                                            <option value="">Blood Group</option>
+                                            @foreach (Config::get('constant.bloodgroup') as $key => $relation)
+                                            <option value="{{$relation}}" wire:key='{{$key}}'>
+                                                {{$relation}}</option>
+                                            @endforeach
+                                        </select>
                                 </div>
                             </div>
 
                             <div class="field-box">
                                 <div class="field">
                                     <label for="">Education<span class="required">*</span></label>
-                                    <input type="text" class="input-field"
-                                        wire:model.live="familyDetails.{{$keyFam}}.education" />
+                                   
+                                        <select  class="input-field" id="" wire:model.live="familyDetails.{{$keyFam}}.education">
+                                            <option value="">Select Education</option>
+                                            @foreach (Config::get('constant.educations') as $key => $relation)
+                                            <option value="{{$relation}}" wire:key='{{$key}}'>
+                                                {{$relation}}</option>
+                                            @endforeach
+                                        </select>
                                 </div>
                                 <div class="field ">
                                     <label for="">Do you have any court case?<span class="required">*</span></label>
@@ -230,12 +244,15 @@
                                 @endIf
                                 <div class="field ">
                                     <label for="">No. of vehicles</label>
-                                    <input type="text" class="input-field"
-                                        wire:model.live="familyDetails.{{$keyFam}}.noofvehicles" />
+                                    <input type="number" class="input-field"
+                                        wire:model.live="familyDetails.{{$keyFam}}.noofvehicles" min="0" max="50"/>
+                                        @foreach ($errors->get("familyDetails.$keyFam.noofvehicles") as  $message)
+                                        <x-field-error :messages="$message" class="mt-2 required" />
+                                @endforeach
                                 </div>
                             </div>
                             @if(isset($familyDetails[$keyFam]['noofvehicles']) &&
-                            !empty($familyDetails[$keyFam]['noofvehicles']))
+                            !empty($familyDetails[$keyFam]['noofvehicles']) )
                                 @for($i=0 ;$i<$familyDetails[$keyFam]['noofvehicles'];$i++)    
                                     <div class="field">
                                         <label for="">Vehicle Number{{$i+1}}<span class="required">*</span></label>

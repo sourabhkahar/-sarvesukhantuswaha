@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::table('user_details', function (Blueprint $table) {
             $table->string('middlename')->nullable();
-            $table->string('name')->nullable();
         });
     }
 
@@ -24,7 +23,6 @@ return new class extends Migration
     {
         Schema::table('user_details', function (Blueprint $table) {
             $table->dropColumn('middle_name');
-            $table->dropColumn('name');
         });
     }
 };

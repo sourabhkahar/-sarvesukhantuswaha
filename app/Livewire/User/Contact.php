@@ -36,7 +36,7 @@ class Contact extends Component
     public $state;
     #[Validate('required')]
     public $zip;
-    #[Validate('required')]
+    #[Validate('required|mimes:jpeg,jpg,png,gif|required|max:2000')]
     public $photo;
     #[Validate('required|date')]
     public $dob;

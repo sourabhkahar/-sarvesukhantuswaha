@@ -7,6 +7,13 @@ new class extends Component {
 }; ?>
 
 <footer>
+    <script>
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages : 'as,bn,en,gu,hi,kn,mai,ml,mr,or,pa,ta,te'}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
     <div class="container">
         <div class="footer">
             <p>Copyright © 2024 <a href="index.html">sarvesukhantuswaha.org</a></p>

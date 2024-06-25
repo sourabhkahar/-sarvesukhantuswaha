@@ -40,5 +40,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('subpageentry/{cid}/{tid}', function ($cid, $tid) {
         return view('subpageentry', ['cid' => $cid, 'tid' => $tid]);
     })->name('sub-pageentry');
+
+    Route::get('membermanagment/', function () {
+        return view('membermanagment');
+    })->name('membermanagment');
 });
 require __DIR__ . '/auth.php';

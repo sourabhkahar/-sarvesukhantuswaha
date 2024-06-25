@@ -18,30 +18,25 @@
     <link href="{{asset('/css/style.css')}}" rel="stylesheet" />
     <link href="{{asset('/css/responsive.css')}}" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+
     <!-- Scripts -->
     @vite([ 'resources/js/app.js'])
-    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> --}}
 
-   
+
 </head>
 
 <body>
     <div class="wrapper">
         <livewire:layout.user.navigation />
-            <div
-                class="w-full px-6 py-4 mt-6 overflow-hidden bg-white shadow-md sm:max-w-md dark:bg-gray-800 sm:rounded-lg">
-                {{ $slot }}
-            </div>
+        <div
+            class="w-full px-6 py-4 mt-6 overflow-hidden bg-white shadow-md sm:max-w-md dark:bg-gray-800 sm:rounded-lg">
+            {{ $slot }}
+        </div>
         <livewire:layout.user.footer />
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
-    {{-- @push('scripts') --}}
     <script src="{{asset('/js/swiper-bundle.min.js')}}"></script>
     <script src="{{asset('/js/aos.js')}}"></script>
     <script src="{{asset('/js/custom.js')}}"></script>
-    {{-- @endpush --}}
 </body>
 
 </html>

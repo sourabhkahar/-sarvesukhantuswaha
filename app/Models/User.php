@@ -44,4 +44,18 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function scopeSearch($query,$value){
+        $query
+        ->where('name','like',"%{$value}%");
+        // ->where('name','like',"%{$value}%")
+    }
+
+    public function user_details(){
+        return $this->hasOne(UserDetail::class);
+    }
+
+    public function families(){
+        return $this->hasMany(Family::class);
+    }
 }

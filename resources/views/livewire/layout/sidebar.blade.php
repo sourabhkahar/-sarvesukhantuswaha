@@ -196,6 +196,10 @@ new class extends Component {
                         <a class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white" href="{{route('pageentry',['pid'=>3,'tid'=>1])}}" :class="page === 'ecommerce' && '!text-white'" wire:navigate>Contact Landing Page
                         </a>
                       </li>
+                      <li>
+                        <a class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white" href="{{route('membermanagment')}}" :class="page === 'ecommerce' && '!text-white'" wire:navigate>Member Managment
+                        </a>
+                      </li>
                     </ul>
                   </div>
                   <!-- Dropdown Menu End -->

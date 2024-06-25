@@ -127,7 +127,13 @@ return [
         'Master\'s degree',
         'Doctorate or higher',
     ],
-    'perpage'=>10
+    'perpage'=>10,
+    'roles' => [
+        "superadmin"=>'super-admin',
+        "captain"=>'captain',
+        "admin"=>'admin',
+        "member"=>'member',
+    ]
 
 
 ];

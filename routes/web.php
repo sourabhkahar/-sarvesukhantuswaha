@@ -3,6 +3,7 @@
 use App\Livewire\User\About;
 use App\Livewire\User\Contact;
 use App\Livewire\User\Gallery;
+use App\Livewire\User\SocialMedia;
 use App\Livewire\User\Home;
 use Illuminate\Support\Facades\Route;
 
@@ -11,6 +12,7 @@ Route::get('/', Home::class)->name('home');
 Route::get('about', About::class)->name('about');
 Route::get('contact-us', Contact::class)->name('contact-us');
 Route::get('gallery', Gallery::class)->name('gallery');
+Route::get('social-media', SocialMedia::class)->name('social-media');
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::view('dashboard', 'dashboard')
         ->name('dashboard');

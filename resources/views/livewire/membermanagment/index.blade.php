@@ -66,11 +66,6 @@ new class extends Component {
         <div>
             <strong>Member Managment</strong>
         </div>
-        {{-- <div>
-            <button
-                class="flex justify-center w-full p-3 font-medium rounded me-1 bg-primary text-gray hover:bg-opacity-90"
-                wire:click='addNewPage'>Add New</button>
-        </div> --}}
     </div>
 
 

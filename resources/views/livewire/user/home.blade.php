@@ -37,7 +37,7 @@
         </div>
     </section>
 
-    <section class="what-section section-gapping" >
+    <section class="what-section section-gapping yellow-bg" >
         <div class="container">
             <h2 class="main-title">WHAT WE DO</h2>
             <div class="what-box">

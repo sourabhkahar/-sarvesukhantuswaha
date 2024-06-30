@@ -567,7 +567,7 @@ footer {
 	color: #ff0000;
 }
 
-.contact .field .input-field {
+.contact .field .input-field, .translate-google .goog-te-combo {
 	width: 100%;
 	border: 1px solid #ddd;
 	min-height: 45px;

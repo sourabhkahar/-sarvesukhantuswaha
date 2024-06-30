@@ -3,41 +3,31 @@
         <img src="../images/logo.png">
     </div>
     <div class="container">
-        <a href="https://www.instagram.com/sarvesukhantuswaha?igsh=d3NyY3lidGh6YnY0" target="_blank">
-            
-                <button class="social-icon">
-                    <img src="../images/instagram.svg" alt=""> <span>Instagram</span>
-                </button>
-        </a><br><br>
-        <a href="https://www.frontendmentor.io/profile/Creative-Pixel-Studios" target="_blank">
-                <button class="social-icon">
-                    <img src="../images/youtube.svg" alt=""> <span> You Tube </span>
-                </button>
+        <a href="https://www.instagram.com/sarvesukhantuswaha/" target="_blank" class="social-icon">
+            <img src="../images/instagram.svg" alt=""> <span>Instagram</span>
+        </a><br>
+        <a href="https://www.youtube.com/@SarveSukhantuSwaha" target="_blank" class="social-icon">
+            <img src="../images/youtube.svg" alt=""> <span> You Tube </span>
         </a>
-        <br><br>
-        <a href="https://www.pinterest.com/timothybayode76/" target="_blank">
-                <button class="social-icon">
-                    <img src="../images/twitterx.svg" alt="">
-                    <span>Twitter</span>
-                </button>
-        </a><br><br>
-        <a href="https://x.com/TemmyBlog?s=09" target="_blank">
-                <button class="social-icon"> 
-                    <img src="../images/facebook.svg" alt="">
-                    <span>Facebook</span>
-                </button>
+        <br>
+        <a href="https://x.com/SarveSukhantuS/" target="_blank" class="social-icon">
+            <img src="../images/twitterx.svg" alt="">
+            <span>Twitter</span>
+        </a><br>
+        <a href="https://www.facebook.com/profile.php?id=61561735824667" target="_blank" class="social-icon">
+            <img src="../images/facebook.svg" alt="">
+            <span>Facebook</span>
         </a>
-        <br><br>
     </div>
 
     <style>
-        .social-icon{
-            display: flex;
-            align-items: center;
+        html, body {
+            display: block;
+            height: auto;
+            width: auto;
         }
         .social-icon img {
-            width: 50px;
-            margin: 20px;
+            width: 30px;
         }
         .container{
             margin: 5px
@@ -72,7 +62,7 @@
             border-bottom: solid 1px rgba(0, 0, 0, 0.2);
         }
 
-        button {
+        .social-icon {
             -webkit-appearance: none;
             width: auto;
             min-width: 100px;
@@ -81,7 +71,8 @@
             padding: 15px 40px;
             margin-top: 5px;
             background-color: #ffea3d;
-            color: #fff;
+            color: #000;
+            text-decoration: none;
             font-size: 14px;
             margin-left: auto;
             font-weight: 500;
@@ -89,14 +80,17 @@
             border: none;
             transition: all 0.3s ease;
             outline: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        button:hover {
+        .social-icon:hover {
             transform: translateY(-3px);
             box-shadow: 0 2px 6px -1px rgba(182, 157, 230, 0.65);
         }
 
-        button:hover:active {
+        .social-icon:hover:active {
             transform: scale(0.99);
         }
 
@@ -277,12 +271,14 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 500px;
+            width: 100%;
+            max-width: 500px;
+            min-height: 100vh;
             height: auto;
             margin: auto auto;
             background: #ffffff;
             border-radius: 4px;
-            /* box-shadow: 0px 2px 6px -1px rgba(0, 0, 0, 0.12); */
+            
         }
 
         .left {

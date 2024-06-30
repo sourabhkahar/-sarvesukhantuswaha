@@ -107,113 +107,120 @@
                             </div>
                             @endif
 
-                            <div class="field-box">
+                            <div class="field">
+                                <label for="">Name<span class="required">*</span></label>
+                                <input type="text" class="input-field"
+                                    wire:model.live="familyDetails.{{$keyFam}}.name" />
+                                    @foreach ($errors->get("familyDetails.$keyFam.name") as  $message)
+                                            <x-field-error :messages="$message" class="mt-2 required" />
+                                    @endforeach
+                            </div>
+                            <div class="col-2">
                                 <div class="field">
-                                    <label for="">Name<span class="required">*</span></label>
-                                    <input type="text" class="input-field"
-                                        wire:model.live="familyDetails.{{$keyFam}}.name" />
-                                        @foreach ($errors->get("familyDetails.$keyFam.name") as  $message)
-                                                <x-field-error :messages="$message" class="mt-2 required" />
-                                        @endforeach
+                                    <label for="radio" class="custom-radio">
+                                        <input type="radio" class="" id="radio" name="familyDetails.{{$keyFam}}.ishouseonwer"
+                                            wire:model.live="familyDetails.{{$keyFam}}.ishouseonwer"
+                                            value="House Owner" /><span>House Owner</span>
+                                    </label>
                                 </div>
                                 <div class="field">
-                                    <div class="grp-radio">
-                                        <span>
-                                            <input type="radio" class="" id="" name="familyDetails.{{$keyFam}}.ishouseonwer"
-                                                wire:model.live="familyDetails.{{$keyFam}}.ishouseonwer"
-                                                value="House Owner" /><span>House Owner</span>
-                                        </span>
-                                        <span>
-                                            <input type="radio" class="" id="" name="familyDetails.{{$keyFam}}.ishouseonwer"
-                                                wire:model.live="familyDetails.{{$keyFam}}.ishouseonwer"
-                                                value="Rented House" /><span>Rented House</span>
-                                        </span>
-                                    </div>
-                                    @foreach ($errors->get("familyDetails.$keyFam.ishouseonwer") as  $message)
-                                                <x-field-error :messages="$message" class="mt-2 required" />
-                                    @endforeach
+                                    <label for="radio1" class="custom-radio">
+                                        <input type="radio" class="" id="radio1" name="familyDetails.{{$keyFam}}.ishouseonwer"
+                                            wire:model.live="familyDetails.{{$keyFam}}.ishouseonwer"
+                                            value="Rented House" /><span>Rented House</span>
+                                    </label>
+                                    
                                 </div>
                             </div>
-                            <div class="field-box">
-                                {{-- {{print_r($errors->get("familyDetails.$keyFam.relation"))}} --}}
-                                <div class="field">
-                                    <label for="">Relation<span class="required">*</span></label>
-                                    <select type="text" class="input-field" id="" wire:model.live="familyDetails.{{$keyFam}}.relation">
-                                        <option value="">Select Relation</option>
-                                        @foreach (Config::get('constant.relations') as $key => $relation)
-                                        <option value="{{$relation}}" wire:key='{{$key}}'>
-                                            {{$relation}}</option>
-                                        @endforeach
-                                    </select>
-                                    @foreach ($errors->get("familyDetails.$keyFam.relation") as  $message)
-                                            <x-field-error :messages="$message" class="mt-2 required" />
+                            <div class="">
+                                @foreach ($errors->get("familyDetails.$keyFam.ishouseonwer") as  $message)
+                                    <x-field-error :messages="$message" class="mt-2 required" />
+                                @endforeach
+                            </div>
+                            <div class="field">
+                                <label for="">Relation<span class="required">*</span></label>
+                                <select type="text" class="input-field" id="" wire:model.live="familyDetails.{{$keyFam}}.relation">
+                                    <option value="">Select Relation</option>
+                                    @foreach (Config::get('constant.relations') as $key => $relation)
+                                    <option value="{{$relation}}" wire:key='{{$key}}'>
+                                        {{$relation}}</option>
                                     @endforeach
-                                </div>
-                                <div class="field ">
-                                    <div class="grp-radio">
-                                        <span>
-                                            <input type="radio" class="" id="" name="familyDetails.{{$keyFam}}.martialstatus"
+                                </select>
+                                @foreach ($errors->get("familyDetails.$keyFam.relation") as  $message)
+                                        <x-field-error :messages="$message" class="mt-2 required" />
+                                @endforeach
+                            </div>
+                            <div class="field">
+                                {{-- {{print_r($errors->get("familyDetails.$keyFam.relation"))}} --}}
+                                
+                                <div class="col-2">
+                                    <div class="field">
+                                        <label for="radio2" class="custom-radio">
+                                            <input type="radio" class="" id="radio2" name="familyDetails.{{$keyFam}}.martialstatus"
                                                 wire:model.live="familyDetails.{{$keyFam}}.martialstatus"
                                                 value="Married" /><span>Married</span>
-                                        </span>
-                                        <span>
-                                            <input type="radio" class="" id="" name="familyDetails.{{$keyFam}}.martialstatus"
+                                        </label>
+                                    </div>
+                                    <div class="field">
+                                        <label for="radio3" class="custom-radio">
+                                            <input type="radio" class="" id="radio3" name="familyDetails.{{$keyFam}}.martialstatus"
                                                 wire:model.live="familyDetails.{{$keyFam}}.martialstatus"
                                                 value="Unmarried" /><span>Unmarried</span>
-                                        </span>
+                                        </label>
                                     </div>
+                                </div>
+                                <div class="">
                                     @foreach ($errors->get("familyDetails.$keyFam.martialstatus") as  $message)
-                                            <x-field-error :messages="$message" class="mt-2 required" />
+                                        <x-field-error :messages="$message" class="mt-2 required" />
                                     @endforeach
                                 </div>
+                                
+                            </div>
+                            <div class="col-2">
                                 <div class="field">
                                     <label for="">Blood Group</label>
                                     {{-- <input type="text" class="input-field"
                                         wire:model.live="familyDetails.{{$keyFam}}.bloodgroup" /> --}}
 
-                                        <select  class="input-field" id="" wire:model.live="familyDetails.{{$keyFam}}.bloodgroup">
-                                            <option value="">Blood Group</option>
-                                            @foreach (Config::get('constant.bloodgroup') as $key => $relation)
-                                            <option value="{{$relation}}" wire:key='{{$key}}'>
-                                                {{$relation}}</option>
-                                            @endforeach
-                                        </select>
+                                    <select  class="input-field" id="" wire:model.live="familyDetails.{{$keyFam}}.bloodgroup">
+                                        <option value="">Blood Group</option>
+                                        @foreach (Config::get('constant.bloodgroup') as $key => $relation)
+                                        <option value="{{$relation}}" wire:key='{{$key}}'>
+                                            {{$relation}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
-                            </div>
-
-                            <div class="field-box">
                                 <div class="field">
                                     <label for="">Education<span class="required">*</span></label>
                                    
-                                        <select  class="input-field" id="" wire:model.live="familyDetails.{{$keyFam}}.education">
-                                            <option value="">Select Education</option>
-                                            @foreach (Config::get('constant.educations') as $key => $relation)
-                                            <option value="{{$relation}}" wire:key='{{$key}}'>
-                                                {{$relation}}</option>
-                                            @endforeach
-                                        </select>
+                                    <select  class="input-field" id="" wire:model.live="familyDetails.{{$keyFam}}.education">
+                                        <option value="">Select Education</option>
+                                        @foreach (Config::get('constant.educations') as $key => $relation)
+                                        <option value="{{$relation}}" wire:key='{{$key}}'>
+                                            {{$relation}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
-                                <div class="field ">
-                                    <label for="">Do you have any court case?<span class="required">*</span></label>
-                                    <span class="grp-radio">
-                                        <span>
-                                            <input type="radio" class="" id="" name="familyDetails.{{$keyFam}}.courtcase"
+                            </div>
+                            <div class="field">
+                                <label for="">Do you have any court case?<span class="required">*</span></label>
+                                <div class="col-2">
+                                    <div class="field">
+                                        <label for="radio4" class="custom-radio">
+                                            <input type="radio" class="" id="radio4" name="familyDetails.{{$keyFam}}.courtcase"
                                                 wire:model.live="familyDetails.{{$keyFam}}.courtcase"
                                                 value="Y" /><span>yes</span>
-                                        </span>
-                                        <span>
-                                            <input type="radio" class="" id="" name="familyDetails.{{$keyFam}}.courtcase"
+                                        </label>
+                                    </div>
+                                    <div class="field">
+                                        <label for="radio5" class="custom-radio">
+                                            <input type="radio" class="" id="radio5" name="familyDetails.{{$keyFam}}.courtcase"
                                                 wire:model.live="familyDetails.{{$keyFam}}.courtcase"
                                                 value="N" /><span>no</span>
-                                        </span>
-                                    </span>
+                                        </label>
+                                    </div>
                                 </div>
-                                {{-- <div class="field grp-radio">
-                                    <input type="radio" class="input-field" id="" name="familyDetails.{{$keyFam}}.courtcase"
-                                        wire:model.live="familyDetails.{{$keyFam}}.courtcase" value="y" /><span>Yes</span>
-                                    <input type="radio" class="input-field" id="" name="familyDetails.{{$keyFam}}.courtcase"
-                                        wire:model.live="familyDetails.{{$keyFam}}.courtcase" value="n" /><span>No</span>
-                                </div> --}}
+
                                 @if($familyDetails[$keyFam]['courtcase'] == 'Y')
                                 <div class="field">
                                     <label for="">if Yes,Enter Court Case Number?</label>
@@ -223,33 +230,33 @@
                                 @endIf
                             </div>
 
-                            <div class="field-box">
-                                <div class="field">
-                                    <label for="">Medcal history</label>
+                            <div class="field">
+                                <label for="">Medcal history</label>
+                                <div class="field-box">
                                     @foreach (Config::get('constant.medical-history') as $item)
-                                        <label for="">
+                                        <label for="" class="custom-radio">
                                             <input type="checkbox" class="" value="{{$item}}"
                                                 wire:model.live="familyDetails.{{$keyFam}}.medicalhistory" />
                                             {{$item}}
                                         </label>
                                     @endforeach
                                 </div>
+                            </div>
 
-                                @if(in_array('Other',$familyDetails[$keyFam]['medicalhistory']))
-                                <div class="field">
-                                    <label for="">if Other,Please Mention?</label>
-                                    <input type="text" class="input-field"
-                                        wire:model.live="familyDetails.{{$keyFam}}.othermedicalhistory" />
-                                </div>
-                                @endIf
-                                <div class="field ">
-                                    <label for="">No. of vehicles</label>
-                                    <input type="number" class="input-field"
-                                        wire:model.live="familyDetails.{{$keyFam}}.noofvehicles" min="0" max="50"/>
-                                        @foreach ($errors->get("familyDetails.$keyFam.noofvehicles") as  $message)
-                                        <x-field-error :messages="$message" class="mt-2 required" />
-                                @endforeach
-                                </div>
+                            @if(in_array('Other',$familyDetails[$keyFam]['medicalhistory']))
+                            <div class="field">
+                                <label for="">if Other,Please Mention?</label>
+                                <input type="text" class="input-field"
+                                    wire:model.live="familyDetails.{{$keyFam}}.othermedicalhistory" />
+                            </div>
+                            @endIf
+                            <div class="field ">
+                                <label for="">No. of vehicles</label>
+                                <input type="number" class="input-field"
+                                    wire:model.live="familyDetails.{{$keyFam}}.noofvehicles" min="0" max="50"/>
+                                    @foreach ($errors->get("familyDetails.$keyFam.noofvehicles") as  $message)
+                                    <x-field-error :messages="$message" class="mt-2 required" />
+                            @endforeach
                             </div>
                             @if(isset($familyDetails[$keyFam]['noofvehicles']) &&
                             !empty($familyDetails[$keyFam]['noofvehicles']) )

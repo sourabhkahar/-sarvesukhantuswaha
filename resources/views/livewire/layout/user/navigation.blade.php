@@ -15,9 +15,7 @@ new class extends Component {
                     <img src="{{asset('/images/logo.png')}}" alt="" />
                 </a>
             </div>
-            <div class="translate-google">
-                <div id="google_translate_element"></div>
-            </div>
+            
             <button type="button" class="btn-menu" onclick="toggleMenu()">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -47,9 +45,14 @@ new class extends Component {
                     <li><a href="{{route('about')}}" class="{{Route::currentRouteName() == 'about'?'active':'' }}" wire:navigate>About Us</a></li>
                     <li><a href="{{route('gallery')}}" class="{{Route::currentRouteName() == 'gallery'?'active':'' }}" wire:navigate>Gallery</a></li>
                     <li><a href="{{route('contact-us')}}" class="{{Route::currentRouteName() == 'contact-us'?'active':'' }}" wire:navigate>Contact Us</a></li>
+                    <li><a href="{{route('social-media')}}" class="{{Route::currentRouteName() == 'social-media'?'active':'' }}" wire:navigate>Social Media</a></li>
+
                 </ul>
                 {{-- <div id="google_translate_element"></div> --}}
 
+            </div>
+            <div class="translate-google">
+                <div id="google_translate_element"></div>
             </div>
         </div>
     </div>

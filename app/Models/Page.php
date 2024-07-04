@@ -12,6 +12,12 @@ class Page extends Model
     public function scopeSearch($query,$value){
         $query
         ->where('pagename','like',"%{$value}%");
-        // ->where('name','like',"%{$value}%")
+    }
+    public function gallery(){
+        return $this->hasMany(TextPageGalllery::class,'pagecode');
+    }
+
+    public function page_details(){
+        return $this->hasMany(TextPagedetail::class,'pagecode');
     }
 }

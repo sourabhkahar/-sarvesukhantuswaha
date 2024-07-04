@@ -9,13 +9,11 @@
             </div>
         </div>
     </section>
-
     <section class="contact-section section-gapping">
         <div class="container">
             <div class="contact">
                 <div class="col">
-                    <h2>Form</h2>
-
+                    <h2>{{$page['title5']??''}}</h2>
                     <form action="" wire:submit='saveForm'>
                         {{-- <div class="col-2"> --}}
                         <div class="field-box">
@@ -280,15 +278,14 @@
                     </form>
                 </div>
                
-               
                 <div class="col">
-                    <h2>We Would Love to Hear from You</h2>
-                    <p>Please write or call us with your questions or comments.</p>
-                    <p>G-3, Milan Textile Market <br />Beside kuberji house <br />Near RKT Market <br />Begampura,
-                        Nawabwadi <br />Sahara Darwaja, Ring Road</p>
+                    <h2>{{$page['title1']??''}}</h2>
+                    <p>{{$page['title2']??''}}</p>
+                    <a href=" http://maps.google.com/?q={{urlencode($page['shortdescription1'])}}" target="_blank"><p>{!!nl2br($page['shortdescription1']??'')!!}</p></a>
 
                     <h3>CONTACT</h3>
                     <ul class="contact-detail">
+                        @if(isset($page['title3']))
                         <li>
                             <span class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -299,8 +296,10 @@
                                     </path>
                                 </svg>
                             </span>
-                            <a href="tel:+919979927000">+91-997-992-7000</a>
+                            <a href="tel:{{$page['title3']}}">{{$page['title3']}}</a>
                         </li>
+                        @endif
+                        @if(isset($page['title4']))
                         <li>
                             <span class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -312,24 +311,30 @@
                                     <polyline points="22,6 12,13 2,6"></polyline>
                                 </svg>
                             </span>
-                            <a href="mailto:info@sarvesukhantuswaha.org">info@sarvesukhantuswaha.org</a>
+                            <a href="mailto:{{$page['title4']}}">{{$page['title4']}}</a>
                         </li>
+                        @endif
                     </ul>
 
                     <h3>KEEP IN TOUCH</h3>
                     <ul class="social-ul">
+                        @if(isset($headerFooter['link1']))
                         <li>
-                            <a href="">
-                                <svg enable-background="new 0 0 56.693 56.693" height="30" width="30" version="1.1"
-                                    viewBox="0 0 56.693 56.693" fill="currentColor" xml:space="preserve"
-                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                    <path
-                                        d="M40.43,21.739h-7.645v-5.014c0-1.883,1.248-2.322,2.127-2.322c0.877,0,5.395,0,5.395,0V6.125l-7.43-0.029  c-8.248,0-10.125,6.174-10.125,10.125v5.518h-4.77v8.53h4.77c0,10.947,0,24.137,0,24.137h10.033c0,0,0-13.32,0-24.137h6.77  L40.43,21.739z" />
-                                </svg>
+                            <a href="{{$headerFooter['link1']}}" target="_blank">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="49.605 0 2834.65 2834.649" id="instagram"><circle cx="1466.93" cy="1417.324" r="1417.324" fill="#444"></circle><path fill="#fff" d="M1892.128 726.379h-850.395c-147.639 0-265.749 118.11-265.749 265.749v850.394c0 147.639 118.11 265.748 265.749 265.748h850.395c147.638 0 265.749-118.109 265.749-265.748V992.127c0-147.638-118.112-265.748-265.749-265.748zm76.772 159.449h29.527V1122.048h-236.221v-236.22H1968.9zm-696.851 389.765c41.338-59.056 118.11-100.395 194.882-100.395s153.544 41.339 194.882 100.395c29.527 41.338 47.244 88.582 47.244 141.732 0 135.826-112.205 242.126-242.126 242.126-129.922 0-242.126-106.299-242.126-242.126-.001-53.15 17.716-100.394 47.244-141.732zm750.001 566.929c0 70.867-59.056 129.922-129.922 129.922h-850.395c-70.866 0-129.922-59.055-129.922-129.922v-566.929h206.693c-17.717 41.338-29.527 94.488-29.527 141.732 0 206.693 171.26 377.953 377.953 377.953s377.953-171.26 377.953-377.953c0-47.244-11.812-100.395-29.527-141.732h206.692l.002 566.929z"></path></svg>
                             </a>
                         </li>
+                        @endif
+                        @if(isset($headerFooter['link2']))
                         <li>
-                            <a href="">
+                           <a href="{{$headerFooter['link2']}}" target="_blank">
+                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28.87 28.87" id="youtube"><g><g><rect width="28.87" height="28.87" fill="#fd3832" rx="6.48" ry="6.48"></rect><path fill="#fff" fill-rule="evenodd" d="M8 19.77a1.88 1.88 0 0 1-1.24-1.21c-.54-1.48-.7-7.66.34-8.88A2 2 0 0 1 8.46 9c2.79-.3 11.41-.26 12.4.1a1.94 1.94 0 0 1 1.22 1.17c.59 1.53.61 7.09-.08 8.56a1.89 1.89 0 0 1-.87.88c-1.04.52-11.75.51-13.13.06zm4.43-2.9l5-2.6-5-2.62z"></path></g></g></svg>
+                           </a>
+                       </li>
+                       @endif
+                        @if(isset($headerFooter['link3']))
+                        <li>
+                            <a href="{{$headerFooter['link3']}}" target="_blank">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 1200 1227"
                                     fill="none">
                                     <path
@@ -338,66 +343,26 @@
                                 </svg>
                             </a>
                         </li>
+                        @endif
+                        @if(isset($headerFooter['link4']))
                         <li>
-                            <a href="">
-                                <svg width="50" height="50" version="1.1" viewBox="0 0 1000 1000" xml:space="preserve"
-                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                    <path
-                                        d="M762.4,461.8v-71.6h-52.5v71.6h-76.3v52.5h71.6v71.6h52.5v-71.6H834v-52.5H762.4z"
-                                        fill="currentColor" />
-                                    <path
-                                        d="M375.9,457.1v81.1h109.7c-9.5,47.7-52.5,85.9-109.7,85.9c-66.8,0-124.1-57.3-124.1-124.1    s57.3-124.1,124.1-124.1c28.6,0,57.3,9.5,76.3,28.6l62-62c-38.2-28.6-81.1-52.5-138.4-52.5C261.4,290.1,166,385.5,166,500    s95.4,209.9,209.9,209.9c119.3,0,200.4-85.9,200.4-205.2c0-14.3,0-33.4-4.8-47.7C571.6,457.1,375.9,457.1,375.9,457.1z"
-                                        fill="currentColor" />
+                            <a href="{{$headerFooter['link4']}}" target="_blank">
+                                <svg enable-background="new 0 0 56.693 56.693" height="30" width="30" version="1.1"
+                                viewBox="0 0 56.693 56.693" fill="currentColor" xml:space="preserve"
+                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <path
+                                    d="M40.43,21.739h-7.645v-5.014c0-1.883,1.248-2.322,2.127-2.322c0.877,0,5.395,0,5.395,0V6.125l-7.43-0.029  c-8.248,0-10.125,6.174-10.125,10.125v5.518h-4.77v8.53h4.77c0,10.947,0,24.137,0,24.137h10.033c0,0,0-13.32,0-24.137h6.77  L40.43,21.739z" />
                                 </svg>
                             </a>
                         </li>
+                        @endif
                     </ul>
-
-                    {{-- <div class="col-box">
-                        <h4>ABC Bussiness</h4>
-                        <ul class="contact-detail">
-                            <li>
-                                <span class="icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path
-                                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
-                                        </path>
-                                    </svg>
-                                </span>
-                                <a href="tel:+919876543210">+91 98765 43210</a>
-                            </li>
-                            <li>
-                                <span class="icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                                    </svg>
-                                </span>
-                                Bajarang Wadi Main Rd, Valmiki Nagar, Puneet Nagar, Bajrang Wadi
-                            </li>
-                        </ul>
-                    </div> --}}
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="join-section section-gapping" >
-        <div class="container text-center">
-            <div class="">
-                <h2 class="main-title">Support US</h2>
-            </div>
-            <h3>Support Us and Change the Course of a Child’s Life Today!</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis,
-                pulvinar dapibus leo.</p>
-            {{-- https://dev.to/jringeisen/how-to-create-dynamic-input-fields-with-laravel-livewire-14kn --}}
-            <a href="contact.html" class="btn">donate</a>
-        </div>
-    </section>
+    <x-user.cta-section :headerFooter="$headerFooter"  /> 
 
     <div id="toast" class="{{session('message')?'show':''}}">
         <div id="desc">{{ session('message') }}</div>

@@ -5,6 +5,7 @@ use App\Livewire\User\Contact;
 use App\Livewire\User\Gallery;
 use App\Livewire\User\SocialMedia;
 use App\Livewire\User\Home;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 

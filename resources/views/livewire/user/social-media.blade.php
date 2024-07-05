@@ -6,24 +6,24 @@
             <img src="../images/logo.png">
         </div>
         <div class="container">
-            @if($headerFooter['link1'])
+            @if(isset($headerFooter['link1']))
             <a href="{{$headerFooter['link1']}}" target="_blank" class="social-icon">
                 <img src="../images/instagram.svg" alt=""> <span>Instagram</span>
             </a><br>
             @endif
-            @if($headerFooter['link2'])
+            @if(isset($headerFooter['link2']))
             <a href="{{$headerFooter['link2']}}" target="_blank" class="social-icon">
                 <img src="../images/youtube.svg" alt=""> <span> You Tube </span>
             </a>
             <br>
             @endif
-            @if($headerFooter['link3'])
+            @if(isset($headerFooter['link3']))
             <a href="{{$headerFooter['link3']}}" target="_blank" class="social-icon">
                 <img src="../images/twitterx.svg" alt="">
                 <span>Twitter</span>
             </a><br>
             @endif
-            @if($headerFooter['link4'])
+            @if(isset($headerFooter['link4']))
             <a href="{{$headerFooter['link4']}}" target="_blank" class="social-icon">
                 <img src="../images/facebook.svg" alt="">
                 <span>Facebook</span>

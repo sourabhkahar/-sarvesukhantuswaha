@@ -281,7 +281,7 @@
                 <div class="col">
                     <h2>{{$page['title1']??''}}</h2>
                     <p>{{$page['title2']??''}}</p>
-                    <a href=" http://maps.google.com/?q={{urlencode($page['shortdescription1'])}}" target="_blank"><p>{!!nl2br($page['shortdescription1']??'')!!}</p></a>
+                    <a href=" http://maps.google.com/?q={{urlencode($page['shortdescription1']??'')}}" target="_blank"><p>{!!nl2br($page['shortdescription1']??'')!!}</p></a>
 
                     <h3>CONTACT</h3>
                     <ul class="contact-detail">

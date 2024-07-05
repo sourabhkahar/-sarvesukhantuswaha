@@ -46,5 +46,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('membermanagment/', function () {
         return view('membermanagment');
     })->name('membermanagment');
+
+    Route::get('/create-symbolic-link', function () {
+        Artisan::call('storage:link');
+    });
 });
 require __DIR__ . '/auth.php';

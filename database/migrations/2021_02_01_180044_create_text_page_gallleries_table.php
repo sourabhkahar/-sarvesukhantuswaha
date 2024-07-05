@@ -17,7 +17,7 @@ class CreateTextPageGallleriesTable extends Migration
             $table->id();
             $table->integer('pagecode');
             $table->string('image');
-            $table->string('imageurl');
+            $table->string('imageurl')->nullable();
             $table->string('categorycode');
             $table->string('taxonomycode');
             $table->string('ordno')->nullable();

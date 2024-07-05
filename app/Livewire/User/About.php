@@ -53,7 +53,7 @@ class About extends Component
         };
 
         if($islanding){
-            return $pagesData[0];
+            return $pagesData[0]??[];
         }
         return $pagesData;
     }

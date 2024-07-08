@@ -79,7 +79,7 @@ new class extends Component {
                                 <option value="5" selected="">5</option>
                                 <option value="10">10</option>
                                 <option value="15">15</option>
-                                <option value="-1">All</option>
+                                <option value="50">50</option>
                             </select>
                             entries per page
                         </label>
@@ -166,19 +166,6 @@ new class extends Component {
                                                     fill=""></path>
                                             </svg>
                                         </button>
-
-
-                                        {{-- <button class="hover:text-primary">
-                                            <svg class="fill-current" width="18" height="18" viewBox="0 0 18 18"
-                                                fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M16.8754 11.6719C16.5379 11.6719 16.2285 11.9531 16.2285 12.3187V14.8219C16.2285 15.075 16.0316 15.2719 15.7785 15.2719H2.22227C1.96914 15.2719 1.77227 15.075 1.77227 14.8219V12.3187C1.77227 11.9812 1.49102 11.6719 1.12539 11.6719C0.759766 11.6719 0.478516 11.9531 0.478516 12.3187V14.8219C0.478516 15.7781 1.23789 16.5375 2.19414 16.5375H15.7785C16.7348 16.5375 17.4941 15.7781 17.4941 14.8219V12.3187C17.5223 11.9531 17.2129 11.6719 16.8754 11.6719Z"
-                                                    fill=""></path>
-                                                <path
-                                                    d="M8.55074 12.3469C8.66324 12.4594 8.83199 12.5156 9.00074 12.5156C9.16949 12.5156 9.31012 12.4594 9.45074 12.3469L13.4726 8.43752C13.7257 8.1844 13.7257 7.79065 13.5007 7.53752C13.2476 7.2844 12.8539 7.2844 12.6007 7.5094L9.64762 10.4063V2.1094C9.64762 1.7719 9.36637 1.46252 9.00074 1.46252C8.66324 1.46252 8.35387 1.74377 8.35387 2.1094V10.4063L5.40074 7.53752C5.14762 7.2844 4.75387 7.31252 4.50074 7.53752C4.24762 7.79065 4.27574 8.1844 4.50074 8.43752L8.55074 12.3469Z"
-                                                    fill=""></path>
-                                            </svg>
-                                        </button> --}}
                                     </div>
                                 </td>
                             </tr>
@@ -192,10 +179,10 @@ new class extends Component {
             </div>
         </div>
     </div>
-    <div x-show="modalOpen" x-transition="" class="fixed top-0 left-0 flex items-center justify-center w-full h-full min-h-screen px-4 py-5 z-999999 bg-black/90" style="display: none;">
-        <div @click.outside="modalOpen = false" class=" absolute w-full max-w-142.5 rounded-lg bg-white px-8 py-12 text-center dark:bg-boxdark md:px-17.5 md:py-15">
+    <div x-show="modalOpen" x-transition="" class="fixed top-0 left-0 flex items-center justify-center w-full h-full min-h-screen z-999999 bg-black/90" style="display: none;">
+        <div @click.outside="modalOpen = false" class=" absolute w-full max-w-142.5 rounded-lg bg-white px-8 py-12 text-center dark:bg-boxdark ">
             <h3 class="pb-2 text-xl font-bold text-black dark:text-white sm:text-2xl">
-                Member Details
+                Member Details 
             </h3>
             <button @click="modalOpen = false" class="absolute flex items-center justify-center text-black transition rounded-full right-6 top-6 h-7 w-7 hover:text-primary">
                 <svg width="10" height="10" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -208,59 +195,59 @@ new class extends Component {
                     <div class="flex flex-col gap-12">
                         <!-- Accordion Item -->
                         <div x-data="{ accordionOpen: false }" @click.outside="accordionOpen = false" class="p-4 border rounded-md border-stroke shadow-9 dark:border-strokedark dark:shadow-none sm:p-6">
-                        <button @click="accordionOpen = !accordionOpen" class="flex w-full items-center gap-1.5 sm:gap-3 xl:gap-6">
-                            <div class="flex h-10.5 w-full max-w-10.5 items-center justify-center rounded-md bg-[#F3F5FC] dark:bg-meta-4">
-                            <svg :class="accordionOpen &amp;&amp; 'rotate-180'" class="duration-200 ease-in-out fill-primary stroke-primary dark:fill-white dark:stroke-white" width="18" height="10" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8.28882 8.43257L8.28874 8.43265L8.29692 8.43985C8.62771 8.73124 9.02659 8.86001 9.41667 8.86001C9.83287 8.86001 10.2257 8.69083 10.5364 8.41713L10.5365 8.41721L10.5438 8.41052L16.765 2.70784L16.771 2.70231L16.7769 2.69659C17.1001 2.38028 17.2005 1.80579 16.8001 1.41393C16.4822 1.1028 15.9186 1.00854 15.5268 1.38489L9.41667 7.00806L3.3019 1.38063L3.29346 1.37286L3.28467 1.36548C2.93287 1.07036 2.38665 1.06804 2.03324 1.41393L2.0195 1.42738L2.00683 1.44184C1.69882 1.79355 1.69773 2.34549 2.05646 2.69659L2.06195 2.70196L2.0676 2.70717L8.28882 8.43257Z" fill="" stroke=""></path>
-                            </svg>
-                            </div>
+                            <button @click="accordionOpen = !accordionOpen" class="flex w-full items-center gap-1.5 sm:gap-3 xl:gap-6">
+                                <div class="flex h-10.5 w-full max-w-10.5 items-center justify-center rounded-md bg-[#F3F5FC] dark:bg-meta-4">
+                                <svg :class="accordionOpen &amp;&amp; 'rotate-180'" class="duration-200 ease-in-out fill-primary stroke-primary dark:fill-white dark:stroke-white" width="18" height="10" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8.28882 8.43257L8.28874 8.43265L8.29692 8.43985C8.62771 8.73124 9.02659 8.86001 9.41667 8.86001C9.83287 8.86001 10.2257 8.69083 10.5364 8.41713L10.5365 8.41721L10.5438 8.41052L16.765 2.70784L16.771 2.70231L16.7769 2.69659C17.1001 2.38028 17.2005 1.80579 16.8001 1.41393C16.4822 1.1028 15.9186 1.00854 15.5268 1.38489L9.41667 7.00806L3.3019 1.38063L3.29346 1.37286L3.28467 1.36548C2.93287 1.07036 2.38665 1.06804 2.03324 1.41393L2.0195 1.42738L2.00683 1.44184C1.69882 1.79355 1.69773 2.34549 2.05646 2.69659L2.06195 2.70196L2.0676 2.70717L8.28882 8.43257Z" fill="" stroke=""></path>
+                                </svg>
+                                </div>
 
-                            <div>
-                            <h4 class="font-medium text-left text-black text-title-xsm dark:text-white">
-                                How long we deliver your first blog post?
-                            </h4>
-                            </div>
-                        </button>
+                                <div>
+                                <h4 class="font-medium text-left text-black text-title-xsm dark:text-white">
+                                    How long we deliver your first blog post?
+                                </h4>
+                                </div>
+                            </button>
 
-                        <div x-show="accordionOpen" class="mt-5 duration-200 ease-in-out " style="display: none;">
-                            <p class="font-medium">
-                            It takes 2-3 weeks to get your first blog post
-                            ready. That includes the in-depth research &amp;
-                            creation of your monthly content marketing strategy
-                            that we do before writing your first blog post,
-                            Ipsum available .
-                            </p>
-                        </div>
+                            <div x-show="accordionOpen" class="mt-5 duration-200 ease-in-out " style="display: none;">
+                                <p class="font-medium">
+                                It takes 2-3 weeks to get your first blog post
+                                ready. That includes the in-depth research &amp;
+                                creation of your monthly content marketing strategy
+                                that we do before writing your first blog post,
+                                Ipsum available .
+                                </p>
+                            </div>
                         </div>
 
                         <!-- Accordion Item -->
                         <div x-data="{ accordionOpen: false }" @click.outside="accordionOpen = false" class="p-4 border rounded-md border-stroke shadow-9 dark:border-strokedark dark:shadow-none sm:p-6">
-                        <button @click="accordionOpen = !accordionOpen" class="flex w-full items-center gap-1.5 sm:gap-3 xl:gap-6">
-                            <div class="flex h-10.5 w-full max-w-10.5 items-center justify-center rounded-md bg-[#F3F5FC] dark:bg-meta-4">
-                            <svg :class="accordionOpen &amp;&amp; 'rotate-180'" class="duration-200 ease-in-out fill-primary stroke-primary dark:fill-white dark:stroke-white" width="18" height="10" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8.28882 8.43257L8.28874 8.43265L8.29692 8.43985C8.62771 8.73124 9.02659 8.86001 9.41667 8.86001C9.83287 8.86001 10.2257 8.69083 10.5364 8.41713L10.5365 8.41721L10.5438 8.41052L16.765 2.70784L16.771 2.70231L16.7769 2.69659C17.1001 2.38028 17.2005 1.80579 16.8001 1.41393C16.4822 1.1028 15.9186 1.00854 15.5268 1.38489L9.41667 7.00806L3.3019 1.38063L3.29346 1.37286L3.28467 1.36548C2.93287 1.07036 2.38665 1.06804 2.03324 1.41393L2.0195 1.42738L2.00683 1.44184C1.69882 1.79355 1.69773 2.34549 2.05646 2.69659L2.06195 2.70196L2.0676 2.70717L8.28882 8.43257Z" fill="" stroke=""></path>
-                            </svg>
-                            </div>
+                            <button @click="accordionOpen = !accordionOpen" class="flex w-full items-center gap-1.5 sm:gap-3 xl:gap-6">
+                                <div class="flex h-10.5 w-full max-w-10.5 items-center justify-center rounded-md bg-[#F3F5FC] dark:bg-meta-4">
+                                <svg :class="accordionOpen &amp;&amp; 'rotate-180'" class="duration-200 ease-in-out fill-primary stroke-primary dark:fill-white dark:stroke-white" width="18" height="10" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8.28882 8.43257L8.28874 8.43265L8.29692 8.43985C8.62771 8.73124 9.02659 8.86001 9.41667 8.86001C9.83287 8.86001 10.2257 8.69083 10.5364 8.41713L10.5365 8.41721L10.5438 8.41052L16.765 2.70784L16.771 2.70231L16.7769 2.69659C17.1001 2.38028 17.2005 1.80579 16.8001 1.41393C16.4822 1.1028 15.9186 1.00854 15.5268 1.38489L9.41667 7.00806L3.3019 1.38063L3.29346 1.37286L3.28467 1.36548C2.93287 1.07036 2.38665 1.06804 2.03324 1.41393L2.0195 1.42738L2.00683 1.44184C1.69882 1.79355 1.69773 2.34549 2.05646 2.69659L2.06195 2.70196L2.0676 2.70717L8.28882 8.43257Z" fill="" stroke=""></path>
+                                </svg>
+                                </div>
 
-                            <div>
-                            <h4 class="font-medium text-left text-black text-title-xsm dark:text-white">
-                                How long we deliver your first blog post?
-                            </h4>
-                            </div>
-                        </button>
+                                <div>
+                                <h4 class="font-medium text-left text-black text-title-xsm dark:text-white">
+                                    How long we deliver your first blog post?
+                                </h4>
+                                </div>
+                            </button>
 
-                        <div x-show="accordionOpen" class="mt-5 duration-200 ease-in-out " style="display: none;">
-                            <p class="font-medium">
-                            It takes 2-3 weeks to get your first blog post
-                            ready. That includes the in-depth research &amp;
-                            creation of your monthly content marketing strategy
-                            that we do before writing your first blog post,
-                            Ipsum available .
-                            </p>
-                        </div>
+                            <div x-show="accordionOpen" class="mt-5 duration-200 ease-in-out " style="display: none;">
+                                <p class="font-medium">
+                                It takes 2-3 weeks to get your first blog post
+                                ready. That includes the in-depth research &amp;
+                                creation of your monthly content marketing strategy
+                                that we do before writing your first blog post,
+                                Ipsum available .
+                                </p>
+                            </div>
                         </div>
                     </div>
-                    </div>
+                </div>
             </div>
            
         </div>

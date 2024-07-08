@@ -12,7 +12,7 @@ new class extends Component {
         <div class="header">
             <div class="logo">
                 <a href="{{Route('home')}}" wire:navigate>
-                    <img src="{{asset('/images/logo.png')}}" alt="" />
+                    <img src="{{asset('/images/logo.jpeg')}}" alt="" />
                 </a>
             </div>
             
@@ -28,7 +28,7 @@ new class extends Component {
                 <div class="top-menu-header">
                     <div class="logo">
                         <a href="{{route('home')}}" wire:navigate>
-                            <img src="{{asset('/images/logo.png')}}" alt="" />
+                            <img src="{{asset('/images/logo.jpeg')}}" alt="" />
                         </a>
                     </div>
                     <button type="button" class="btn-close" onclick="toggleMenu()">

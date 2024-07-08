@@ -11,7 +11,7 @@ new class extends Component {
         <!-- SIDEBAR HEADER -->
         <div class="flex items-center justify-center gap-2 px-6 py-5.5 lg:py-6.5">
           <a href="index.html">
-            <img src="{{url('images/logo.png')}}" alt="Logo" class="max-w-[100px] bg-white "/>
+            <img src="{{url('images/logo.jpeg')}}" alt="Logo" class="max-w-[100px] bg-white "/>
           </a>
       
           <button class="block lg:hidden" @click.stop="sidebarToggle = !sidebarToggle">

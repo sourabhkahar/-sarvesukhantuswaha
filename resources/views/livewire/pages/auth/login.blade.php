@@ -28,7 +28,7 @@ new #[Layout('components.layouts.app')] class extends Component
     <!-- Session Status -->
     <div class="session">
         <div class="left">
-            <img src="../images/logo.png">
+            <img src="../images/logo.jpeg">
         </div>
         <form wire:submit="login">
             <x-auth-session-status class="mb-4" :status="session('status')" />

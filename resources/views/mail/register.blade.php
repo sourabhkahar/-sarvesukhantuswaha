@@ -20,7 +20,7 @@
                     <!-- Header -->
                     <tr>
                         <td class="header" style="background-color: #345C72; padding: 40px; text-align: center; color: white; font-size: 24px;">
-                           <img src="{{asset('/images/logo.png')}}"> Sarve Sukhantu Swaha
+                           <img src="{{asset('/images/logo.jpeg')}}"> Sarve Sukhantu Swaha
                         </td>
                     </tr>
 

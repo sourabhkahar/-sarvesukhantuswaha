@@ -3,7 +3,7 @@
 ">
     <div class="session">
         <div class="left">
-            <img src="../images/logo.png">
+            <img src="../images/logo.jpeg">
         </div>
         <div class="container">
             @if(isset($headerFooter['link1']))
@@ -34,9 +34,6 @@
         <style>
             .social-icon img {
                 width: 30px;
-            }
-            .container{
-                margin: 5px
             }
             h4 {
                 font-size: 24px;

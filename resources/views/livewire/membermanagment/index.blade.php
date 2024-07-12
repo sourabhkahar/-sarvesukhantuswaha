@@ -231,7 +231,12 @@ new class extends Component {
                                     </div>
                                 </dl>
                             </div>
+                        @else
+                            <div class="px-4 py-5 border-t border-gray-200 sm:p-0">
+                                No data found
+                            </div>
                         @endif
+
                         
                         @if(isset($showuser->families))
                             @foreach ($showuser->families as $key => $item)

@@ -194,7 +194,7 @@ new class extends Component {
                 <div class="grid grid-cols-1 gap-4 md:gap-6 ">
                     <div class="flex flex-col gap-12">
                         
-                        @if(isset($showuser))
+                        @if(isset($showuser) && isset($showuser->user_details))
                             <div class="px-4 py-5 border-t border-gray-200 sm:p-0">
                                 <dl class="sm:divide-y sm:divide-gray-200">
                                     <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">

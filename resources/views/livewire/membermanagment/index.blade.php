@@ -180,7 +180,7 @@ new class extends Component {
         </div>
     </div>
     <div x-show="modalOpen" x-transition="" class="fixed top-0 left-0 flex items-center justify-center w-full h-full min-h-screen z-999999 bg-black/90" style="display: none;">
-        <div @click.outside="modalOpen = false" class=" absolute w-full max-w-142.5 rounded-lg bg-white px-8 py-12 text-center dark:bg-boxdark ">
+        <div @click.outside="modalOpen = false" class=" absolute w-full h-full overflow-y-auto max-w-142.5 rounded-lg bg-white px-8 py-12 text-center dark:bg-boxdark ">
             <h3 class="pb-2 text-xl font-bold text-black dark:text-white sm:text-2xl">
                 Member Details 
             </h3>
@@ -193,59 +193,164 @@ new class extends Component {
             <div class="">
                 <div class="grid grid-cols-1 gap-4 md:gap-6 ">
                     <div class="flex flex-col gap-12">
-                        <!-- Accordion Item -->
-                        <div x-data="{ accordionOpen: false }" @click.outside="accordionOpen = false" class="p-4 border rounded-md border-stroke shadow-9 dark:border-strokedark dark:shadow-none sm:p-6">
-                            <button @click="accordionOpen = !accordionOpen" class="flex w-full items-center gap-1.5 sm:gap-3 xl:gap-6">
-                                <div class="flex h-10.5 w-full max-w-10.5 items-center justify-center rounded-md bg-[#F3F5FC] dark:bg-meta-4">
-                                <svg :class="accordionOpen &amp;&amp; 'rotate-180'" class="duration-200 ease-in-out fill-primary stroke-primary dark:fill-white dark:stroke-white" width="18" height="10" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M8.28882 8.43257L8.28874 8.43265L8.29692 8.43985C8.62771 8.73124 9.02659 8.86001 9.41667 8.86001C9.83287 8.86001 10.2257 8.69083 10.5364 8.41713L10.5365 8.41721L10.5438 8.41052L16.765 2.70784L16.771 2.70231L16.7769 2.69659C17.1001 2.38028 17.2005 1.80579 16.8001 1.41393C16.4822 1.1028 15.9186 1.00854 15.5268 1.38489L9.41667 7.00806L3.3019 1.38063L3.29346 1.37286L3.28467 1.36548C2.93287 1.07036 2.38665 1.06804 2.03324 1.41393L2.0195 1.42738L2.00683 1.44184C1.69882 1.79355 1.69773 2.34549 2.05646 2.69659L2.06195 2.70196L2.0676 2.70717L8.28882 8.43257Z" fill="" stroke=""></path>
-                                </svg>
-                                </div>
-
-                                <div>
-                                <h4 class="font-medium text-left text-black text-title-xsm dark:text-white">
-                                    How long we deliver your first blog post?
-                                </h4>
-                                </div>
-                            </button>
-
-                            <div x-show="accordionOpen" class="mt-5 duration-200 ease-in-out " style="display: none;">
-                                <p class="font-medium">
-                                It takes 2-3 weeks to get your first blog post
-                                ready. That includes the in-depth research &amp;
-                                creation of your monthly content marketing strategy
-                                that we do before writing your first blog post,
-                                Ipsum available .
-                                </p>
+                        
+                        @if(isset($showuser))
+                            <div class="px-4 py-5 border-t border-gray-200 sm:p-0">
+                                <dl class="sm:divide-y sm:divide-gray-200">
+                                    <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                        <dt class="text-sm font-medium text-gray-500">
+                                            Full name
+                                        </dt>
+                                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                            {{$showuser->user_details->firstname.''.$showuser->user_details->lastname }}
+                                        </dd>
+                                    </div>
+                                    <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                        <dt class="text-sm font-medium text-gray-500">
+                                            Email Address
+                                        </dt>
+                                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                            {{$showuser->email}}
+                                        </dd>
+                                    </div>
+                                    <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                        <dt class="text-sm font-medium text-gray-500">
+                                            Phone number
+                                        </dt>
+                                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                            {{$showuser->user_details->phone}}
+                                        </dd>
+                                    </div>
+                                    <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                        <dt class="text-sm font-medium text-gray-500">
+                                            Address
+                                        </dt>
+                                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                            {{nl2br($showuser->user_details->address)}}
+                                        </dd>
+                                    </div>
+                                </dl>
                             </div>
-                        </div>
+                        @endif
+                        
+                        @if(isset($showuser->families))
+                            @foreach ($showuser->families as $key => $item)
+                                
+                                <!-- Accordion Item -->
+                                <div x-data="{ accordionOpen: false }" @click.outside="accordionOpen = false" class="p-4 border rounded-md border-stroke shadow-9 dark:border-strokedark dark:shadow-none sm:p-6">
+                                    <button @click="accordionOpen = !accordionOpen" class="flex w-full items-center gap-1.5 sm:gap-3 xl:gap-6">
+                                        <div class="flex h-10.5 w-full max-w-10.5 items-center justify-center rounded-md bg-[#F3F5FC] dark:bg-meta-4">
+                                        <svg :class="accordionOpen &amp;&amp; 'rotate-180'" class="duration-200 ease-in-out fill-primary stroke-primary dark:fill-white dark:stroke-white" width="18" height="10" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8.28882 8.43257L8.28874 8.43265L8.29692 8.43985C8.62771 8.73124 9.02659 8.86001 9.41667 8.86001C9.83287 8.86001 10.2257 8.69083 10.5364 8.41713L10.5365 8.41721L10.5438 8.41052L16.765 2.70784L16.771 2.70231L16.7769 2.69659C17.1001 2.38028 17.2005 1.80579 16.8001 1.41393C16.4822 1.1028 15.9186 1.00854 15.5268 1.38489L9.41667 7.00806L3.3019 1.38063L3.29346 1.37286L3.28467 1.36548C2.93287 1.07036 2.38665 1.06804 2.03324 1.41393L2.0195 1.42738L2.00683 1.44184C1.69882 1.79355 1.69773 2.34549 2.05646 2.69659L2.06195 2.70196L2.0676 2.70717L8.28882 8.43257Z" fill="" stroke=""></path>
+                                        </svg>
+                                        </div>
 
-                        <!-- Accordion Item -->
-                        <div x-data="{ accordionOpen: false }" @click.outside="accordionOpen = false" class="p-4 border rounded-md border-stroke shadow-9 dark:border-strokedark dark:shadow-none sm:p-6">
-                            <button @click="accordionOpen = !accordionOpen" class="flex w-full items-center gap-1.5 sm:gap-3 xl:gap-6">
-                                <div class="flex h-10.5 w-full max-w-10.5 items-center justify-center rounded-md bg-[#F3F5FC] dark:bg-meta-4">
-                                <svg :class="accordionOpen &amp;&amp; 'rotate-180'" class="duration-200 ease-in-out fill-primary stroke-primary dark:fill-white dark:stroke-white" width="18" height="10" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M8.28882 8.43257L8.28874 8.43265L8.29692 8.43985C8.62771 8.73124 9.02659 8.86001 9.41667 8.86001C9.83287 8.86001 10.2257 8.69083 10.5364 8.41713L10.5365 8.41721L10.5438 8.41052L16.765 2.70784L16.771 2.70231L16.7769 2.69659C17.1001 2.38028 17.2005 1.80579 16.8001 1.41393C16.4822 1.1028 15.9186 1.00854 15.5268 1.38489L9.41667 7.00806L3.3019 1.38063L3.29346 1.37286L3.28467 1.36548C2.93287 1.07036 2.38665 1.06804 2.03324 1.41393L2.0195 1.42738L2.00683 1.44184C1.69882 1.79355 1.69773 2.34549 2.05646 2.69659L2.06195 2.70196L2.0676 2.70717L8.28882 8.43257Z" fill="" stroke=""></path>
-                                </svg>
+                                        <div>
+                                        <h4 class="font-medium text-left text-black text-title-xsm dark:text-white">
+                                            Family Memeber {{$key+1}}
+                                        </h4>
+                                        </div>
+                                    </button>
+
+                                    <div x-show="accordionOpen" class="mt-5 duration-200 ease-in-out " style="display: none;">
+                                        <div class="px-4 py-5 border-t border-gray-200 sm:p-0">
+                                            <dl class="sm:divide-y sm:divide-gray-200">
+                                                <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                                    <dt class="text-sm font-medium text-gray-500">
+                                                        Name
+                                                    </dt>
+                                                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                                        {{$item->name??'-' }}
+                                                    </dd>
+                                                </div>
+                                                <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                                    <dt class="text-sm font-medium text-gray-500">
+                                                        Is House Owner
+                                                    </dt>
+                                                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                                        {{$item->ishouseonwer??'-'}}
+                                                    </dd>
+                                                </div>
+                                                <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                                    <dt class="text-sm font-medium text-gray-500">
+                                                        Relation
+                                                    </dt>
+                                                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                                        {{$item->relation??'-'}}
+                                                    </dd>
+                                                </div>
+                                                <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                                    <dt class="text-sm font-medium text-gray-500">
+                                                        Martial Status
+                                                    </dt>
+                                                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                                        {{$item->martialstatus??'-'}}
+                                                    </dd>
+                                                </div>
+                                                <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                                    <dt class="text-sm font-medium text-gray-500">
+                                                        Blood Group
+                                                    </dt>
+                                                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                                        {{$item->bloodgroup??'-'}}
+                                                    </dd>
+                                                </div>
+                                                <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                                    <dt class="text-sm font-medium text-gray-500">
+                                                        Education
+                                                    </dt>
+                                                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                                        {{$item->education??'-'}}
+                                                    </dd>
+                                                </div>
+                                                <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                                    <dt class="text-sm font-medium text-gray-500">
+                                                        Medical History
+                                                    </dt>
+                                                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                                        {{$item->medicalhistory}}  {{$item->othermedicalhistory}}
+                                                    </dd>
+                                                </div>
+                                                <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                                    <dt class="text-sm font-medium text-gray-500">
+                                                        No Of Vehicles
+                                                    </dt>
+                                                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                                        {{$item->noofvehicles??'-'}} 
+                                                    </dd>
+                                                </div>
+                                                <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                                    <dt class="text-sm font-medium text-gray-500">
+                                                        Vehicle No.
+                                                    </dt>
+                                                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                                        {{$item->vehiclesnumber??'-'}} 
+                                                    </dd>
+                                                </div>
+                                                <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                                    <dt class="text-sm font-medium text-gray-500">
+                                                        Court Case
+                                                    </dt>
+                                                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                                        {{$item->courtcase??'-'}} 
+                                                    </dd>
+                                                </div>
+                                                <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                                    <dt class="text-sm font-medium text-gray-500">
+                                                        Court Number
+                                                    </dt>
+                                                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                                        {{$item->courtcasenumber??'-'}} 
+                                                    </dd>
+                                                </div>
+                                            </dl>
+                                        </div>
+                                    </div>
                                 </div>
+                        
+                            @endforeach
+                        @endif
 
-                                <div>
-                                <h4 class="font-medium text-left text-black text-title-xsm dark:text-white">
-                                    How long we deliver your first blog post?
-                                </h4>
-                                </div>
-                            </button>
-
-                            <div x-show="accordionOpen" class="mt-5 duration-200 ease-in-out " style="display: none;">
-                                <p class="font-medium">
-                                It takes 2-3 weeks to get your first blog post
-                                ready. That includes the in-depth research &amp;
-                                creation of your monthly content marketing strategy
-                                that we do before writing your first blog post,
-                                Ipsum available .
-                                </p>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

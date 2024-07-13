@@ -512,6 +512,10 @@ footer {
     margin: -20px -20px 20px;
 }
 
+.care-box .box .care-img iframe {
+    width: 100%;
+}
+
 .care-box .box h3 {
     color: #c3ae01;
     font-size: 22px;

@@ -40,6 +40,21 @@ class Gallery extends Component
 
     }
 
+    public function replaceHeightWIthIframe($iframe){
+        // $iframe = '<iframe width="400" height="225" src="youtube.com/embed/c7ct6pNOvEE?feature=oembed" frameborder="0" allowfullscreen></iframe>';
+        // $src = html_entity_decode($post['url']);
+        $height = 250;
+        $width = 410;
+
+        // add autoplay
+        // $src = $src . (strstr($src, '?') ? '&': '?') . 'autoplay=1';
+
+        // $iframe = preg_replace('/src="(.*?)"/i', 'src="' . $src .'"', $iframe);
+        $iframe = preg_replace('/height="(.*?)"/i', 'height="' . $height .'"', $iframe);
+        $iframe = preg_replace('/width="(.*?)"/i', 'width="' . $width .'"', $iframe);
+        return $iframe;
+    }
+
     public function getFormatedData($data, $islanding = false)
     {
         $textPageDetails = Page::with(['gallery', 'page_details'])->where($data)->get();

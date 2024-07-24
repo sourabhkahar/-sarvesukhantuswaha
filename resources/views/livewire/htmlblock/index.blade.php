@@ -4,6 +4,7 @@ use Livewire\WithPagination;
 use Livewire\Volt\Component;
 use App\Models\HtmlBlock;
 use App\Livewire\Forms\HtmlBlockForm;
+use Livewire\Attributes\On; 
 
 new class extends Component {
       use WithPagination;
@@ -45,6 +46,7 @@ new class extends Component {
             'HtmlBlocks' => HtmlBlock::search($this->search)
                                        ->where(['taxonmycode'=>1,'pagecode'=>$this->form->pageId])
                                        ->orderBy($this->sortColumn,$this->sortDirection)
+                                       ->orderBy('ordno','Desc')
                                        ->paginate($this->perPage),
          ];
       }
@@ -74,6 +76,16 @@ new class extends Component {
 
       public function changeStatus($id){
          $this->form->updateStatus($id);
+      }
+
+      #[On('reorder-list')] 
+      public function updatePostList($orderList)
+      {
+         $orderArr = [];
+         foreach ($orderList as $key => $ord_value) {
+            HtmlBlock::where('id',$ord_value['id'])
+            ->update(['ordno'=>$ord_value['orderno']]);
+         }
       }
 }; ?>
 
@@ -155,6 +167,7 @@ new class extends Component {
          </div>
       </form>
    </div>
+   
    <div class="mt-2 bg-white border rounded-sm border-stroke shadow-default dark:border-strokedark dark:bg-boxdark">
       <div class="max-w-full overflow-x-auto data-table-common data-table-two">
          <div class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns">
@@ -175,8 +188,8 @@ new class extends Component {
                      aria-controls="dataTableTwo" wire:model.live.debounce.300ms="search">
                </div>
             </div>
-            <div class="datatable-container">
-               <table class="table w-full table-auto datatable-table" id="dataTableTwo">
+            <div class="datatable-container" id="datatable-container" >
+               <table class="table w-full table-auto datatable-table" id="dataTableTwo" drag-root>
                   <thead>
                      <tr>
                         @foreach($headerColumn as $headerKey => $headerValue)
@@ -215,8 +228,8 @@ new class extends Component {
                      </tr>
                   </thead>
                   <tbody>
-                     @foreach ($HtmlBlocks as $HtmlBlock)
-                     <tr data-index="0">
+                     @foreach ($HtmlBlocks as $key => $HtmlBlock)
+                     <tr data-id="{{$HtmlBlock->id}}" drag-item draggable="true" >
                         <td>{{$HtmlBlock->blockname}}</td>
                         <td>{{$HtmlBlock->htmlblock}}</td>
                         <td>
@@ -296,3 +309,53 @@ new class extends Component {
       </div>
    </div>
 </div>
+@script
+   <script>
+      let root  = document.querySelector('[drag-root]');
+      let roots = root.querySelectorAll('[drag-item]')
+      roots.forEach(el => {
+         el.addEventListener('dragstart',(e)=>{
+            draggedElement = e.target.closest('tr');
+            draggedElement.setAttribute('dragging',true);
+         })
+         el.addEventListener('dragenter',(e)=>{
+            draggedElement = e.target.closest('tr');
+            draggedElement.classList.add('bg-blue-100')
+            e.preventDefault()
+         })
+         el.addEventListener('dragover',(e)=>{
+            e.preventDefault()
+         })
+         el.addEventListener('dragend',(e)=>{
+            draggedElement = e.target.closest('tr');
+            draggedElement.removeAttribute('dragging');
+         })
+         el.addEventListener('drop',(e)=>{
+            draggedElement = e.target.closest('tr');
+            draggedElement.classList.remove('bg-blue-100')
+            dragingElement = root.querySelector('[dragging]')
+
+            let newList = root.querySelectorAll('[drag-item]')
+            let orderList = []
+            newList.forEach((item,index) => {
+               orderList.push({
+                  id:item.getAttribute('data-id'),
+                  orderno:index+1
+               }) 
+            })
+            if(orderList.length){
+               Livewire.dispatch('reorder-list',  {orderList:orderList} )
+            }
+            //NOTE  For After thing also need to do up and Down in both direction
+            console.log(draggedElement,dragingElement)
+            if(dragingElement){
+               draggedElement.before(dragingElement)
+            }
+         })
+         el.addEventListener('dragleave',(e)=>{
+            e.target.closest('tr').classList.remove('bg-blue-100')
+         })
+      });
+   </script>
+@endscript
+

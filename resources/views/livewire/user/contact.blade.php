@@ -248,14 +248,24 @@
                                     wire:model.live="familyDetails.{{$keyFam}}.othermedicalhistory" />
                             </div>
                             @endIf
-                            <div class="field ">
-                                <label for="">No. of vehicles</label>
-                                <input type="number" class="input-field"
-                                    wire:model.live="familyDetails.{{$keyFam}}.noofvehicles" min="0" max="50"/>
-                                    @foreach ($errors->get("familyDetails.$keyFam.noofvehicles") as  $message)
-                                    <x-field-error :messages="$message" class="mt-2 required" />
-                            @endforeach
+                            <div class="col-2">
+                                <div class="field ">
+                                    <label for="">No. of vehicles</label>
+                                    <input type="number" class="input-field"
+                                        wire:model.live="familyDetails.{{$keyFam}}.noofvehicles" min="0" max="50"/>
+                                        @foreach ($errors->get("familyDetails.$keyFam.noofvehicles") as  $message)
+                                            <x-field-error :messages="$message" class="mt-2 required" />
+                                        @endforeach
+                                </div>
+                                <div class="field">
+                                    <label for=""> Date Of Birth <span class="required">*</span></label>
+                                    <input type="date" class="input-field" id="" wire:model.live="familyDetails.{{$keyFam}}.dob" />
+                                    @foreach ($errors->get("familyDetails.$keyFam.dob") as  $message)
+                                        <x-field-error :messages="$message" class="mt-2 required" />
+                                    @endforeach
+                                </div>
                             </div>
+
                             @if(isset($familyDetails[$keyFam]['noofvehicles']) &&
                             !empty($familyDetails[$keyFam]['noofvehicles']) )
                                 @for($i=0 ;$i<$familyDetails[$keyFam]['noofvehicles'];$i++)    

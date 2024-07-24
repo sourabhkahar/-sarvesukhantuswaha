@@ -10,12 +10,13 @@ new class extends Component {
     public Membermanagment $form; 
     public $perPage = 10; 
     public $search = '' ; 
-    public $sortColumn = 'name';
-    public $sortDirection = 'Asc';
+    public $sortColumn = 'created_at';
+    public $sortDirection = 'DESC';
     public $editId = null;
     public $showuser = null;
     public $openModal = false;
     public $headerColumn  = [
+                                'member_code'=>'Member Code',
                                 'name'=>'Name',
                                 'created_at'=>'Created At',
                                 'updated_At'=>'Updated At',
@@ -132,6 +133,7 @@ new class extends Component {
                         <tbody>
                             @foreach ($users as $user)
                             <tr data-index="0">
+                                <td>{{$user->member_code}}</td>
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->created_at}}</td>
                                 <td>{{$user->updated_at}}</td>
@@ -199,6 +201,14 @@ new class extends Component {
                                 <dl class="sm:divide-y sm:divide-gray-200">
                                     <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                         <dt class="text-sm font-medium text-gray-500">
+                                            Member Code
+                                        </dt>
+                                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                            {{$showuser->member_code }}
+                                        </dd>
+                                    </div>
+                                    <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                        <dt class="text-sm font-medium text-gray-500">
                                             Full name
                                         </dt>
                                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
@@ -226,7 +236,7 @@ new class extends Component {
                                             Address
                                         </dt>
                                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                            {{nl2br($showuser->user_details->address)}}
+                                            {!!nl2br($showuser->user_details->address)!!}
                                         </dd>
                                     </div>
                                 </dl>
@@ -266,6 +276,14 @@ new class extends Component {
                                                     </dt>
                                                     <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                                                         {{$item->name??'-' }}
+                                                    </dd>
+                                                </div>
+                                                <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                                    <dt class="text-sm font-medium text-gray-500">
+                                                        DOB
+                                                    </dt>
+                                                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                                        {{$item->dob??'-' }}
                                                     </dd>
                                                 </div>
                                                 <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">

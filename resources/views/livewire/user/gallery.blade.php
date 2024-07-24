@@ -27,7 +27,7 @@
                             @endif
                         </div>
                         <h3>{{$gallery['title']??''}}</h3>
-                        <p>{{isset($gallery['shortdescription2'])?nl2br($gallery['shortdescription2']):''}}</p>
+                        <p>{!!isset($gallery['shortdescription2'])?nl2br($gallery['shortdescription2']):''!!}</p>
                     </div>
                 @endforeach
             </div>

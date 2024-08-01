@@ -326,17 +326,22 @@ new class extends Component {
          el.addEventListener('dragover',(e)=>{
             e.preventDefault()
          })
-         el.addEventListener('dragend',(e)=>{
-            draggedElement = e.target.closest('tr');
-            draggedElement.removeAttribute('dragging');
-         })
+         // el.addEventListener('dragend',(e)=>{
+         //    draggedElement = e.target.closest('tr');
+         //    draggedElement.removeAttribute('dragging');
+         // })
          el.addEventListener('drop',(e)=>{
             draggedElement = e.target.closest('tr');
             draggedElement.classList.remove('bg-blue-100')
             dragingElement = root.querySelector('[dragging]')
 
+            if(dragingElement){
+               draggedElement.before(dragingElement)
+            }
+
             let newList = root.querySelectorAll('[drag-item]')
             let orderList = []
+            
             newList.forEach((item,index) => {
                orderList.push({
                   id:item.getAttribute('data-id'),
@@ -346,11 +351,10 @@ new class extends Component {
             if(orderList.length){
                Livewire.dispatch('reorder-list',  {orderList:orderList} )
             }
+            
             //NOTE  For After thing also need to do up and Down in both direction
-            console.log(draggedElement,dragingElement)
-            if(dragingElement){
-               draggedElement.before(dragingElement)
-            }
+            // console.log(draggedElement,dragingElement)
+           
          })
          el.addEventListener('dragleave',(e)=>{
             e.target.closest('tr').classList.remove('bg-blue-100')

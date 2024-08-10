@@ -115,15 +115,15 @@
                             </div>
                             <div class="col-2">
                                 <div class="field">
-                                    <label for="radio" class="custom-radio">
-                                        <input type="radio" class="" id="radio" name="familyDetails.{{$keyFam}}.ishouseonwer"
+                                    <label for="radio-house-owner{{$keyFam}}" class="custom-radio">
+                                        <input type="radio" class="" id="radio-house-owner{{$keyFam}}" name="familyDetails.{{$keyFam}}.ishouseonwer"
                                             wire:model.live="familyDetails.{{$keyFam}}.ishouseonwer"
                                             value="House Owner" /><span>House Owner</span>
                                     </label>
                                 </div>
                                 <div class="field">
-                                    <label for="radio1" class="custom-radio">
-                                        <input type="radio" class="" id="radio1" name="familyDetails.{{$keyFam}}.ishouseonwer"
+                                    <label for="radio-rented-house{{$keyFam}}" class="custom-radio">
+                                        <input type="radio" class="" id="radio-rented-house{{$keyFam}}" name="familyDetails.{{$keyFam}}.ishouseonwer"
                                             wire:model.live="familyDetails.{{$keyFam}}.ishouseonwer"
                                             value="Rented House" /><span>Rented House</span>
                                     </label>
@@ -153,15 +153,15 @@
                                 
                                 <div class="col-2">
                                     <div class="field">
-                                        <label for="radio2" class="custom-radio">
-                                            <input type="radio" class="" id="radio2" name="familyDetails.{{$keyFam}}.martialstatus"
+                                        <label for="radio-married{{$keyFam}}" class="custom-radio">
+                                            <input type="radio" class="" id="radio-married{{$keyFam}}" name="familyDetails.{{$keyFam}}.martialstatus"
                                                 wire:model.live="familyDetails.{{$keyFam}}.martialstatus"
                                                 value="Married" /><span>Married</span>
                                         </label>
                                     </div>
                                     <div class="field">
-                                        <label for="radio3" class="custom-radio">
-                                            <input type="radio" class="" id="radio3" name="familyDetails.{{$keyFam}}.martialstatus"
+                                        <label for="radio-unmarried{{$keyFam}}" class="custom-radio">
+                                            <input type="radio" class="" id="radio-unmarried{{$keyFam}}" name="familyDetails.{{$keyFam}}.martialstatus"
                                                 wire:model.live="familyDetails.{{$keyFam}}.martialstatus"
                                                 value="Unmarried" /><span>Unmarried</span>
                                         </label>
@@ -204,15 +204,15 @@
                                 <label for="">Do you have any court case?<span class="required">*</span></label>
                                 <div class="col-2">
                                     <div class="field">
-                                        <label for="radio4" class="custom-radio">
-                                            <input type="radio" class="" id="radio4" name="familyDetails.{{$keyFam}}.courtcase"
+                                        <label for="radio-court-case-yes{{$keyFam}}" class="custom-radio">
+                                            <input type="radio" class="" id="radio-court-case-yes{{$keyFam}}" name="familyDetails.{{$keyFam}}.courtcase"
                                                 wire:model.live="familyDetails.{{$keyFam}}.courtcase"
                                                 value="Y" /><span>yes</span>
                                         </label>
                                     </div>
                                     <div class="field">
-                                        <label for="radio5" class="custom-radio">
-                                            <input type="radio" class="" id="radio5" name="familyDetails.{{$keyFam}}.courtcase"
+                                        <label for="radio-court-case-no-{{$keyFam}}" class="custom-radio">
+                                            <input type="radio" class="" id="radio-court-case-no-{{$keyFam}}" name="familyDetails.{{$keyFam}}.courtcase"
                                                 wire:model.live="familyDetails.{{$keyFam}}.courtcase"
                                                 value="N" /><span>no</span>
                                         </label>
@@ -252,7 +252,7 @@
                                 <div class="field ">
                                     <label for="">No. of vehicles</label>
                                     <input type="number" class="input-field"
-                                        wire:model.live="familyDetails.{{$keyFam}}.noofvehicles" min="0" max="50"/>
+                                        wire:model.live="familyDetails.{{$keyFam}}.noofvehicles"/>
                                         @foreach ($errors->get("familyDetails.$keyFam.noofvehicles") as  $message)
                                             <x-field-error :messages="$message" class="mt-2 required" />
                                         @endforeach
@@ -267,7 +267,7 @@
                             </div>
 
                             @if(isset($familyDetails[$keyFam]['noofvehicles']) &&
-                            !empty($familyDetails[$keyFam]['noofvehicles']) )
+                            !empty($familyDetails[$keyFam]['noofvehicles']) && $familyDetails[$keyFam]['noofvehicles'] <= 10 )
                                 @for($i=0 ;$i<$familyDetails[$keyFam]['noofvehicles'];$i++)    
                                     <div class="field">
                                         <label for="">Vehicle Number{{$i+1}}<span class="required">*</span></label>

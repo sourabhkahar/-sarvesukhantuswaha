@@ -19,7 +19,7 @@
                 <table class="content" width="600" border="0" cellspacing="0" cellpadding="0" style="border-collapse: collapse; border: 1px solid #cccccc;">
                     <!-- Header -->
                     <tr>
-                        <td class="header" style="background-color: #345C72; padding: 40px; text-align: center; color: white; font-size: 24px;">
+                        <td class="header" style="background-color: #ffea3d; padding: 40px; text-align: center; color: black; font-size: 24px;">
                            <img src="{{asset('/images/logo.jpeg')}}"> Sarve Sukhantu Swaha
                         </td>
                     </tr>
@@ -46,8 +46,8 @@
                             <!-- CTA Button -->
                             <table cellspacing="0" cellpadding="0" style="margin: auto;">
                                 <tr>
-                                    <td align="center" style="background-color: #345C72; padding: 10px 20px; border-radius: 5px;">
-                                        <a href="{{env('APP_ENV')}}/admin" target="_blank" style="color: #ffffff; text-decoration: none; font-weight: bold;">For more Information login to admin panel</a>
+                                    <td align="center" style="background-color: #ffea3d; padding: 10px 20px; border-radius: 5px;">
+                                        <a href="{{env('APP_ENV')}}/admin" target="_blank" style="color: black; text-decoration: none; font-weight: bold;">For more Information login to admin panel</a>
                                     </td>
                                 </tr>
                             </table>
@@ -60,7 +60,7 @@
                     </tr> --}}
                     <!-- Footer -->
                     <tr>
-                        <td class="footer" style="background-color: #333333; padding: 40px; text-align: center; color: white; font-size: 14px;">
+                        <td class="footer" style="background-color: #ffea3d; padding: 40px; text-align: center; color: black; font-size: 14px;">
                         Copyright © 2024 sarvesukhantuswaha.org
                         </td>
                     </tr>

@@ -38,7 +38,7 @@ class Contact extends Component
     public $state;
     #[Validate('required|digits:6')]
     public $zip;
-    #[Validate('required|mimes:jpeg,jpg,png,gif|required|max:2000')]
+    #[Validate('required|mimes:jpeg,jpg,png,gif|required|max:3000')]
     public $photo;
     #[Validate('required|date')]
     public $dob;
@@ -49,10 +49,12 @@ class Contact extends Component
         'familyDetails.*.martialstatus' => 'required',
         'familyDetails.*.ishouseonwer' => 'required',
         'familyDetails.*.name' => 'required',
-        'familyDetails.*.noofvehicles' => 'numeric',
+        'familyDetails.*.noofvehicles' => 'integer|between:0,10',
     ], message: [
         'required' => 'The :attribute is missing.',
         'numeric' => ':attribute should be a numberic.',
+        'integer' => ':attribute should be a numberic.',
+        'between' => ':attribute should be a between 0,10.',
     ], attribute: [
         'familyDetails.*.relation' => 'Relation',
         'familyDetails.*.dob' => 'Date Of Birth',

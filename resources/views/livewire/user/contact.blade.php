@@ -23,14 +23,14 @@
                                 <x-field-error :messages="$errors->get('firstname')" class="mt-2 required" />
                             </div>
                             <div class="field">
-                                <label for="">Last Name<span class="required">*</span></label>
-                                <input type="text" class="input-field" id="" wire:model="lastname" />
-                                <x-field-error :messages="$errors->get('lastname')" class="mt-2 required" />
-                            </div>
-                            <div class="field">
                                 <label for="">Middle Name<span class="required">*</span></label>
                                 <input type="text" class="input-field" id="" wire:model="middlename" />
                                 <x-field-error :messages="$errors->get('middlename')" class="mt-2 required" />
+                            </div>
+                            <div class="field">
+                                <label for="">Last Name<span class="required">*</span></label>
+                                <input type="text" class="input-field" id="" wire:model="lastname" />
+                                <x-field-error :messages="$errors->get('lastname')" class="mt-2 required" />
                             </div>
                         </div>
                         {{-- </div> --}}

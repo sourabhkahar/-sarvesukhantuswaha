@@ -87,11 +87,11 @@
                             <input type="file" class="input-field" id="" wire:model="photo" />
                             <x-field-error :messages="$errors->get('photo')" class="mt-2 required" />
                         </div>
-                        <div class="field">
+                        {{-- <div class="field">
                             <label for="">Birth Date <span class="required">*</span></label>
                             <input type="date" class="input-field" id="" wire:model="dob" />
                             <x-field-error :messages="$errors->get('dob')" class="mt-2 required" />
-                        </div>
+                        </div> --}}
                         @if(count($familyDetails) > 0)
                         <h2>Family Details</h2>
                         @endif

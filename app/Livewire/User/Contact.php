@@ -40,8 +40,8 @@ class Contact extends Component
     public $zip;
     #[Validate('required|mimes:jpeg,jpg,png,gif|required|max:3000')]
     public $photo;
-    #[Validate('required|date')]
-    public $dob;
+    // #[Validate('required|date')]
+    // public $dob;
 
     #[Validate([
         'familyDetails.*.relation' => 'required',
@@ -101,8 +101,7 @@ class Contact extends Component
             $user = User::create([
                 'name' => $this->firstname.' '.$this->lastname.' '.$this->middlename,
                 'email' => $this->email,
-                'password' => $RandomString,
-                'role'  => 'member'
+                'password' => $RandomString
             ]);
     
             $date=date_create();
@@ -119,7 +118,7 @@ class Contact extends Component
                 'state' => $this->state,
                 'zip'   => $this->zip,
                 'photo'   => $imageName,
-                'dob'   => $this->dob
+                // 'dob'   => $this->dob
             ]);
     
             //Add Memeber Code

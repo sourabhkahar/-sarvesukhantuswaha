@@ -48,8 +48,24 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         return view('membermanagment');
     })->name('membermanagment');
 
-    Route::get('/create-symbolic-link', function () {
-        Artisan::call('storage:link');
-    });
+    Route::get('roles/', function () {
+        return view('roles.index');
+    })->name('roles.index');
+
+    Route::get('roles/create', function () {
+        return view('roles.create');
+    })->name('roles.create');
+
+    Route::get('roles/edit/{id}', function ($id) {
+        return view('roles.edit', ['id' => $id]);
+    })->name('roles.edit');
+
+    Route::get('admin-user/', function () {
+        return view('admin-user.index');
+    })->name('admin-user.index');
+    
+    Route::get('admin-user/create', function () {
+        return view('admin-user.create');
+    })->name('admin-user.create');
 });
 require __DIR__ . '/auth.php';

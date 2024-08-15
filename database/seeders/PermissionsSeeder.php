@@ -18,6 +18,12 @@ class PermissionsSeeder extends Seeder
         'delete-site',
         'create-site',
         'view-site',
+
+        'edit-role',
+        'delete-role',
+        'create-role',
+        'view-role',
+
         'edit-user',
         'delete-user',
         'create-user',
@@ -45,8 +51,9 @@ class PermissionsSeeder extends Seeder
         // }
         // create roles and assign existing permissions
         $role1 = Role::create(['name' => 'super-admin']);
-        $role2 = Role::create(['name' => 'leader']);
+        $role2 = Role::create(['name' => 'dev']);
         $role3 = Role::create(['name' => 'admin']);
+        $role4 = Role::create(['name' => 'leader']);
 
         //Role1
         $role1->givePermissionTo('edit-site');
@@ -59,11 +66,17 @@ class PermissionsSeeder extends Seeder
         $role1->givePermissionTo('create-user');
         $role1->givePermissionTo('view-user');
 
-        //Role2
-        $role2->givePermissionTo('edit-user');
-        $role2->givePermissionTo('delete-user');
-        $role2->givePermissionTo('create-user');
-        $role2->givePermissionTo('view-user');
+        $role1->givePermissionTo('edit-role');
+        $role1->givePermissionTo('delete-role');
+        $role1->givePermissionTo('create-role');
+        $role1->givePermissionTo('view-role');
+        
+
+        //Role4
+        $role4->givePermissionTo('edit-user');
+        $role4->givePermissionTo('delete-user');
+        $role4->givePermissionTo('create-user');
+        $role4->givePermissionTo('view-user');
 
         //Role3
         $role3->givePermissionTo('edit-site');
@@ -71,21 +84,49 @@ class PermissionsSeeder extends Seeder
         $role3->givePermissionTo('create-site');
         $role3->givePermissionTo('view-site');
 
+        //Role2
+        $role2->givePermissionTo('edit-site');
+        $role2->givePermissionTo('delete-site');
+        $role2->givePermissionTo('create-site');
+        $role2->givePermissionTo('view-site');
+
+        $role2->givePermissionTo('edit-user');
+        $role2->givePermissionTo('delete-user');
+        $role2->givePermissionTo('create-user');
+        $role2->givePermissionTo('view-user');
+
+        $role2->givePermissionTo('edit-role');
+        $role2->givePermissionTo('delete-role');
+        $role2->givePermissionTo('create-role');
+        $role2->givePermissionTo('view-role');
+
         // gets all permissions via Gate::before rule; see AuthServiceProvider
 
+        //For dev
+        $user = \App\Models\User::factory()->create([
+            'name' => 'dev-admin',
+            'email' => 'dev-admin@gmail.com',
+            'password' => 'Admin@1234!',
+        ]);
+        $user->assignRole($role4);
+
+        //For super-admin
         $user = \App\Models\User::factory()->create([
             'name' => 'super-admin',
-            'email' => 'super-admin@super.com',
+            'email' => 'super-admin@gmail.com',
+            'password' => 'Admin@1234!',
         ]);
         $user->assignRole($role1);
 
-        // create demo users
-        $user = \App\Models\User::find(1);
-        $user->assignRole($role3);
-
+        //For admin
+        // $user = \App\Models\User::find(1);
+        // $user->assignRole($role3);
+        
+        //For Leader
         $user = \App\Models\User::factory()->create([
             'name' => 'Leader',
-            'email' => 'leader@leader.com',
+            'email' => 'leader@gmail.com',
+            'password' => 'Admin@1234!',
         ]);
         $user->assignRole($role2);
        

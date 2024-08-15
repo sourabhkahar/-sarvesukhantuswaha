@@ -22,7 +22,8 @@ new class extends Component {
         return [
           'pageentryblock' => $this->PageEntryBlocks
          ];
-      }
+    }
+
 
     public function save(){
         if($this->act == 'add'){

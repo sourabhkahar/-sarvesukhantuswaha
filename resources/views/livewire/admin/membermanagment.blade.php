@@ -32,13 +32,11 @@ new class extends Component {
 
     public function with(): array{
         return [
-        'users' =>  User::where([
-                                    'status'=>'Y',
-                                    'role'=>Config::get('constant.roles.member'),
-                                ])
-                                ->search($this->search)
-                                ->orderBy($this->sortColumn,$this->sortDirection)
-                                ->paginate($this->perPage),
+        'users' =>  User::where('status','=','Y')->
+                            where('member_code','!=','')
+                            ->search($this->search)
+                            ->orderBy($this->sortColumn,$this->sortDirection)
+                            ->paginate($this->perPage),
         ];
     }
 

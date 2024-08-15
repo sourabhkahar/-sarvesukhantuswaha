@@ -104,6 +104,7 @@ return [
     'relations' =>[
         'Father',
         'Mother',
+        'Wife',
         'Sister',
         'Brother',
         'GrandFather',

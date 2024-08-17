@@ -1,14 +1,5 @@
 <div class="">
-    <section class="banner-section inner-banner" data-aos="fade-up" data-aos-duration="1000">
-        <img src="{{asset('/images/about-banner.jpg')}}" alt="" class="img-responsive" />
-        <div class="banner-content">
-            <div class="container">
-                <h2>CONTACT US</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper
-                    mattis, pulvinar dapibus leo.</p>
-            </div>
-        </div>
-    </section>
+    <livewire:layout.user.header-banner :pid="$pid"/>
     <section class="contact-section section-gapping">
         <div class="container">
             <div class="contact">

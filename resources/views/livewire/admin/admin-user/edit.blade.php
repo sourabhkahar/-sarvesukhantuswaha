@@ -18,8 +18,8 @@ new class extends Component {
     public function save(){
         $this->validate();
         $this->form->edit();
-        session()->flash('message', 'Role Created Successfully');
-        $this->redirect("/admin/roles/", navigate: true);
+        session()->flash('message', 'Admin User Updated Successfully');
+        $this->redirect("/admin/admin-user/", navigate: true);
         
     }
 
@@ -29,15 +29,7 @@ new class extends Component {
         $this->form->name = $user->name;
         $this->form->email = $user->email;
         $this->form->role = $user->getRoleNames()[0]??'';
-        // dd( );
-        // $this->form->role = $role->email;
-        // $rolePermissions = Permission::join("role_has_permissions", "role_has_permissions.permission_id", "=", "permissions.id")
-        //     ->where("role_has_permissions.role_id", $id)
-        //     ->get();
-
-        // foreach ($rolePermissions  as $key => $rolePermission) {
-        //     $this->form->rolePermission[] = $rolePermission->name;
-        // }
+        // $this->redirect("/admin/admin-user/", navigate: true);
     }
 
     #[Computed]
@@ -99,7 +91,7 @@ new class extends Component {
 
         <div class="flex mt-6">
             <button class="flex justify-center p-3 font-medium rounded bg-primary text-gray hover:bg-opacity-90"
-                wire:loading.attr="disabled">
+                wire:loading.attr="disabled" {{ $this->disableField()?'disabled':''}}>
                 <svg class="hidden w-5 h-5 mr-3 -ml-1 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
                     viewBox="0 0 24 24" wire:loading.class="animate-spin" wire:loading.class.remove="hidden"
                     wire:target="save">
@@ -111,7 +103,7 @@ new class extends Component {
                 Submit
             </button>
             <a class="flex justify-center p-3 ml-2 font-medium bg-red-500 rounded text-gray hover:bg-opacity-90"
-                href="{{route('roles.index')}}" type="button" wire:navigate>
+                href="{{route('admin-user.index')}}" type="button" wire:navigate>
                 Cancel
             </a>
         </div>

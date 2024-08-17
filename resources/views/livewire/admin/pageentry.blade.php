@@ -56,7 +56,7 @@ new class extends Component {
         //Set Input Field Data
         $icount = 1;
         forEach($this->formData as $formKey => $formval){
-            if (strpos($formKey, 'image') !== false){
+            if (strpos($formKey, 'image') !== false ){
                 if(($formval && !is_string( $formval ))){
                     $date=date_create();
                     $imagesData[] = [

@@ -146,8 +146,8 @@ new class extends Component {
                                        fill=""></path>
                                  </svg>
                               </button>
-                             
-                              <button class="hover:text-primary" wire:click="deleteUser({{$role->id}})" wire:confirm="Are you sure you want to delete this role?">
+                              @if(!in_array($role->name,['dev-admin','super-admin']))
+                              <button class="hover:text-primary" wire:click="deleteUser({{$role->id}})" wire:confirm="Are you sure you want to delete this user?">
                                  <svg class="fill-current" width="18" height="18" viewBox="0 0 18 18" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -164,6 +164,7 @@ new class extends Component {
                                        fill=""></path>
                                  </svg>
                               </button>
+                              @endif
                             
                            </div>
                         </td>

@@ -85,7 +85,7 @@ class Contact extends Component
     
     public function render()
     {
-        return view('livewire.user.contact');
+        return view('livewire.user.contact',['pid'=>3]);
     }
 
     public function addFamilyDetails()

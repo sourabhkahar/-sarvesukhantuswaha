@@ -1,13 +1,5 @@
 <div class="">
-    <section class="banner-section inner-banner" data-aos="fade-up" data-aos-duration="1000">
-        <img src="{{asset('/images/about-banner.jpg')}}" alt="" class="img-responsive" />
-        <div class="banner-content">
-            <div class="container">
-                <h2>Consectetur Adipisicing Elit</h2>
-                <p>We support children and youth to reach their full potential</p>
-            </div>
-        </div>
-    </section>
+    <livewire:layout.user.header-banner :pid="$pid"/>
 
     <x-user.what-we-do :whatWeDo="$whatWeDo" :title="$page['title1']??''" :link="$page['title1']??''" :modelOpenNo="$modelOpenNo" /> 
 

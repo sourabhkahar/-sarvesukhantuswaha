@@ -10,6 +10,7 @@
                             <h3>0{{$loop->iteration}}</h3>
                             <h4>{{$whatWeDoVal['title']}}</h4>
                             <p> {{$whatWeDoVal['shortdescription1']??''}}</p>
+                            <button class="btn">read more</button>
                         </a>
                     </div>
 

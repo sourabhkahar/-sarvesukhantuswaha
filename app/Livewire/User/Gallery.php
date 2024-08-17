@@ -18,7 +18,7 @@ class Gallery extends Component
     #[Layout('layouts.guest')] 
     public function render()
     {
-        return view('livewire.user.gallery');
+        return view('livewire.user.gallery',['pid'=>'4']);
     }
 
     public function openModal($ModelNo)

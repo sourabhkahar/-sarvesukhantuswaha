@@ -1,13 +1,5 @@
 <div class="">
-    <section class="banner-section inner-banner" data-aos="fade-up" data-aos-duration="1000">
-        <img src="{{asset('/images/about-banner.jpg')}}" alt="" class="img-responsive" />
-        <div class="banner-content">
-            <div class="container">
-                <h2>About Us</h2>
-                <p>Welcome! Explore our About Us page to uncover the reason behind our charity, how we operate, and the difference we’re making. Join us in spreading hope and kindness!</p>
-            </div>
-        </div>
-    </section>
+    <livewire:layout.user.header-banner :pid="$pid"/>
     <section class="started-section section-gapping" data-aos="fade-up" data-aos-duration="1500">
         <div class="container">
             <h2 class="main-title">{{isset($page['title1'])?$page['title1']:''}}</h2>

@@ -17,7 +17,7 @@ class About extends Component
     #[Layout('layouts.guest')] 
     public function render()
     {
-        return view('livewire.user.about');
+        return view('livewire.user.about',['pid'=>'2']);
     }
 
     public function openModal($ModelNo)

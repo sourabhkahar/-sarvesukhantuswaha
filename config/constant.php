@@ -26,6 +26,7 @@ return [
         "link5" => "Link5",
         "headerimage" => "Header Image",
         "headertext" => "Header text",
+        "headersubtext" => "Header Sub text",
         "metatags" => "Meta tags",
         "status"    =>  "status",
     ],

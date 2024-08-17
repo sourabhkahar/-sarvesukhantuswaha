@@ -143,7 +143,7 @@ new class extends Component {
               <span class="block text-sm font-medium text-black dark:text-white"
                 >{{auth()->user()->name}}</span
               >
-              <span class="block text-xs font-medium">{{auth()->user()->roles[0]->name}}</span>
+              <span class="block text-xs font-medium">{{auth()->user()->roles[0]->name??''}}</span>
             </span>
   
             <span class="w-12 h-12 rounded-full">

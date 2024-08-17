@@ -67,5 +67,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('admin-user/create', function () {
         return view('admin-user.create');
     })->name('admin-user.create');
+
+    Route::get('admin-user/edit/{id}', function ($id) {
+        return view('admin-user.edit', ['id' => $id]);
+    })->name('admin-user.edit');
 });
 require __DIR__ . '/auth.php';

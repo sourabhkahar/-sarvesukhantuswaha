@@ -3,6 +3,7 @@
 namespace App\Livewire\Forms;
 
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Form;
 
@@ -40,6 +41,20 @@ class UserForm extends Form
         } catch (\Exception $e) {
             dd($e);
         }
+    }
+
+    public function edit()
+    {
+
+        $user = User::find($this->id);
+        $userArr = [
+            'role'=>$this->role
+        ];
+        $user->update($userArr);
+        DB::table('model_has_roles')->where('model_id',$this->id)->delete();
+    
+        $user->assignRole($this->role);
+    
     }
 
     public function destroy()

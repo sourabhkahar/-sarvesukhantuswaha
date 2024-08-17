@@ -5,7 +5,6 @@ use Spatie\Permission\Models\Role;
 //
 new class extends Component {
     public UserForm $form; 
-    public $PageEntryBlocks = [];
     public function with(): array{
         return [
           'Roles' => Role::get()
@@ -23,7 +22,6 @@ new class extends Component {
 
     public function showFormDetails(){
         $detailData = [];
-        // $this->PageEntryBlocks = Role::where('id',$this->id)->orderBy('ordno')->get();
     }
 
     public function mount(){

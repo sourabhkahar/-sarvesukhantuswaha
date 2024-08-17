@@ -46,7 +46,7 @@ new class extends Component {
 }
 ?>
 <div>
-    <div><strong>Add Roles</strong></div>
+    <div><strong>Edit Roles</strong></div>
     <form wire:submit='save'>
         <x-title  class="mt-4" wire:model="form.name" caption="Name" name="'name'" value="{{$form->name}}" disabled/>
         <x-field-error :messages="$errors->get('form.name')" class="mt-2 required" />

@@ -27,7 +27,7 @@
 
                             <div class="modal-content">
                                 <h3>{{$whatWeDoVal['title']}}</h3>
-                                <p>{{$whatWeDoVal['description1']??''}} </p>
+                                <p>{{$whatWeDoVal['description1']?nl2br($whatWeDoVal['description1']):''}} </p>
                             </div><!-- content -->
 
                         </div><!-- modal -->

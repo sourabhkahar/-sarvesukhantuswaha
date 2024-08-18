@@ -196,6 +196,7 @@ body .btn:hover {
     background-color: transparent;
 }
 
+.wrp_menu,
 .btn-menu,
 .btn-close {
     display: none;

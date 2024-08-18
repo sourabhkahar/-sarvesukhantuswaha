@@ -148,6 +148,16 @@
 	.modal .modal-content {
 	 	height: calc(100vh - 90px);
 	}
+
+	.wrp_menu {
+		display: flex;
+		flex-direction: column;
+		order: 3;
+		align-items: baseline;
+	}
+	span.menu {
+		font-size: 13px;
+	}
 }
 
 @media screen and (max-width: 600px) {

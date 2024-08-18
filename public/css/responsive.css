@@ -153,7 +153,7 @@
 		display: flex;
 		flex-direction: column;
 		order: 3;
-		align-items: baseline;
+		align-items: center;
 	}
 	span.menu {
 		font-size: 13px;

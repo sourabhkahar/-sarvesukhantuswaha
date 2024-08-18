@@ -30,7 +30,7 @@
         </div>
     </section>
 
-    <x-user.what-we-do :whatWeDo="$whatWeDo" :title="$page['title5']??''" :link="$page['title5']??''" :modelOpenNo="$modelOpenNo" /> 
+    <x-user.what-we-do :whatWeDo="$whatWeDo" :title="$page['title5']??''" :link="$page['link1']??''" :modelOpenNo="$modelOpenNo" /> 
 
     <section class="trust-section section-gapping" data-aos="fade-up" data-aos-duration="2500">
         <div class="container">

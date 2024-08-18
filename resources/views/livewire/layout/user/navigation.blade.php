@@ -47,6 +47,8 @@ new class extends Component {
                     <li><a href="{{route('about')}}" class="{{Route::currentRouteName() == 'about'?'active':'' }}" wire:navigate>About Us</a></li>
                     <li><a href="{{route('gallery')}}" class="{{Route::currentRouteName() == 'gallery'?'active':'' }}" wire:navigate>Gallery</a></li>
                     <li><a href="{{route('contact-us')}}" class="{{Route::currentRouteName() == 'contact-us'?'active':'' }}" wire:navigate>Contact Us</a></li>
+
+                    <li><a href="{{route('membership-form')}}" class="{{Route::currentRouteName() == 'membership-form'?'active':'' }}" wire:navigate>Membership Form</a></li>
                     <li><a href="{{route('social-media')}}" class="{{Route::currentRouteName() == 'social-media'?'active':'' }}" wire:navigate>Social Media</a></li>
 
                 </ul>

@@ -34,9 +34,11 @@
                     </div>
                     @endforeach
                 </div>
-                <div class="text-center" >
-                    <a href="{{$link??''}}" class="btn">Read More</a>
-                </div>
+                @if(isset($link))
+                    <div class="text-center" >
+                        <a href="{{$link??''}}" class="btn">Read More</a>
+                    </div>
+                @endif
             </div>
         </section>
     @endif

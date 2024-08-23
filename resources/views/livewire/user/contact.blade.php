@@ -92,11 +92,9 @@
         </div>
     </section>
 
-    <x-user.cta-section :headerFooter="$headerFooter"  /> 
+  
 
-    <div id="toast" class="{{session('message')?'show':''}}">
-        <div id="desc">{{ session('message') }}</div>
-    </div>
+   
    
 
     <script>

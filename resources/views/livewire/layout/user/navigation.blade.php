@@ -44,7 +44,7 @@ new class extends Component {
                 </div>
                 <ul>
                     <li><a href="{{route('home')}}" class="{{Route::currentRouteName() == 'home'?'active':'' }}" wire:navigate>Home   </a></li>
-                    <li><a href="{{route('about')}}" class="{{Route::currentRouteName() == 'about'?'active':'' }}" wire:navigate>About Us</a></li>
+                    <!-- <li><a href="{{route('about')}}" class="{{Route::currentRouteName() == 'about'?'active':'' }}" wire:navigate>About Us</a></li> -->
                     <li><a href="{{route('gallery')}}" class="{{Route::currentRouteName() == 'gallery'?'active':'' }}" wire:navigate>Gallery</a></li>
                     <li><a href="{{route('contact-us')}}" class="{{Route::currentRouteName() == 'contact-us'?'active':'' }}" wire:navigate>Contact Us</a></li>
 

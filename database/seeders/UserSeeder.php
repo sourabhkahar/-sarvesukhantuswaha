@@ -14,12 +14,12 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::insert([
-            'name' => 'super-admin',
-            'email' => 'superadmin@gmail.com',
-            'password' => Hash::make('Admin@1234!'),
-            'role' => 'super-admin',
-            'email_verified_at' => now(),
-        ]);
+        // User::insert([
+        //     'name' => 'super-admin',
+        //     'email' => 'superadmin@gmail.com',
+        //     'password' => Hash::make('Admin@1234!'),
+        //     'role' => 'super-admin',
+        //     'email_verified_at' => now(),
+        // ]);
     }
 }

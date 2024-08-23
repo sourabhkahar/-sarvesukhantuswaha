@@ -227,25 +227,25 @@ new class extends Component {
     <div><strong>{{$pageTitle??''}}</strong></div>
     <form wire:submit='save'>
         @foreach($pageentryblock as $itemKey => $itemVal)
-        @if (strpos($itemVal->htmlblock, 'image') !== false)
-        <x-dynamic-component :component="strtolower($itemVal->htmlblock)" class="mt-4"
-            wire:model.live="formData.{{$itemVal->htmlblock}}" caption="{{$itemVal->blockname}}"
-            name="{{$itemVal->htmlblock}}" value="{{$formData[$itemVal->htmlblock]}}" />
+            @if (strpos($itemVal->htmlblock, 'image') !== false)
+                <x-dynamic-component :component="strtolower($itemVal->htmlblock)" class="mt-4"
+                    wire:model.live="formData.{{$itemVal->htmlblock}}" caption="{{$itemVal->blockname}}"
+                    name="{{$itemVal->htmlblock}}" value="{{$formData[$itemVal->htmlblock]}}" />
 
-        <div id="loading-screen" class="fixed top-0 left-0 z-50 hidden block w-full h-full bg-white opacity-75"
-            wire:loading wire:target="formData.{{$itemVal->htmlblock}}">
-            <span class="relative block w-0 h-0 mx-auto my-0 text-green-500 opacity-75 top-1/2">
-                <div class="animate-spin inline-block size-6 border-[3px] border-current border-t-transparent text-blue-600 rounded-full dark:text-blue-500"
-                    role="status" aria-label="loading">
-                    <span class="sr-only">Loading...</span>
+                <div id="loading-screen" class="fixed top-0 left-0 z-50 hidden block w-full h-full bg-white opacity-75"
+                    wire:loading wire:target="formData.{{$itemVal->htmlblock}}">
+                    <span class="relative block w-0 h-0 mx-auto my-0 text-green-500 opacity-75 top-1/2">
+                        <div class="animate-spin inline-block size-6 border-[3px] border-current border-t-transparent text-blue-600 rounded-full dark:text-blue-500"
+                            role="status" aria-label="loading">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </span>
                 </div>
-            </span>
-        </div>
-        @else
-        <x-dynamic-component :component="strtolower($itemVal->htmlblock)" class="mt-4"
-            wire:model.live="formData.{{$itemVal->htmlblock}}" caption="{{$itemVal->blockname}}"
-            name="{{$itemVal->htmlblock}}" />
-        @endif
+            @else
+                <x-dynamic-component :component="strtolower($itemVal->htmlblock)" class="mt-4"
+                    wire:model.live="formData.{{$itemVal->htmlblock}}" caption="{{$itemVal->blockname}}"
+                    name="{{$itemVal->htmlblock}}" />
+            @endif
         @endforeach
         <div class="flex mt-6">
             <button class="flex justify-center p-3 font-medium rounded bg-primary text-gray hover:bg-opacity-90"

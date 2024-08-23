@@ -1,8 +1,5 @@
 <div class="">
     <livewire:layout.user.header-banner :pid="$pid"/>
-
-    <x-user.what-we-do :whatWeDo="$whatWeDo" :title="$page['title1']??''" :link="$page['title1']??''" :modelOpenNo="$modelOpenNo" /> 
-
     <section class="care-section section-gapping" data-aos="fade-up" data-aos-duration="2000">
         <div class="container">
             <h2 class="main-title">WHAT WE CARE FOR!</h2>
@@ -25,6 +22,4 @@
             </div>
         </div>
     </section>
-    <x-user.cta-section :headerFooter="$headerFooter"  /> 
-    
 </div>

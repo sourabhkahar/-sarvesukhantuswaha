@@ -6,7 +6,6 @@
                 <div class="">
                     <h2>{{$page['title1']??''}}</h2>
                     <form action="" wire:submit='saveForm'>
-                        {{-- <div class="col-2"> --}}
                         <div class="field-box">
                             <div class="field">
                                 <label for="">First Name <span class="required">*</span></label>
@@ -24,7 +23,6 @@
                                 <x-field-error :messages="$errors->get('lastname')" class="mt-2 required" />
                             </div>
                         </div>
-                        {{-- </div> --}}
                         <div class="col-2">
                             <div class="field">
                                 <label for="">Phone Number <span class="required">*</span></label>
@@ -84,11 +82,12 @@
                             <x-field-error :messages="$errors->get('dob')" class="mt-2 required" />
                         </div> --}}
                         @if(count($familyDetails) > 0)
-                        <h2>Family Details</h2>
+                        <h2>Details</h2>
                         @endif
                         @foreach ($familyDetails as $keyFam => $family)
                         <div>
                             @if($keyFam > 0)
+                            <h2>Family Details</h2>
                             <div class="remove-family-section" title="remove section" wire:click="removeFamilyDetails({{$keyFam}})">
                                     <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                      <path d="M16 8L8 16M8.00001 8L16 16" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -240,6 +239,7 @@
                             </div>
                             @endIf
                             <div class="col-2">
+                                @if($keyFam == 0)
                                 <div class="field ">
                                     <label for="">No. of vehicles</label>
                                     <input type="number" class="input-field"
@@ -248,6 +248,7 @@
                                             <x-field-error :messages="$message" class="mt-2 required" />
                                         @endforeach
                                 </div>
+                                @endif
                                 <div class="field">
                                     <label for=""> Date Of Birth <span class="required">*</span></label>
                                     <input type="date" class="input-field" id="" wire:model.live="familyDetails.{{$keyFam}}.dob" />
@@ -281,8 +282,6 @@
             </div>
         </div>
     </section>
-
-    <x-user.cta-section :headerFooter="$headerFooter"  /> 
 
     <div id="toast" class="{{session('message')?'show':''}}">
         <div id="desc">{{ session('message') }}</div>

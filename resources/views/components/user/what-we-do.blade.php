@@ -1,4 +1,4 @@
-@props(['whatWeDo','title','link','modelOpenNo'])
+@props(['whatWeDo','title','link'=>null,'modelOpenNo'])
 @if(count($whatWeDo) > 0)
         <section class="what-section section-gapping yellow-bg">
             <div class="container">
@@ -27,14 +27,14 @@
 
                             <div class="modal-content">
                                 <h3>{{$whatWeDoVal['title']}}</h3>
-                                <p>{{$whatWeDoVal['description1']?nl2br($whatWeDoVal['description1']):''}} </p>
+                                <p>{!! $whatWeDoVal['description1']?nl2br($whatWeDoVal['description1']):'' !!} </p>
                             </div><!-- content -->
 
                         </div><!-- modal -->
                     </div>
                     @endforeach
                 </div>
-                @if(isset($link))
+                @if(isset($link) && $link != '')
                     <div class="text-center" >
                         <a href="{{$link??''}}" class="btn">Read More</a>
                     </div>

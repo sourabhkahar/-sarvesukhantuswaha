@@ -4,89 +4,96 @@ use Livewire\WithPagination;
 use Livewire\Volt\Component;
 use App\Models\HtmlBlock;
 use App\Livewire\Forms\HtmlBlockForm;
-use Livewire\Attributes\On; 
+use Livewire\Attributes\On;
 
 new class extends Component {
-      use WithPagination;
-      public HtmlBlockForm $form; 
-      public $perPage = 10; 
-      public $search = '' ; 
-      public $sortColumn = 'ordno';
-      public $sortDirection = 'Asc';
-      public $editId = null;
-      public $headerColumn  = [
-                                 'blockname'=>'Name',
-                                 'htmlBlock'=>'Html Block',
-                                 'status'=>'Status',
-                                 'actions'=>'Actions'
-                              ];
-      public $mode = 'add';
+   use WithPagination;
+   public HtmlBlockForm $form;
+   public $perPage = 10;
+   public $search = '';
+   public $sortColumn = 'ordno';
+   public $sortDirection = 'Asc';
+   public $editId = null;
+   public $headerColumn  = [
+      'blockname' => 'Name',
+      'htmlBlock' => 'Html Block',
+      'status' => 'Status',
+      'actions' => 'Actions'
+   ];
+   public $mode = 'add';
 
-      public function save(){
-         $this->validate();
-         if($this->mode == 'add'){
-            $this->form->store();
-         } else {
-            $this->form->edit($this->editId);
-            $this->mode == 'add';
-            $this->editId = null;
-         }
-      }
-      
-      public function doSort($columnName){
-         if($this->sortColumn == $columnName){
-            $this->sortDirection = ($this->sortDirection == 'Asc')?'Desc':'Asc' ;
-         }
-         $this->sortColumn = $columnName;
-      }
-
-      public function with(): array{
-         return [
-            'HtmlBlocksOption' => Config::get('constant.html-blocks'),
-            'HtmlBlocks' => HtmlBlock::search($this->search)
-                                       ->where(['taxonmycode'=>1,'pagecode'=>$this->form->pageId])
-                                       ->orderBy($this->sortColumn,$this->sortDirection)
-                                       ->orderBy('ordno','Desc')
-                                       ->paginate($this->perPage),
-         ];
-      }
-
-      public function getDetails(HtmlBlock $htmlBlock){
-         $this->form->title = $htmlBlock->blockname;
-         $this->form->blockname = $htmlBlock->htmlblock;
-         $this->editId = $htmlBlock->id;
-         $this->mode = 'edit';
-      }
-
-      public function deleteDetails($taxonomyId){
-        HtmlBlock::where('id',$taxonomyId)->delete();
-      }
-
-      public function resetForm(){
-         $this->mode = 'add';
+   public function save()
+   {
+      $this->validate();
+      if ($this->mode == 'add') {
+         $this->form->store();
+      } else {
+         $this->form->edit($this->editId);
+         $this->mode == 'add';
          $this->editId = null;
-         $this->title = '';
-         $this->form->resetForm();
       }
+   }
 
-      public function mount($pid)
-      {
-         $this->form->pageId = $pid;
+   public function doSort($columnName)
+   {
+      if ($this->sortColumn == $columnName) {
+         $this->sortDirection = ($this->sortDirection == 'Asc') ? 'Desc' : 'Asc';
       }
+      $this->sortColumn = $columnName;
+   }
 
-      public function changeStatus($id){
-         $this->form->updateStatus($id);
-      }
+   public function with(): array
+   {
+      return [
+         'HtmlBlocksOption' => Config::get('constant.html-blocks'),
+         'HtmlBlocks' => HtmlBlock::search($this->search)
+            ->where(['taxonmycode' => 1, 'pagecode' => $this->form->pageId])
+            ->orderBy($this->sortColumn, $this->sortDirection)
+            ->orderBy('ordno', 'Desc')
+            ->paginate($this->perPage),
+      ];
+   }
 
-      #[On('reorder-list')] 
-      public function updatePostList($orderList)
-      {
-         $orderArr = [];
-         foreach ($orderList as $key => $ord_value) {
-            HtmlBlock::where('id',$ord_value['id'])
-            ->update(['ordno'=>$ord_value['orderno']]);
-         }
+   public function getDetails(HtmlBlock $htmlBlock)
+   {
+      $this->form->title = $htmlBlock->blockname;
+      $this->form->blockname = $htmlBlock->htmlblock;
+      $this->editId = $htmlBlock->id;
+      $this->mode = 'edit';
+   }
+
+   public function deleteDetails($taxonomyId)
+   {
+      HtmlBlock::where('id', $taxonomyId)->delete();
+   }
+
+   public function resetForm()
+   {
+      $this->mode = 'add';
+      $this->editId = null;
+      $this->title = '';
+      $this->form->resetForm();
+   }
+
+   public function mount($pid)
+   {
+      $this->form->pageId = $pid;
+   }
+
+   public function changeStatus($id)
+   {
+      $this->form->updateStatus($id);
+   }
+
+   #[On('reorder-list')]
+   public function updatePostList($orderList)
+   {
+      $orderArr = [];
+      foreach ($orderList as $key => $ord_value) {
+         HtmlBlock::where('id', $ord_value['id'])
+            ->update(['ordno' => $ord_value['orderno']]);
       }
+   }
 }; ?>
 
 <div>
@@ -134,7 +141,7 @@ new class extends Component {
                      </option>
                      @foreach($HtmlBlocksOption as $HtmlBlocksOptionKey => $HtmlBlocksOptionval )
                      <option value="{{$HtmlBlocksOptionKey}}" class="text-body" {{$HtmlBlocksOptionKey==$this->
-                        form->blockname?'selected':'' }} >
+                        form->blockname?'selected':'' }}>
                         {{$HtmlBlocksOptionval}}
                      </option>
                      @endforeach
@@ -167,14 +174,14 @@ new class extends Component {
          </div>
       </form>
    </div>
-   
+
    <div class="mt-2 bg-white border rounded-sm border-stroke shadow-default dark:border-strokedark dark:bg-boxdark">
       <div class="max-w-full overflow-x-auto data-table-common data-table-two">
          <div class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns">
             <div class="datatable-top">
                <div class="datatable-dropdown">
                   <label>
-                     <select class="datatable-selector" wire:model.live="perPage">
+                     <select class="datatable-selector" wire:model.live="perPage" x-on:change="$wire.$refresh()">
                         <option value="5" selected="">5</option>
                         <option value="10">10</option>
                         <option value="15">15</option>
@@ -188,7 +195,7 @@ new class extends Component {
                      aria-controls="dataTableTwo" wire:model.live.debounce.300ms="search">
                </div>
             </div>
-            <div class="datatable-container" id="datatable-container" >
+            <div class="datatable-container" id="datatable-container">
                <table class="table w-full table-auto datatable-table" id="dataTableTwo" drag-root>
                   <thead>
                      <tr>
@@ -229,7 +236,7 @@ new class extends Component {
                   </thead>
                   <tbody>
                      @foreach ($HtmlBlocks as $key => $HtmlBlock)
-                     <tr data-id="{{$HtmlBlock->id}}" drag-item draggable="true" >
+                     <tr data-id="{{$HtmlBlock->id}}" drag-item draggable="true">
                         <td>{{$HtmlBlock->blockname}}</td>
                         <td>{{$HtmlBlock->htmlblock}}</td>
                         <td>
@@ -310,56 +317,71 @@ new class extends Component {
    </div>
 </div>
 @script
-   <script>
-      let root  = document.querySelector('[drag-root]');
-      let roots = root.querySelectorAll('[drag-item]')
-      roots.forEach(el => {
-         el.addEventListener('dragstart',(e)=>{
-            draggedElement = e.target.closest('tr');
-            draggedElement.setAttribute('dragging',true);
-         })
-         el.addEventListener('dragenter',(e)=>{
-            draggedElement = e.target.closest('tr');
-            draggedElement.classList.add('bg-blue-100')
-            e.preventDefault()
-         })
-         el.addEventListener('dragover',(e)=>{
-            e.preventDefault()
-         })
-         // el.addEventListener('dragend',(e)=>{
-         //    draggedElement = e.target.closest('tr');
-         //    draggedElement.removeAttribute('dragging');
-         // })
-         el.addEventListener('drop',(e)=>{
-            draggedElement = e.target.closest('tr');
-            draggedElement.classList.remove('bg-blue-100')
-            dragingElement = root.querySelector('[dragging]')
-
-            if(dragingElement){
-               draggedElement.before(dragingElement)
-            }
-
-            let newList = root.querySelectorAll('[drag-item]')
-            let orderList = []
-            
-            newList.forEach((item,index) => {
-               orderList.push({
-                  id:item.getAttribute('data-id'),
-                  orderno:index+1
-               }) 
+<script>
+   document.addEventListener('alpine:init', () => {
+      function dragDropFeature() {
+         let root = document.querySelector('[drag-root]');
+         let roots = root.querySelectorAll('[drag-item]')
+         roots.forEach(el => {
+            el.addEventListener('dragstart', (e) => {
+               draggedElement = e.target.closest('tr');
+               draggedElement.setAttribute('dragging', true);
             })
-            if(orderList.length){
-               Livewire.dispatch('reorder-list',  {orderList:orderList} )
-            }
-            
-            //NOTE  For After thing also need to do up and Down in both direction
-            // console.log(draggedElement,dragingElement)
-           
-         })
-         el.addEventListener('dragleave',(e)=>{
-            e.target.closest('tr').classList.remove('bg-blue-100')
-         })
-      });
-   </script>
-@endscript
+            el.addEventListener('dragenter', (e) => {
+               draggedElement = e.target.closest('tr');
+               draggedElement.classList.add('bg-blue-100')
+               e.preventDefault()
+            })
+            el.addEventListener('dragover', (e) => {
+               e.preventDefault()
+            })
+            // el.addEventListener('dragend',(e)=>{
+            //    draggedElement = e.target.closest('tr');
+            //    draggedElement.removeAttribute('dragging');
+            // })
+            el.addEventListener('drop', (e) => {
+               draggedElement = e.target.closest('tr');
+               draggedElement.classList.remove('bg-blue-100')
+               dragingElement = root.querySelector('[dragging]')
 
+               if (dragingElement) {
+                  draggedElement.before(dragingElement)
+               }
+
+               let newList = root.querySelectorAll('[drag-item]')
+               let orderList = []
+
+               newList.forEach((item, index) => {
+                  orderList.push({
+                     id: item.getAttribute('data-id'),
+                     orderno: index + 1
+                  })
+               })
+               if (orderList.length) {
+                  Livewire.dispatch('reorder-list', {
+                     orderList: orderList
+                  })
+               }
+
+               //NOTE  For After thing also need to do up and Down in both direction
+               // console.log(draggedElement,dragingElement)
+
+            })
+            el.addEventListener('dragleave', (e) => {
+               e.target.closest('tr').classList.remove('bg-blue-100')
+            })
+         });
+      }
+      // Alpine.data('utils', () => ({
+      //    paginationChange() {
+      //       dragDropFeature()
+      //    }
+      // }))
+      function paginationChange() {
+         dragDropFeature()
+      }
+
+      dragDropFeature()
+   });
+</script>
+@endscript

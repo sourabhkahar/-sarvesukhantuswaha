@@ -17,6 +17,11 @@
                         </div>
                         <h3>{{$gallery['title']??''}}</h3>
                         <p>{!!isset($gallery['shortdescription2'])?nl2br($gallery['shortdescription2']):''!!}</p>
+                        @if(isset($gallery['shortdescription1']) && !empty($gallery['shortdescription1']))
+                        <div class="text-center" >
+                            <a href="{{$this->getVideoUrl($gallery['shortdescription1'])}}" target="_blank" class="btn">Watch Video</a>
+                        </div>
+                        @endif
                     </div>
                 @endforeach
             </div>

@@ -41,18 +41,28 @@ class Gallery extends Component
     }
 
     public function replaceHeightWIthIframe($iframe){
-        // $iframe = '<iframe width="400" height="225" src="youtube.com/embed/c7ct6pNOvEE?feature=oembed" frameborder="0" allowfullscreen></iframe>';
-        // $src = html_entity_decode($post['url']);
-        $height = 250;
-        $width = 410;
+        preg_match('/src="([^"]+)"/i', $iframe,$matches);
+        return '<img src="'.$this->getYoutubeEmbedUrl($matches[1]).'" style="width:-webkit-fill-available;"/>';
+    }
 
-        // add autoplay
-        // $src = $src . (strstr($src, '?') ? '&': '?') . 'autoplay=1';
+    public function getVideoUrl($iframe){
+        preg_match('/src="([^"]+)"/i', $iframe,$matches);
+        return str_replace('embed','v',$matches[1]);
+    }
 
-        // $iframe = preg_replace('/src="(.*?)"/i', 'src="' . $src .'"', $iframe);
-        $iframe = preg_replace('/height="(.*?)"/i', 'height="' . $height .'"', $iframe);
-        $iframe = preg_replace('/width="(.*?)"/i', 'width="' . $width .'"', $iframe);
-        return $iframe;
+    public function getYoutubeEmbedUrl($url)
+    {
+        $shortUrlRegex = '/youtu.be\/([a-zA-Z0-9_-]+)\??/i';
+        $longUrlRegex = '/youtube.com\/((?:embed)|(?:watch))((?:\?v\=)|(?:\/))([a-zA-Z0-9_-]+)/i';
+
+        if (preg_match($longUrlRegex, $url, $matches)) {
+            $youtube_id = $matches[count($matches) - 1];
+        }
+
+        if (preg_match($shortUrlRegex, $url, $matches)) {
+            $youtube_id = $matches[count($matches) - 1];
+        }
+        return 'https://img.youtube.com/vi/'.$youtube_id.'/hqdefault.jpg'  ;
     }
 
     public function getFormatedData($data, $islanding = false)

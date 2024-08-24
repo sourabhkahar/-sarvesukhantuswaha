@@ -148,7 +148,7 @@ new class extends Component {
                   </li>
                   <!-- Menu Item Calendar -->
 
-                  <li>
+                  <!-- <li>
                     <a class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4" href="#" @click.prevent="selected = (selected === 'About' ? '':'About')" :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'About') }">
                       <svg class="fill-current" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M6.10322 0.956299H2.53135C1.5751 0.956299 0.787598 1.7438 0.787598 2.70005V6.27192C0.787598 7.22817 1.5751 8.01567 2.53135 8.01567H6.10322C7.05947 8.01567 7.84697 7.22817 7.84697 6.27192V2.72817C7.8751 1.7438 7.0876 0.956299 6.10322 0.956299ZM6.60947 6.30005C6.60947 6.5813 6.38447 6.8063 6.10322 6.8063H2.53135C2.2501 6.8063 2.0251 6.5813 2.0251 6.30005V2.72817C2.0251 2.44692 2.2501 2.22192 2.53135 2.22192H6.10322C6.38447 2.22192 6.60947 2.44692 6.60947 2.72817V6.30005Z" fill="" />
@@ -164,7 +164,6 @@ new class extends Component {
                       </svg>
                     </a>
         
-                    <!-- Dropdown Menu Start -->
                     <div class="overflow-hidden transform translate" :class="(selected === 'About') ? 'block' :'hidden'">
                       <ul class="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
                         <li>
@@ -174,8 +173,7 @@ new class extends Component {
                         
                       </ul>
                     </div>
-                    <!-- Dropdown Menu End -->
-                  </li>
+                  </li> -->
 
                   <li>
                     <a class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4" href="#" @click.prevent="selected = (selected === 'Gallery' ? '':'Gallery')" :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'Gallery') }">

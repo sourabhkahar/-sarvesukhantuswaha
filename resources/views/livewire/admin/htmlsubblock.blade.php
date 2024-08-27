@@ -16,6 +16,7 @@ new class extends Component {
       public $sortDirection = 'Asc';
       public $editId = null;
       public $headerColumn  = [
+                                 'id'=>'Sr.No.',
                                  'blockname'=>'Name',
                                  'htmlBlock'=>'Html Block',
                                  'taxonmycode'=>'Taxonomy Code',
@@ -245,6 +246,7 @@ new class extends Component {
                   <tbody>
                      @foreach ($HtmlBlocks as $HtmlBlock)
                      <tr data-id="{{$HtmlBlock->id}}" drag-item draggable="true">
+                        <td>{{$loop->iteration}}</td>
                         <td>{{$HtmlBlock->blockname}}</td>
                         <td>{{$HtmlBlock->htmlblock}}</td>
                         <td>{{$HtmlBlock->taxonmycode}}</td>

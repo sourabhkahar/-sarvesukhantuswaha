@@ -45,9 +45,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         return view('subpageentry', ['cid' => $cid, 'tid' => $tid]);
     })->name('sub-pageentry');
 
-    Route::get('membermanagment/', function () {
-        return view('membermanagment');
-    })->name('membermanagment');
+    Route::get('member-managment/', function () {
+        return view('member-managment.index');
+    })->name('membermanagment.index');
+
+    Route::get('member-managment/create', function () {
+        return view('member-managment.create');
+    })->name('member-managment.create');
 
     Route::get('roles/', function () {
         return view('roles.index');

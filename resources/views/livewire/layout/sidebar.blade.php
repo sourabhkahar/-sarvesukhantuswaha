@@ -285,7 +285,7 @@ new class extends Component {
                     <ul class="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
                      
                       <li>
-                        <a class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white" href="{{route('membermanagment')}}" :class="page === 'ecommerce' && '!text-white'" wire:navigate>Member Managment
+                        <a class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white" href="{{route('membermanagment.index')}}" :class="page === 'ecommerce' && '!text-white'" wire:navigate>Member Managment
                         </a>
                       </li>
                     </ul>

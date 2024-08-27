@@ -15,6 +15,7 @@ new class extends Component {
    public $sortDirection = 'Asc';
    public $editId = null;
    public $headerColumn  = [
+      'id' => 'Sr.No.',
       'blockname' => 'Name',
       'htmlBlock' => 'Html Block',
       'status' => 'Status',
@@ -181,7 +182,7 @@ new class extends Component {
             <div class="datatable-top">
                <div class="datatable-dropdown">
                   <label>
-                     <select class="datatable-selector" wire:model.live="perPage" x-on:change="$wire.$refresh()">
+                     <select class="datatable-selector" wire:model.live="perPage" >
                         <option value="5" selected="">5</option>
                         <option value="10">10</option>
                         <option value="15">15</option>
@@ -237,6 +238,8 @@ new class extends Component {
                   <tbody>
                      @foreach ($HtmlBlocks as $key => $HtmlBlock)
                      <tr data-id="{{$HtmlBlock->id}}" drag-item draggable="true">
+                        <td>{{$loop->iteration}}</td>
+
                         <td>{{$HtmlBlock->blockname}}</td>
                         <td>{{$HtmlBlock->htmlblock}}</td>
                         <td>
@@ -318,70 +321,87 @@ new class extends Component {
 </div>
 @script
 <script>
-   document.addEventListener('alpine:init', () => {
-      function dragDropFeature() {
-         let root = document.querySelector('[drag-root]');
-         let roots = root.querySelectorAll('[drag-item]')
-         roots.forEach(el => {
-            el.addEventListener('dragstart', (e) => {
-               draggedElement = e.target.closest('tr');
-               draggedElement.setAttribute('dragging', true);
-            })
-            el.addEventListener('dragenter', (e) => {
-               draggedElement = e.target.closest('tr');
-               draggedElement.classList.add('bg-blue-100')
-               e.preventDefault()
-            })
-            el.addEventListener('dragover', (e) => {
-               e.preventDefault()
-            })
-            // el.addEventListener('dragend',(e)=>{
-            //    draggedElement = e.target.closest('tr');
-            //    draggedElement.removeAttribute('dragging');
-            // })
-            el.addEventListener('drop', (e) => {
-               draggedElement = e.target.closest('tr');
-               draggedElement.classList.remove('bg-blue-100')
-               dragingElement = root.querySelector('[dragging]')
+   const dragDropFeature = () => {
+      let root = document.querySelector('[drag-root]');
+      let roots = root.querySelectorAll('[drag-item]')
+      roots.forEach(el => {
+         el.addEventListener('dragstart', (e) => {
+            draggedElement = e.target.closest('tr');
+            draggedElement.setAttribute('dragging', true);
+         })
+         el.addEventListener('dragenter', (e) => {
+            draggedElement = e.target.closest('tr');
+            draggedElement.classList.add('bg-blue-100')
+            e.preventDefault()
+         })
+         el.addEventListener('dragover', (e) => {
+            e.preventDefault()
+         })
+         // el.addEventListener('dragend',(e)=>{
+         //    draggedElement = e.target.closest('tr');
+         //    draggedElement.removeAttribute('dragging');
+         // })
+         el.addEventListener('drop', (e) => {
+            draggedElement = e.target.closest('tr');
+            draggedElement.classList.remove('bg-blue-100')
+            dragingElement = root.querySelector('[dragging]')
 
-               if (dragingElement) {
-                  draggedElement.before(dragingElement)
-               }
+            if (dragingElement) {
+               draggedElement.before(dragingElement)
+            }
 
-               let newList = root.querySelectorAll('[drag-item]')
-               let orderList = []
+            let newList = root.querySelectorAll('[drag-item]')
+            let orderList = []
 
-               newList.forEach((item, index) => {
-                  orderList.push({
-                     id: item.getAttribute('data-id'),
-                     orderno: index + 1
-                  })
+            newList.forEach((item, index) => {
+               orderList.push({
+                  id: item.getAttribute('data-id'),
+                  orderno: index + 1
                })
-               if (orderList.length) {
-                  Livewire.dispatch('reorder-list', {
-                     orderList: orderList
-                  })
-               }
-
-               //NOTE  For After thing also need to do up and Down in both direction
-               // console.log(draggedElement,dragingElement)
-
             })
-            el.addEventListener('dragleave', (e) => {
-               e.target.closest('tr').classList.remove('bg-blue-100')
-            })
-         });
-      }
-      // Alpine.data('utils', () => ({
-      //    paginationChange() {
-      //       dragDropFeature()
-      //    }
-      // }))
-      function paginationChange() {
-         dragDropFeature()
-      }
+            if (orderList.length) {
+               Livewire.dispatch('reorder-list', {
+                  orderList: orderList
+               })
+            }
 
+            //NOTE  For After thing also need to do up and Down in both direction
+            // console.log(draggedElement,dragingElement)
+
+         })
+         el.addEventListener('dragleave', (e) => {
+            e.target.closest('tr').classList.remove('bg-blue-100')
+         })
+      });
+   }
+
+   window.addEventListener('livewire:updated', event => {
+      console.log('okok')
       dragDropFeature()
    });
+   // window.addEventListener('contentChanged', event => {
+   //    console.log('okok')
+   //    dragDropFeature()
+   // });
+
+   // Alpine.data('paginationFunction', () => {
+   //      return {
+   //       paginationChange() {
+   //          console.log('okok')
+   //          dragDropFeature()
+   //       },
+   //    }
+   //  })
+   // Livewire.hook('morph.updated', ({ el, component }) => {
+   //    dragDropFeature()
+
+   // })
+   const paginationChange = () => {
+      // $wire.$refresh()
+      console.log('plp')
+      dragDropFeature()
+   }
+
+   dragDropFeature()
 </script>
 @endscript

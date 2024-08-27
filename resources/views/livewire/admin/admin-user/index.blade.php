@@ -16,6 +16,7 @@ new class extends Component {
       public $sortDirection = 'Asc';
       public $editId = null;
       public $headerColumn  = [
+                                 'id'=>'Sr.No.',
                                  'name'=>'Name',
                                  'created_at'=>'Created At',
                                  'updated_At'=>'Updated At',
@@ -129,6 +130,7 @@ new class extends Component {
                   <tbody>
                      @foreach ($Role as $role)
                      <tr data-index="0">
+                        <td>{{$loop->iteration}}</td>
                         <td>{{$role->name}}</td>
                         <td>{{$role->created_at}}</td>
                         <td>{{$role->updated_at}}</td>

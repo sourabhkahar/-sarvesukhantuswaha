@@ -9,7 +9,7 @@
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <livewire:admin.roles.index />
+                    <livewire:admin.member-managment.create />
                 </div>
             </div>
         </div>

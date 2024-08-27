@@ -2,12 +2,10 @@
 
 use Livewire\WithPagination;
 use Livewire\Volt\Component;
-use App\Livewire\Forms\Membermanagment;
 use App\Models\User;
 
 new class extends Component {
     use WithPagination;
-    public Membermanagment $form; 
     public $perPage = 10; 
     public $search = '' ; 
     public $sortColumn = 'created_at';
@@ -16,6 +14,7 @@ new class extends Component {
     public $showuser = null;
     public $openModal = false;
     public $headerColumn  = [
+                                'id'=>'Sr.No.',
                                 'member_code'=>'Member Code',
                                 'name'=>'Name',
                                 'created_at'=>'Created At',
@@ -47,23 +46,24 @@ new class extends Component {
         session()->flash('message', 'Item Deleted Successfully');
     }
 
-    public function resetForm(){
-        $this->mode = 'add';
-        $this->editId = null;
-        $this->title = '';
-        $this->form->resetForm();
-    }
-
     public function getUserDetails($id){
         $this->showuser = User::with(['user_details','families'])->find($id);
     }
     
+    public function addNewMember(){
+        $this->redirect("/admin/member-managment/create", navigate: true);
+     }
 }; ?>
 
 <div x-data={modalOpen:false}>
     <div class="flex items-center justify-between">
         <div>
             <strong>Member Managment</strong>
+        </div>
+        <div>
+            <button
+                class="flex justify-center w-full p-3 font-medium rounded me-1 bg-primary text-gray hover:bg-opacity-90"
+                wire:click='addNewMember'>Add New Member</button>
         </div>
     </div>
 
@@ -131,6 +131,7 @@ new class extends Component {
                         <tbody>
                             @foreach ($users as $user)
                             <tr data-index="0">
+                                <td>{{$loop->iteration}}</td>
                                 <td>{{$user->member_code}}</td>
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->created_at}}</td>

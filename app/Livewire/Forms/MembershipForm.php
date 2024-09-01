@@ -6,7 +6,6 @@ use Livewire\Attributes\Validate;
 use Livewire\Form;
 use App\Mail\SendMemberNotification;
 use App\Models\Family;
-use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\User;
 use App\Models\UserDetail;
@@ -151,7 +150,6 @@ class MembershipForm extends Form
             $userData['dob'] =  $userDetails->dob;
             $userData['email'] =  $user->email;
     
-            $this->dispatch('contentChanged');
             Mail::to(env('MAIL_TO_ADDRESS'))
             ->queue(new SendMemberNotification($userData));
             session()->flash('message', 'Memeber Added successfully!');
@@ -159,13 +157,14 @@ class MembershipForm extends Form
             DB::commit();
         } catch (\Exception $th) {
             DB::rollback();
-            // session()->flash('message', 'Opps, Something went wrong!');
+            dd($th);
+            session()->flash('message', 'Opps, Something went wrong!');
         }
     }
 
-    public function mount(){
-        $this->familyDetails[] = $this->familyDetailsArr;
-    }
+    // public function mount(){
+    //     $this->familyDetails[] = $this->familyDetailsArr;
+    // }
 
     public function removeFamilyDetails($index){
         array_splice($this->familyDetails, $index, 1);

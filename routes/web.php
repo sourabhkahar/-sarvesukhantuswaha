@@ -22,59 +22,64 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::view('profile', 'profile')
         ->name('profile');
 
-    Route::view('pages', 'pages')
-        ->name('pages');
+    Route::group(['middleware' => ['role:dev']], function () { 
 
-    Route::get('taxonomy', function () {
-        return view('taxonomy');
-    })->name('taxonomy');
+        Route::view('pages', 'pages')
+            ->name('pages');
 
-    Route::get('addblock/{pid}', function ($pid) {
-        return view('htmlblock', ['pid' => $pid]);
-    })->name('addhtmlblock');
+        Route::get('taxonomy', function () {
+            return view('taxonomy');
+        })->name('taxonomy');
 
-    Route::get('addsubblock/{pid}', function ($pid) {
-        return view('htmlsubblock', ['pid' => $pid]);
-    })->name('addhtmlsubblock');
+        Route::get('addblock/{pid}', function ($pid) {
+            return view('htmlblock', ['pid' => $pid]);
+        })->name('addhtmlblock');
+    
+        Route::get('addsubblock/{pid}', function ($pid) {
+            return view('htmlsubblock', ['pid' => $pid]);
+        })->name('addhtmlsubblock');
+    });
 
-    Route::get('pageentry/{pid}/{tid}/{cid?}/{act?}', function ($pid, $tid, $cid = 0, $act = 'edit') {
-        return view('pageentry', ['pid' => $pid, 'tid' => $tid, 'cid' => $cid, 'act' => $act]);
-    })->name('pageentry');
-
-    Route::get('subpageentry/{cid}/{tid}', function ($cid, $tid) {
-        return view('subpageentry', ['cid' => $cid, 'tid' => $tid]);
-    })->name('sub-pageentry');
+    Route::group(['middleware' => ['permission:create-site|delete-site|view-site|edit-site']], function () { 
+        Route::get('pageentry/{pid}/{tid}/{cid?}/{act?}', function ($pid, $tid, $cid = 0, $act = 'edit') {
+            return view('pageentry', ['pid' => $pid, 'tid' => $tid, 'cid' => $cid, 'act' => $act]);
+        })->name('pageentry');
+        
+        Route::get('subpageentry/{cid}/{tid}', function ($cid, $tid) {
+            return view('subpageentry', ['cid' => $cid, 'tid' => $tid]);
+        })->name('sub-pageentry');
+    });
 
     Route::get('member-managment/', function () {
         return view('member-managment.index');
-    })->name('membermanagment.index');
+    })->middleware('permission:view-user')->name('membermanagment.index');
 
     Route::get('member-managment/create', function () {
         return view('member-managment.create');
-    })->name('member-managment.create');
+    })->middleware('permission:create-user')->name('member-managment.create');
 
     Route::get('roles/', function () {
         return view('roles.index');
-    })->name('roles.index');
+    })->middleware('permission:view-role')->name('roles.index');
 
     Route::get('roles/create', function () {
         return view('roles.create');
-    })->name('roles.create');
+    })->middleware('permission:create-role')->name('roles.create');
 
     Route::get('roles/edit/{id}', function ($id) {
         return view('roles.edit', ['id' => $id]);
-    })->name('roles.edit');
+    })->middleware('permission:edit-role')->name('roles.edit');
 
     Route::get('admin-user/', function () {
         return view('admin-user.index');
-    })->name('admin-user.index');
+    })->middleware('permission:view-admin-user')->name('admin-user.index');
     
     Route::get('admin-user/create', function () {
         return view('admin-user.create');
-    })->name('admin-user.create');
+    })->middleware('permission:create-admin-user')->name('admin-user.create');
 
     Route::get('admin-user/edit/{id}', function ($id) {
         return view('admin-user.edit', ['id' => $id]);
-    })->name('admin-user.edit');
+    })->middleware('permission:edit-admin-user')->name('admin-user.edit');
 });
 require __DIR__ . '/auth.php';

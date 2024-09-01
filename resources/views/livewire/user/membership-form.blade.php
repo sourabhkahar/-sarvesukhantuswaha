@@ -219,7 +219,7 @@
                             </div>
 
                             <div class="field">
-                                <label for="">Medcal history</label>
+                                <label for="">Medical history</label>
                                 <div class="field-box">
                                     @foreach (Config::get('constant.medical-history') as $item)
                                         <label for="" class="custom-radio">

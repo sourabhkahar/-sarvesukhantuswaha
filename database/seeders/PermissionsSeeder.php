@@ -108,7 +108,10 @@ class PermissionsSeeder extends Seeder
             'email' => 'dev-admin@gmail.com',
             'password' => 'Admin@1234!',
         ]);
-        $user->assignRole($role1);
+        $user->assignRole($role2);
+
+
+        
 
         //For super-admin
         $user = \App\Models\User::factory()->create([

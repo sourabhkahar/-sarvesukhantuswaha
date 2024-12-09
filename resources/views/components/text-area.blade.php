@@ -1,0 +1,12 @@
+@props(['caption', 'name'])
+
+<div class="mt-5">
+    <label for="{{ $name }}" class="block mb-3 text-sm font-medium text-black dark:text-white">
+        {{ $caption }}:
+    </label>
+    <textarea
+        id="{{ $name }}"
+        name="{{ $name }}"
+        {{ $attributes->merge(['class' => 'w-full rounded-lg border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary']) }}>
+    </textarea>
+</div>

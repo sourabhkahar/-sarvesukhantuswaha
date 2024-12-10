@@ -32,8 +32,8 @@ class JobForm extends Form
             'company' => 'required|string|max:255',
             'location' => 'required|string|max:255',
             'employment_type' => 'required|string',
-            'min_salary' => 'nullable|numeric',
-            'max_salary' => 'nullable|numeric',
+            'min_salary' => 'nullable|numeric|lte:max_salary',
+            'max_salary' => 'nullable|numeric|gte:min_salary',
             'currency' => 'nullable|string|max:10',
             'description' => 'required|string',
             'requirements' => 'nullable',
@@ -43,7 +43,6 @@ class JobForm extends Form
             'job_category' => 'nullable|string|max:255',
             'experience_level' => 'nullable|string|max:255',
             'contact_email' => 'required|email',
-            'status' => 'required|in:Active,Closed'
         ];
     }
 

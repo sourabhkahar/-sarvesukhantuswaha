@@ -85,11 +85,11 @@ new class extends Component {
         <x-field-error :messages="$errors->get('form.responsibilities')" class="mt-2" />
 
         <!-- Posted Date -->
-        <x-title class="mt-4" wire:model="form.posted_date" caption="Posted Date" name="posted_date" type="date" />
+        <x-date class="mt-4" wire:model="form.posted_date" caption="Posted Date" name="posted_date" />
         <x-field-error :messages="$errors->get('form.posted_date')" class="mt-2 required" />
 
         <!-- Application Deadline -->
-        <x-title class="mt-4" wire:model="form.application_deadline" caption="Application Deadline" name="application_deadline" type="date" />
+        <x-date class="mt-4" wire:model="form.application_deadline" caption="Application Deadline" name="application_deadline" />
         <x-field-error :messages="$errors->get('form.application_deadline')" class="mt-2" />
 
         <!-- Job Category -->

@@ -72,15 +72,15 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     Route::get('job-management/', function () {
         return view('job-management.index');
-    })->middleware('permission:view-role')->name('job-management.index');
+    })->middleware('permission:view-job')->name('job-management.index');
 
     Route::get('job-management/create', function () {
         return view('job-management.create');
-    })->middleware('permission:create-role')->name('job-management.create');
+    })->middleware('permission:create-job')->name('job-management.create');
 
     Route::get('job-management/edit/{id}', function ($id) {
         return view('job-management.edit', ['id' => $id]);
-    })->middleware('permission:edit-role')->name('job-management.edit');
+    })->middleware('permission:edit-job')->name('job-management.edit');
 
     Route::get('admin-user/', function () {
         return view('admin-user.index');

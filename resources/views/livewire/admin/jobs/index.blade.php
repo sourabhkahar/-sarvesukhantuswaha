@@ -45,7 +45,7 @@ new class extends Component {
          $this->redirect("/admin/job-management/edit/".$id, navigate: true);
       }
 
-      public function deleteRole($id){
+      public function deleteJob($id){
          $this->form->id = $id;
          $this->form->destroy();
          session()->flash('message', 'Job Deleted Successfully');
@@ -124,16 +124,16 @@ new class extends Component {
                      </tr>
                   </thead>
                   <tbody>
-                     @foreach ($Job as $role)
+                     @foreach ($Job as $job)
                      <tr data-index="0">
                         <td>{{$loop->iteration}}</td>
-                        <td>{{$role->title}}</td>
-                        <td>{{$role->created_at}}</td>
-                        <td>{{$role->updated_at}}</td>
+                        <td>{{$job->title}}</td>
+                        <td>{{$job->created_at}}</td>
+                        <td>{{$job->updated_at}}</td>
                         <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
                            <div class="flex items-center space-x-3.5">
                               <button type="button" class="hover:text-primary"
-                                 wire:click="editRole({{$role->id}})">
+                                 wire:click="editRole({{$job->id}})">
                                  <svg class="fill-current" width="18" height="18" viewBox="0 0 18 18" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -144,8 +144,8 @@ new class extends Component {
                                        fill=""></path>
                                  </svg>
                               </button>
-                              @if(!in_array($role->title,['super-admin','admin','dev']))
-                                 <button class="hover:text-primary" wire:click="deleteRole({{$role->id}})" wire:confirm="Are you sure you want to delete this role?">
+                              @if(!in_array($job->title,['super-admin','admin']))
+                                 <button class="hover:text-primary" wire:click="deleteJob({{$job->id}})" wire:confirm="Are you sure you want to delete this job?">
                                     <svg class="fill-current" width="18" height="18" viewBox="0 0 18 18" fill="none"
                                        xmlns="http://www.w3.org/2000/svg">
                                        <path
